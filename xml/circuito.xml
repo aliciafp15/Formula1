@@ -1,0 +1,208 @@
+<circuito>
+    <datos>
+        <nombre>Monza</nombre>
+        <longitud>5793</longitud>
+        <anchuraMed>12</anchuraMed>
+        <fecha>01/09/2024</fecha>
+        <hora>15:00</hora>
+        <nVueltas>53</nVueltas>
+        <localidad>Monza</localidad>
+        <pais>Italia</pais>
+        <referencias>
+            <referencia>https://es.wikipedia.org/wiki/Autodromo_Nazionale_di_Monza</referencia>
+            <referencia>https://www.dazn.com/es-ES/news/motor/circuito-monza-donde-esta-como-es-caracteristicas-como-llegar-fotos-escenario-gp-italia-mundial-f1/1rvwgg1hco88f14fi4ivfb1g00</referencia>
+            <referencia>https://www.f1italy.com/es/la-historia-del-circuito-de-monza</referencia>
+        </referencias>
+        <fotografias><foto>foto.jpeg</foto></fotografias>
+        <videos></videos>
+        <coordenadas>
+            <longitudCircuito>9.281234350192022</longitudCircuito> <!--MAPS NOS DA LAS COORDENADAS COMO LAT,LONG-->
+            <latitudCircuito>45.61925480187299</latitudCircuito>
+            <altitudCircuito>200</altitudCircuito>
+        </coordenadas>
+    </datos>
+    <tramos>
+        <tramo distUnidad="m">
+            <dist>1</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.282515561960672</longitudTramo>
+                <latitudTramo>45.6118797241144</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>1</nSector>
+        </tramo>
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.285105101488858</longitudTramo>
+                <latitudTramo>45.62122407626651</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.28586088257085</longitudTramo>
+                <latitudTramo>45.62188923790956</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.285893069076701</longitudTramo>
+                <latitudTramo>45.62266585969252</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.291161648321106</longitudTramo>
+                <latitudTramo>45.62595097326419</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.296772829174703</longitudTramo>
+                <latitudTramo>45.62844194726491</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.29603817322548</longitudTramo>
+                <latitudTramo>45.63129616560382</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.291660808429558</longitudTramo>
+                <latitudTramo>45.630530917112175</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.291414045218023</longitudTramo>
+                <latitudTramo>45.63024582186549</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.285841887937735</longitudTramo>
+                <latitudTramo>45.62988089025481</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.28355806143899</longitudTramo>
+                <latitudTramo>45.62914034982761</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.282409768785989</longitudTramo>
+                <latitudTramo>45.62798936998416</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.282065280858218</longitudTramo>
+                <latitudTramo>45.62583010368049</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.282448045075883</longitudTramo>
+                <latitudTramo>45.6246701329219</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo></longitudTramo>
+                <latitudTramo></latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.281905795767521</longitudTramo>
+                <latitudTramo>45.62453628859759</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.281573176913598</longitudTramo>
+                <latitudTramo>45.621412591481594</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+        
+        <tramo distUnidad="m">
+            <dist>2</dist>
+            <coordenadasTramo>
+                <longitudTramo>9.281184179803368</longitudTramo>
+                <latitudTramo>45.61883927502173</latitudTramo>
+                <altitudTramo>200</altitudTramo>
+            </coordenadasTramo>
+            <nSector>2</nSector>
+        </tramo>
+
+        
+    </tramos>
+</circuito>

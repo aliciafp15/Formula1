@@ -1,0 +1,42 @@
+<!ELEMENT circuito  (datos, tramos)>
+
+<!ELEMENT tramos (tramo*)>
+
+<!ELEMENT datos (nombre, longitud,anchuraMed, fecha, hora, nVueltas,
+localidad, pais, referencias, fotografias, videos, coordenadas)>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT longitud (#PCDATA)>
+<!ELEMENT anchuraMed (#PCDATA)>
+<!ELEMENT fecha (#PCDATA)>
+<!ELEMENT hora (#PCDATA)>
+<!ELEMENT nVueltas (#PCDATA)>
+<!ELEMENT localidad (#PCDATA)>
+<!ELEMENT pais (#PCDATA)>
+<!-- Definir referencias como una lista de al menos 3 elementos -->
+<!ELEMENT referencias (referencia, referencia, referencia, referencia*)>
+<!ELEMENT referencia (#PCDATA)>
+
+<!-- Fotografías puede contener entre 1 y 5 entradas -->
+<!ELEMENT fotografias (foto+)>
+<!ELEMENT foto (#PCDATA)>
+<!-- Videos puede contener entre 0 y 5 entradas -->
+<!ELEMENT videos (video*)>
+<!ELEMENT video (#PCDATA)>
+
+
+<!ELEMENT coordenadas (longitudCircuito, latitudCircuito, altitudCircuito)>
+<!ELEMENT longitudCircuito (#PCDATA)>
+<!ELEMENT latitudCircuito (#PCDATA)>
+<!ELEMENT altitudCircuito (#PCDATA)>
+
+<!ELEMENT tramo (dist, coordenadasTramo, nSector)>
+<!ATTLIST tramo distUnidad CDATA #IMPLIED> 
+
+
+<!ELEMENT dist (#PCDATA)>
+<!ELEMENT coordenadasTramo (longitudTramo, latitudTramo, altitudTramo)>
+<!ELEMENT longitudTramo (#PCDATA)>
+<!ELEMENT latitudTramo (#PCDATA)>
+<!ELEMENT altitudTramo (#PCDATA)>
+<!ELEMENT nSector (#PCDATA)>
