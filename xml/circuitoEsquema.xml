@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE circuito SYSTEM "circuito.dtd"> 
-														 
-<circuito>
+<circuito xmlns="http://www.uniovi.es"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.uniovi.es circuito.xsd">
     <datos>
         <nombre>Monza</nombre>
         <longitud>5793</longitud>
         <anchuraMed>12</anchuraMed>
-        <fecha>01/09/2024</fecha>
-        <hora>15:00</hora>
+        <fecha>2024-09-01</fecha>
+        <hora>15:00:00</hora>
         <nVueltas>53</nVueltas>
         <localidad>Monza</localidad>
         <pais>Italia</pais>
@@ -16,12 +16,12 @@
             <referencia>https://www.dazn.com/es-ES/news/motor/circuito-monza-donde-esta-como-es-caracteristicas-como-llegar-fotos-escenario-gp-italia-mundial-f1/1rvwgg1hco88f14fi4ivfb1g00</referencia>
             <referencia>https://www.f1italy.com/es/la-historia-del-circuito-de-monza</referencia>
         </referencias>
-					 
-        <fotografias><foto>foto.jpeg</foto></fotografias>
-					  
+        <fotografias>
+            <foto>foto.jpeg</foto>
+        </fotografias>
         <videos></videos>
         <coordenadas>
-            <longitudCircuito>9.281183</longitudCircuito> <!--MAPS NOS DA LAS COORDENADAS COMO LAT,LONG-->
+            <longitudCircuito>9.281183</longitudCircuito> 
             <latitudCircuito>45.618978</latitudCircuito>
             <altitudCircuito>183</altitudCircuito>
         </coordenadas>
@@ -56,7 +56,7 @@
         </tramo>
         <tramo distUnidad="m"><!--p4-->
             <dist>330.18</dist>
-            <coordenadasTramo>
+            <coordenadasTramo> 
                 <longitudTramo>9.283190</longitudTramo>
                 <latitudTramo>45.628892</latitudTramo>
                 <altitudTramo>189</altitudTramo>
@@ -64,7 +64,7 @@
             <nSector>1</nSector>
         </tramo>
 
-				        <tramo distUnidad="m"><!--p4.5-->
+        <tramo distUnidad="m"><!--p4.5-->
             <dist>168.94</dist>
             <coordenadasTramo> 
                 <longitudTramo>9.284807</longitudTramo>
@@ -74,8 +74,8 @@
             <nSector>1</nSector>
         </tramo>
 
-						 
-		<tramo distUnidad="m"><!--p5-->
+
+        <tramo distUnidad="m"><!--p5-->
             <dist>157.46</dist>
             <coordenadasTramo>
                 <longitudTramo>9.286829</longitudTramo>
@@ -87,7 +87,7 @@
 
         <tramo distUnidad="m"><!--p6-->
             <dist>358.21</dist>
-            <coordenadasTramo>
+            <coordenadasTramo> 
                 <longitudTramo>9.291394</longitudTramo>
                 <latitudTramo>45.630188</latitudTramo>
                 <altitudTramo>191</altitudTramo>
@@ -97,7 +97,7 @@
 
         <tramo distUnidad="m"><!--p7-->
             <dist>45.22</dist>
-            <coordenadasTramo>
+            <coordenadasTramo>  
                 <longitudTramo>9.291632</longitudTramo>
                 <latitudTramo>45.630559</latitudTramo>
                 <altitudTramo>191</altitudTramo>
@@ -170,13 +170,12 @@
         <tramo distUnidad="m"><!--p14-->
             <dist>78.92</dist>
             <coordenadasTramo>
-				<longitudTramo>9.285069</longitudTramo>
+                <longitudTramo>9.285069</longitudTramo>
                 <latitudTramo>45.621184</latitudTramo>
                 <altitudTramo>185</altitudTramo>
             </coordenadasTramo>
             <nSector>3</nSector>
         </tramo>
-
 
 
         <tramo distUnidad="m"><!--p15-->
@@ -208,7 +207,7 @@
             </coordenadasTramo>
             <nSector>3</nSector>
         </tramo>
-        
+
         <tramo distUnidad="m"><!--p18-->
             <dist>360.46</dist>
             <coordenadasTramo>
@@ -219,7 +218,7 @@
             <nSector>3</nSector>
         </tramo>
 
-         <tramo distUnidad="m"><!--p19 (mismo que 0)-->
+        <tramo distUnidad="m"><!--p19 (mismo que 0)-->
             <dist>330</dist>
             <coordenadasTramo>
                 <longitudTramo>9.281183</longitudTramo>

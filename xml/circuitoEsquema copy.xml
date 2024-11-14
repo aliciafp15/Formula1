@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE circuito SYSTEM "circuito.dtd"> 
-														 
-<circuito>
+<circuito xmlns="http://www.uniovi.es"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.uniovi.es circuito.xsd">
     <datos>
         <nombre>Monza</nombre>
         <longitud>5793</longitud>
         <anchuraMed>12</anchuraMed>
-        <fecha>01/09/2024</fecha>
-        <hora>15:00</hora>
+        <fecha>2024-09-01</fecha>
+        <hora>15:00:00</hora>
         <nVueltas>53</nVueltas>
         <localidad>Monza</localidad>
         <pais>Italia</pais>
@@ -16,13 +16,13 @@
             <referencia>https://www.dazn.com/es-ES/news/motor/circuito-monza-donde-esta-como-es-caracteristicas-como-llegar-fotos-escenario-gp-italia-mundial-f1/1rvwgg1hco88f14fi4ivfb1g00</referencia>
             <referencia>https://www.f1italy.com/es/la-historia-del-circuito-de-monza</referencia>
         </referencias>
-					 
-        <fotografias><foto>foto.jpeg</foto></fotografias>
-					  
+        <fotografias>
+            <foto>foto.jpeg</foto>
+        </fotografias>
         <videos></videos>
         <coordenadas>
-            <longitudCircuito>9.281183</longitudCircuito> <!--MAPS NOS DA LAS COORDENADAS COMO LAT,LONG-->
-            <latitudCircuito>45.618978</latitudCircuito>
+            <longitudCircuito>9.281434</longitudCircuito> 
+            <latitudCircuito>45.618162</latitudCircuito>
             <altitudCircuito>183</altitudCircuito>
         </coordenadas>
     </datos>
@@ -30,8 +30,8 @@
         <tramo distUnidad="m"><!--p1-->
             <dist>618.53</dist>
             <coordenadasTramo>
-                <longitudTramo>9.281925</longitudTramo>
-                <latitudTramo>45.624517</latitudTramo>
+                <longitudTramo>9.282124</longitudTramo>
+                <latitudTramo>45.624335</latitudTramo>
                 <altitudTramo>187</altitudTramo>
             </coordenadasTramo>
             <nSector>1</nSector>
@@ -39,8 +39,8 @@
         <tramo distUnidad="m"><!--p2-->
             <dist>45.06</dist>
             <coordenadasTramo>
-                <longitudTramo>9.282475</longitudTramo>
-                <latitudTramo>45.624655</latitudTramo>
+                <longitudTramo>9.282133</longitudTramo>
+                <latitudTramo>45.624266</latitudTramo>
                 <altitudTramo>187</altitudTramo>
             </coordenadasTramo>
             <nSector>1</nSector>
@@ -56,30 +56,19 @@
         </tramo>
         <tramo distUnidad="m"><!--p4-->
             <dist>330.18</dist>
-            <coordenadasTramo>
-                <longitudTramo>9.283190</longitudTramo>
-                <latitudTramo>45.628892</latitudTramo>
+            <coordenadasTramo> 
+                <longitudTramo>9.283529</longitudTramo>
+                <latitudTramo>45.628440</latitudTramo>
                 <altitudTramo>189</altitudTramo>
             </coordenadasTramo>
             <nSector>1</nSector>
         </tramo>
 
-				        <tramo distUnidad="m"><!--p4.5-->
-            <dist>168.94</dist>
-            <coordenadasTramo> 
-                <longitudTramo>9.284807</longitudTramo>
-                <latitudTramo>45.629882</latitudTramo>
-                <altitudTramo>191</altitudTramo>
-            </coordenadasTramo>
-            <nSector>1</nSector>
-        </tramo>
-
-						 
-		<tramo distUnidad="m"><!--p5-->
-            <dist>157.46</dist>
+        <tramo distUnidad="m"><!--p5-->
+            <dist>308.78</dist>
             <coordenadasTramo>
-                <longitudTramo>9.286829</longitudTramo>
-                <latitudTramo>45.629956</latitudTramo>
+                <longitudTramo>9.286833</longitudTramo>
+                <latitudTramo>45.629167</latitudTramo>
                 <altitudTramo>191</altitudTramo>
             </coordenadasTramo>
             <nSector>1</nSector>
@@ -88,8 +77,8 @@
         <tramo distUnidad="m"><!--p6-->
             <dist>358.21</dist>
             <coordenadasTramo>
-                <longitudTramo>9.291394</longitudTramo>
-                <latitudTramo>45.630188</latitudTramo>
+                <longitudTramo>9.291183</longitudTramo>
+                <latitudTramo>45.629937</latitudTramo>
                 <altitudTramo>191</altitudTramo>
             </coordenadasTramo>
             <nSector>2</nSector>
@@ -98,8 +87,8 @@
         <tramo distUnidad="m"><!--p7-->
             <dist>45.22</dist>
             <coordenadasTramo>
-                <longitudTramo>9.291632</longitudTramo>
-                <latitudTramo>45.630559</latitudTramo>
+                <longitudTramo>9.291183</longitudTramo>
+                <latitudTramo>45.629937</latitudTramo>
                 <altitudTramo>191</altitudTramo>
             </coordenadasTramo>
             <nSector>2</nSector>
@@ -108,8 +97,8 @@
         <tramo distUnidad="m"><!--p8-->
             <dist>318.7</dist>
             <coordenadasTramo>
-                <longitudTramo>9.295553</longitudTramo>
-                <latitudTramo>45.631368</latitudTramo>
+                <longitudTramo>9.294464</longitudTramo>
+                <latitudTramo>45.629721</latitudTramo>
                 <altitudTramo>188</altitudTramo>
             </coordenadasTramo>
             <nSector>2</nSector>
@@ -118,8 +107,8 @@
         <tramo distUnidad="m"><!--p9-->
             <dist>94.66</dist>
             <coordenadasTramo>
-                <longitudTramo>9.296557</longitudTramo>
-                <latitudTramo>45.630896</latitudTramo>
+                <longitudTramo>9.294464</longitudTramo>
+                <latitudTramo>45.629721</latitudTramo>
                 <altitudTramo>188</altitudTramo>
             </coordenadasTramo>
             <nSector>2</nSector>
@@ -128,8 +117,8 @@
         <tramo distUnidad="m"><!--p10-->
             <dist>267.67</dist>
             <coordenadasTramo>
-                <longitudTramo>9.296825</longitudTramo>
-                <latitudTramo>45.628494</latitudTramo>
+                <longitudTramo>9.294882</longitudTramo>
+                <latitudTramo>45.629614</latitudTramo>
                 <altitudTramo>188</altitudTramo>
             </coordenadasTramo>
             <nSector>2</nSector>
@@ -139,8 +128,8 @@
         <tramo distUnidad="m"><!--p11-->
             <dist>501.63</dist>
             <coordenadasTramo>
-                <longitudTramo>9.291383</longitudTramo>
-                <latitudTramo>45.626077</latitudTramo>
+                <longitudTramo>9.290705</longitudTramo>
+                <latitudTramo>45.627750</latitudTramo>
                 <altitudTramo>190</altitudTramo>
             </coordenadasTramo>
             <nSector>2</nSector>
@@ -149,8 +138,8 @@
         <tramo distUnidad="m"><!--p12-->
             <dist>570.98</dist>
             <coordenadasTramo>
-                <longitudTramo>9.285911</longitudTramo>
-                <latitudTramo>45.622678</latitudTramo>
+                <longitudTramo>9.286630</longitudTramo>
+                <latitudTramo>45.623118</latitudTramo>
                 <altitudTramo>186</altitudTramo>
             </coordenadasTramo>
             <nSector>3</nSector>
@@ -159,8 +148,8 @@
         <tramo distUnidad="m"><!--p13-->
             <dist>110.8</dist>
             <coordenadasTramo>
-                <longitudTramo>9.285775</longitudTramo>
-                <latitudTramo>45.621694</latitudTramo>
+                <longitudTramo>9.292550</longitudTramo>
+                <latitudTramo>45.635541</latitudTramo>
                 <altitudTramo>201</altitudTramo>
             </coordenadasTramo>
             <nSector>3</nSector>
@@ -170,20 +159,19 @@
         <tramo distUnidad="m"><!--p14-->
             <dist>78.92</dist>
             <coordenadasTramo>
-				<longitudTramo>9.285069</longitudTramo>
-                <latitudTramo>45.621184</latitudTramo>
+                <longitudTramo>9.283913</longitudTramo>
+                <latitudTramo>45.622214</latitudTramo>
                 <altitudTramo>185</altitudTramo>
             </coordenadasTramo>
             <nSector>3</nSector>
         </tramo>
 
 
-
         <tramo distUnidad="m"><!--p15-->
             <dist>975.9</dist>
             <coordenadasTramo>
-                <longitudTramo>9.283690</longitudTramo>
-                <latitudTramo>45.612462</latitudTramo>
+                <longitudTramo>9.283768</longitudTramo>
+                <latitudTramo>45.613461</latitudTramo>
                 <altitudTramo>180</altitudTramo>
             </coordenadasTramo>
             <nSector>3</nSector>
@@ -192,8 +180,8 @@
         <tramo distUnidad="m"><!--p16-->
             <dist>87.69</dist>
             <coordenadasTramo>
-                <longitudTramo>9.282932</longitudTramo>
-                <latitudTramo>45.611887</latitudTramo>
+                <longitudTramo>9.283289</longitudTramo>
+                <latitudTramo>45.612963</latitudTramo>
                 <altitudTramo>180</altitudTramo>
             </coordenadasTramo>
             <nSector>3</nSector>
@@ -202,29 +190,19 @@
         <tramo distUnidad="m"><!--p17-->
             <dist>182.59</dist>
             <coordenadasTramo>
-                <longitudTramo>9.281007</longitudTramo>
-                <latitudTramo>45.612787</latitudTramo>
+                <longitudTramo>9.282269</longitudTramo>
+                <latitudTramo>45.614712</latitudTramo>
                 <altitudTramo>191</altitudTramo>
             </coordenadasTramo>
             <nSector>3</nSector>
         </tramo>
-        
+
         <tramo distUnidad="m"><!--p18-->
             <dist>360.46</dist>
             <coordenadasTramo>
-                <longitudTramo>9.280837</longitudTramo>
-                <latitudTramo>45.616026</latitudTramo>
+                <longitudTramo>9.280868</longitudTramo>
+                <latitudTramo>45.616432</latitudTramo>
                 <altitudTramo>182</altitudTramo>
-            </coordenadasTramo>
-            <nSector>3</nSector>
-        </tramo>
-
-         <tramo distUnidad="m"><!--p19 (mismo que 0)-->
-            <dist>330</dist>
-            <coordenadasTramo>
-                <longitudTramo>9.281183</longitudTramo>
-                <latitudTramo>45.618978</latitudTramo>
-                <altitudTramo>183</altitudTramo>
             </coordenadasTramo>
             <nSector>3</nSector>
         </tramo>
