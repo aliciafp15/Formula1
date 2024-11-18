@@ -26,11 +26,6 @@ def generar_svg(archivo_xml, archivo_svg):
             distancias.append(distancia_acumulada)
             altitudes.append(float(altitud_element.text))
 
-    # Verificación de puntos recolectados
-    print(f'Cantidad de puntos recolectados: {len(distancias)}')  # Debería ser 19 antes de agregar p0 al final
-    print('Coordenadas recolectadas:')
-    for d, a in zip(distancias, altitudes):
-        print(f'Distancia: {d}, Altitud: {a}')
 
     # Definir los rangos de dimensiones
     max_distancia = max(distancias)

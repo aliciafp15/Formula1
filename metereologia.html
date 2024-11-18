@@ -12,6 +12,9 @@
     <meta name ="viewport" content ="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
+
+    <script src="js/pais.js"></script>
+
 </head>
 
 <body>
@@ -28,7 +31,18 @@
         <a accesskey="j" href="juegos.html" tabindex="8">Juegos</a>
       </nav>
     <h2>Metereología</h2>
-    <p>En desarrollo...</p>
+    <script>
+        var pais = new Pais("Italia", "Roma", 58990000);
+        pais.rellenarAtributos("Monza","República parlamentaria unitaria"," 45.616026",  "9.280837", "Cristianismo");//lat, long //45.616026°N 9.280837°E
+  
+        document.write("<p>País: " + pais.getNombre() + "</p>");
+        document.write("<p>Capital: " + pais.getCapital() + "</p>");
+        pais.obtenerCoordenadas();
+        document.write("<p>Más datos:</p>");
+        document.write(pais.obtenerInfoSecundaria() );
+  
+      </script>
+
 </body>
 
 </html>
