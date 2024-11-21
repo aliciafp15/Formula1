@@ -1,9 +1,9 @@
 /*datos personales Alicia Fernández Pushkina y UO275727*/
 /* palet SECRET ROMANCE
-    sand dollar: #ebe7d0
+    sand dollar: #FCEFAB
     tangerine: #d3a550
     black: #121110
-    red: #d01110
+    red: #940A0A
 
 */
 /*especificidad (0,0,1) */
@@ -20,26 +20,26 @@ body > p {
 
 /*especificidad (0,0,1) */
 header {
-    background-color: #d01110;
-    color:  #ebe7d0;
+    background-color: #990000;
+    color:  #FCEFAB;
 }
 
 header a {
      /* background-color heredado de header*/
-    color:  #ebe7d0;
+    color:  #FCEFAB;
     text-decoration: none;
 }
 
 /*especificidad (0,0,2) */
 header>nav a{
     /* background-color heredado de header*/
-    color: #ebe7d0;/* #B4FEE7;*/
+    color: #FCEFAB;/* #B4FEE7;*/
 
 }
 
 header > nav > a.active {
      /* background-color heredado de header*/
-    color: #990000;
+    color: #FFFFFF;
     font-weight: bold;
     font-size: 1.2em;
 }
@@ -47,14 +47,14 @@ header > nav > a.active {
 
 
     th {
-        background-color: #d01110;
-        color: #ebe7d0;
+        background-color: #990000;
+        color: #FCEFAB;
         font-weight: bold;
         padding: 0.5em;
     }
 
     tr {
-        background-color: #ebe7d0;
+        background-color: #FCEFAB;
         /*color heredado de body*/
         padding: 0.5em;
     }
@@ -62,14 +62,14 @@ header > nav > a.active {
 
 dt {
     /* background-color heredado de body*/
-    color: #d01110;
+    color: #990000;
     font-weight: bold;
 }
   
 
 main > a {
     /* background-color heredado de header*/
-    color: #d01110;
+    color: #990000;
 }
 
 a:hover {
