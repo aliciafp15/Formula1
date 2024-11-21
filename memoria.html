@@ -5,36 +5,55 @@
 <head>
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8" />
-    <title>F1 Desktop - Noticias</title> <!--Asegurarme de que el título les guste-->
+    <title>F1 Desktop - Memoria</title> <!--Asegurarme de que el título les guste-->
     <meta name="author" content="Alicia Fernández Pushkina" />
     <meta name="description" content="documento para utilizar en otros módulos de la asignatura" />
     <meta name="keywords" content="html, css, index" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/memoria.css" />
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
+    <script src="js/memoria.js"></script>
 </head>
 
 <body>
-    <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
+        <!-- Datos con el contenidos que aparece en el navegador -->
         <h1><a href="index.html">F1 Desktop</a></h1>
         <nav>
             <a accesskey="i" href="index.html" tabindex="1">Index</a>
             <a accesskey="p" href="piloto.html" tabindex="2">Piloto</a> <!--ASEGURAR LA ACCESKEY DE PILOTO-->
-            <a accesskey="n" href="noticias.html" class="active" tabindex="3">Noticias</a>
+            <a accesskey="n" href="noticias.html" tabindex="3">Noticias</a>
             <a accesskey="c" href="calendario.html" tabindex="4">Calendario</a>
             <a accesskey="m" href="metereologia.html" tabindex="5">Metereología</a>
             <a accesskey="r" href="circuito.html" tabindex="6">Circuito</a>
             <a accesskey="v" href="viajes.html" tabindex="7">Viajes</a>
-            <a accesskey="j" href="juegos.html" tabindex="8">Juegos</a>
+            <a accesskey="j" href="juegos.html"  class="active" tabindex="8">Juegos</a>
         </nav>
+        
     </header>
-    <p>Estás en: <a href="index.html">Inicio</a> >> Noticias</p>
+    <p>Estás en: <a href="index.html">Inicio</a> >> Memoria</p>
+    <!--menu de juegos-->
+    <section>
+        
+        <h2>Juegos</h2>
+        <nav>
+            <a href="memoria.html" accesskey="e" tabindex="8">Memoria</a>
+        </nav>
+        
+    </section>
+
     <main>
-        <h2>Noticias</h2>
-        <p>En desarrollo...</p>
+        <section>
+            <h3>Juego de Memoria</h3>
+
+        </section>
     </main>
+
+    <script>
+        var juego = new Memoria();
+    </script>
 </body>
 
 </html>

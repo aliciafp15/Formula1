@@ -14,10 +14,20 @@ body {
 
 }
 
+body > p {
+    font-size: 0.9em;
+}
+
 /*especificidad (0,0,1) */
 header {
     background-color: #d01110;
     color:  #ebe7d0;
+}
+
+header a {
+     /* background-color heredado de header*/
+    color:  #ebe7d0;
+    text-decoration: none;
 }
 
 /*especificidad (0,0,2) */
@@ -26,5 +36,65 @@ header>nav a{
     color: #ebe7d0;/* #B4FEE7;*/
 
 }
+
+header > nav > a.active {
+    color: #990000;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/*
+table {
+    border-collapse: collapse;
+    border-color: #d01110;
+    background-color: #d3a550;
+    border-radius: 1em;
+    max-width: 15%;
+    width: 100%;
+}
+    */
+
+    th {
+        background-color: #d01110;
+        color: #ebe7d0;
+        font-weight: bold;
+        padding: 0.5em;
+    }
+
+    tr {
+        background-color: #ebe7d0;
+        /*color heredado de body*/
+        padding: 0.5em;
+    }
+
+
+dt {
+    color: #d01110;
+    font-weight: bold;
+}
   
+
+main > a {
+    color: #d01110;
+}
+
+a:hover {
+    color: #d3a550;
+}
+
+ul {
+    list-style:  square; 
+}
+
+ol ul {
+    list-style: circle;
+}
+
+ol {
+    list-style: upper-roman; 
+}
+
+
+
+
   

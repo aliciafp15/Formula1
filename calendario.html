@@ -8,27 +8,35 @@
     <title>F1 Desktop - Calendario</title> <!--Asegurarme de que el título les guste-->
     <meta name="author" content="Alicia Fernández Pushkina" />
     <meta name="description" content="documento para utilizar en otros módulos de la asignatura" />
-    <meta name ="keywords" content ="html, css, index" /> <!--por cambiar-->
-    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
+    <meta name="keywords" content="html, css, index" /> <!--por cambiar-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
 </head>
 
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
-    <h1>F1 Desktop</h1>
-    <nav>
-        <a accesskey="i" href="index.html" tabindex="1">Index</a>
-        <a accesskey="p" href="piloto.html" tabindex="2">Piloto</a> <!--ASEGURAR LA ACCESKEY DE PILOTO-->
-        <a accesskey="n" href="noticias.html" tabindex="3">Noticias</a>
-        <a accesskey="c" href="calendario.html" tabindex="4">Calendario</a>
-        <a accesskey="m" href="metereologia.html" tabindex="5">Metereología</a>
-        <a accesskey="r" href="circuito.html" tabindex="6">Circuito</a>
-        <a accesskey="v" href="viajes.html" tabindex="7">Viajes</a>
-        <a accesskey="j" href="juegos.html" tabindex="8">Juegos</a>
-      </nav>
-    <h2>Calendario</h2>
-    <p>En desarrollo...</p>
+    <header>
+        <h1><a href="index.html">F1 Desktop</a></h1>
+        <nav>
+            <a accesskey="i" href="index.html" tabindex="1">Index</a>
+            <a accesskey="p" href="piloto.html" tabindex="2">Piloto</a> <!--ASEGURAR LA ACCESKEY DE PILOTO-->
+            <a accesskey="n" href="noticias.html" tabindex="3">Noticias</a>
+            <a accesskey="c" href="calendario.html" class="active" tabindex="4">Calendario</a>
+            <a accesskey="m" href="metereologia.html" tabindex="5">Metereología</a>
+            <a accesskey="r" href="circuito.html" tabindex="6">Circuito</a>
+            <a accesskey="v" href="viajes.html" tabindex="7">Viajes</a>
+            <a accesskey="j" href="juegos.html" tabindex="8">Juegos</a>
+        </nav>
+    </header>
+    <p>Estás en: <a href="index.html">Inicio</a> >> Calendario</p>
+
+    <main>
+
+        <h2>Calendario</h2>
+        <p>En desarrollo...</p>
+    </main>
 </body>
 
 </html>
