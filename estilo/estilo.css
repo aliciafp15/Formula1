@@ -21,19 +21,19 @@ body > p {
 /*especificidad (0,0,1) */
 header {
     background-color: #990000;
-    color:  #FCEFAB;
+    color:  #FDF8DE;
 }
 
 header a {
      /* background-color heredado de header*/
-    color:  #FCEFAB;
+    color:  #FDF8DE;
     text-decoration: none;
 }
 
 /*especificidad (0,0,2) */
 header>nav a{
     /* background-color heredado de header*/
-    color: #FCEFAB;/* #B4FEE7;*/
+    color: #FDF8DE;/* #B4FEE7;*/
 
 }
 
@@ -48,13 +48,13 @@ header > nav > a.active {
 
     th {
         background-color: #990000;
-        color: #FCEFAB;
+        color: #FDF8DE;
         font-weight: bold;
         padding: 0.5em;
     }
 
     tr {
-        background-color: #FCEFAB;
+        background-color: #FDF8DE;
         /*color heredado de body*/
         padding: 0.5em;
     }
