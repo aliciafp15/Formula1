@@ -38,21 +38,13 @@ header>nav a{
 }
 
 header > nav > a.active {
+     /* background-color heredado de header*/
     color: #990000;
     font-weight: bold;
     font-size: 1.2em;
 }
 
-/*
-table {
-    border-collapse: collapse;
-    border-color: #d01110;
-    background-color: #d3a550;
-    border-radius: 1em;
-    max-width: 15%;
-    width: 100%;
-}
-    */
+
 
     th {
         background-color: #d01110;
@@ -69,16 +61,19 @@ table {
 
 
 dt {
+    /* background-color heredado de body*/
     color: #d01110;
     font-weight: bold;
 }
   
 
 main > a {
+    /* background-color heredado de header*/
     color: #d01110;
 }
 
 a:hover {
+    /* background-color heredado de header*/
     color: #d3a550;
 }
 

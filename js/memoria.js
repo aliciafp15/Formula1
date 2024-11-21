@@ -1,18 +1,18 @@
 class Memoria {
     constructor() {
         this.elements = [
-            { element: "RedBull_a", source: "https://upload.wikimedia.org/wikipedia/de/c/c4/Red_Bull_Racing_logo.svg" },
-            { element: "RedBull_b", source: "https://upload.wikimedia.org/wikipedia/de/c/c4/Red_Bull_Racing_logo.svg" },
-            { element: "McLaren_a", source: "https://upload.wikimedia.org/wikipedia/en/6/66/McLaren_Racing_logo.svg" },
-            { element: "McLaren_b", source: "https://upload.wikimedia.org/wikipedia/en/6/66/McLaren_Racing_logo.svg" },
-            { element: "Alpine_a", source: "https://upload.wikimedia.org/wikipedia/fr/b/b7/Alpine_F1_Team_2021_Logo.svg" },
-            { element: "Alpine_b", source: "https://upload.wikimedia.org/wikipedia/fr/b/b7/Alpine_F1_Team_2021_Logo.svg" },
-            { element: "AstonMartin_a", source: "https://upload.wikimedia.org/wikipedia/fr/7/72/Aston_Martin_Aramco_Cognizant_F1.svg" },
-            { element: "AstonMartin_b", source: "https://upload.wikimedia.org/wikipedia/fr/7/72/Aston_Martin_Aramco_Cognizant_F1.svg" },
-            { element: "Ferrari_a", source: "https://upload.wikimedia.org/wikipedia/de/c/c0/Scuderia_Ferrari_Logo.svg" },
-            { element: "Ferrari_b", source: "https://upload.wikimedia.org/wikipedia/de/c/c0/Scuderia_Ferrari_Logo.svg" },
-            { element: "Mercedes_a", source: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Mercedes_AMG_Petronas_F1_Logo.svg" },
-            { element: "Mercedes_b", source: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Mercedes_AMG_Petronas_F1_Logo.svg" },
+            { element: "RedBull_a", source: "multimedia/imagenes/logos/RedBull.svg" },
+            { element: "RedBull_b", source: "multimedia/imagenes/logos/RedBull.svg" },
+            { element: "McLaren_a", source: "multimedia/imagenes/logos/McLaren.svg" },
+            { element: "McLaren_b", source: "multimedia/imagenes/logos/McLaren.svg" },
+            { element: "Alpine_a", source: "multimedia/imagenes/logos/Alpine.svg" },
+            { element: "Alpine_b", source: "multimedia/imagenes/logos/Alpine.svg" },
+            { element: "AstonMartin_a", source: "multimedia/imagenes/logos/AstonMartin.svg" },
+            { element: "AstonMartin_b", source: "multimedia/imagenes/logos/AstonMartin.svg" },
+            { element: "Ferrari_a", source: "multimedia/imagenes/logos/Ferrari.svg" },
+            { element: "Ferrari_b", source: "multimedia/imagenes/logos/Ferrari.svg" },
+            { element: "Mercedes_a", source: "multimedia/imagenes/logos/Mercedes.svg" },
+            { element: "Mercedes_b", source: "multimedia/imagenes/logos/Mercedes.svg" },
         ];
 
         this.hasFlippedCard = false;//si ya hay una carta dada la vuelta
