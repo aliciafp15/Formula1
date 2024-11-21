@@ -67,9 +67,10 @@ dt {
 }
   
 
-main > a {
+main  a {
     /* background-color heredado de header*/
     color: #990000;
+    font-weight: bold;
 }
 
 a:hover {
