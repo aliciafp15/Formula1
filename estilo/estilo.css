@@ -48,6 +48,12 @@ header>nav>a.active {
     font-size: 1.2em;
 }
 
+/*especificidad (0,1,1) */
+header nav a:hover {
+    /* background-color heredado de header*/
+    color: #FFEE00;
+}
+
 
 /*especificidad (0,0,1) */
 th {
@@ -76,11 +82,7 @@ main a {
     color: #990000;
     font-weight: bold;
 }
-/*especificidad (0,1,1) */
-a:hover {
-    /* background-color heredado de header*/
-    color: #FFEE00;
-}
+
 /*especificidad (0,0,1) */
 ul {
     list-style: square;
