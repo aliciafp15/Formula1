@@ -14,83 +14,103 @@ body {
 
 }
 
-body > p {
+/*especificidad (0,0,2) */
+body>p {
     font-size: 0.9em;
 }
 
 /*especificidad (0,0,1) */
 header {
     background-color: #990000;
-    color:  #FDF8DE;
-}
-
-header a {
-     /* background-color heredado de header*/
-    color:  #FDF8DE;
-    text-decoration: none;
+    color: #FDF8DE;
 }
 
 /*especificidad (0,0,2) */
-header>nav a{
+header a {
     /* background-color heredado de header*/
-    color: #FDF8DE;/* #B4FEE7;*/
+    color: #FDF8DE;
+    text-decoration: none;
+}
+
+/*especificidad (0,0,3) */
+header>nav a {
+    /* background-color heredado de header*/
+    color: #FDF8DE;
+    /* #B4FEE7;*/
 
 }
 
-header > nav > a.active {
-     /* background-color heredado de header*/
+/*especificidad (0, 1, 3) */
+header>nav>a.active {
+    /* background-color heredado de header*/
     color: #FFFFFF;
     font-weight: bold;
     font-size: 1.2em;
 }
 
 
+/*especificidad (0,0,1) */
+th {
+    background-color: #990000;
+    color: #FDF8DE;
+    font-weight: bold;
+    padding: 0.5em;
+}
+/*especificidad (0,0,1) */
+tr {
+    background-color: #FDF8DE;
+    /*color heredado de body*/
+    padding: 0.5em;
+}
 
-    th {
-        background-color: #990000;
-        color: #FDF8DE;
-        font-weight: bold;
-        padding: 0.5em;
-    }
-
-    tr {
-        background-color: #FDF8DE;
-        /*color heredado de body*/
-        padding: 0.5em;
-    }
-
-
+/*especificidad (0,0,1) */
 dt {
     /* background-color heredado de body*/
     color: #990000;
     font-weight: bold;
 }
-  
 
-main  a {
+/*especificidad (0,0,2) */
+main a {
     /* background-color heredado de header*/
     color: #990000;
     font-weight: bold;
 }
-
+/*especificidad (0,1,1) */
 a:hover {
     /* background-color heredado de header*/
-    color: #d3a550;
+    color: #FFEE00;
 }
-
+/*especificidad (0,0,1) */
 ul {
-    list-style:  square; 
+    list-style: square;
 }
-
+/*especificidad (0,0,2) */
 ol ul {
     list-style: circle;
 }
 
+/*especificidad (0,0,1) */
 ol {
-    list-style: upper-roman; 
+    list-style: upper-roman;
+}
+
+/*especificidad (0,0,1) */
+video {
+    max-width: 60%; /* Reduce el tamaño relativo al contenedor */
 }
 
 
+/*adaptabilidad en móviles*/
+@media (max-width: 465px) {
+   
+
+    /*especificidad (0,0,1) */
+    video {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
 
 
-  
+}
