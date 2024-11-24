@@ -13,6 +13,11 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
+    <script src="js/fondo.js"></script>
+
 </head>
 
 <body>
@@ -34,6 +39,13 @@
         <h2>Index</h2>
         <p>En desarrollo...</p>
     </main>
+
+    <script>
+        var fondo = new Fondo("Italia", "Roma", "Monza")
+        fondo.buscaFoto()
+        //fondo.ponFondo() //api publica
+      
+      </script>
 </body>
 
 </html>
