@@ -39,12 +39,6 @@ class Agenda{
 
                     var articulo = document.createElement("article");
 
-                    //--------------------- Imagen ---------------------//
-                    var imagen = document.createElement("img");
-                    imagen.setAttribute("src", "multimedia/imagenes/banderaCuadros.webp");
-                    imagen.setAttribute("alt","Imagen de una bandera a cuadros típica de las carreras");
-                    articulo.appendChild(imagen);
-
                     //--------------------- Nombre de la carrera ---------------------//
                     var cabeceraNombreCarrera = document.createElement("h3");
                     var contenidoNombreCarrera = document.createTextNode("Nombre de la carrera");
