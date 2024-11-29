@@ -1,38 +1,31 @@
 /*datos personales Alicia Fernández Pushkina y UO275727*/
 
 /*especificidad (0,0,1) */
-section {
+article {
     display: flex;
-    gap: 1em;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-/*especificidad (0,0,2) */
-section > article {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    grid-template-rows: repeat(1, 1fr); 
-    border: 0.063em solid #ccc;
-    padding: 0.625em;
+    font-size: 1.1em;
+    justify-content: center;
+    border-width: 0.15em;
+    border-style: solid;
+    border-color: black;
+
+    margin: 1em;
+    flex-direction: column;
+    align-items: center;
     /* color heredado de body*/
     background-color: #f9f9f9;
     border-radius: 1.5em; 
-}
-/*especificidad (0,0,3) */
-section > article > p {
-    grid-column: 1;
-    align-content: center;
-}
-/*especificidad (0,0,3) */
-section > article > img {
-    grid-column: 2;
-    /* grid-row-start: 1; */
-    /* grid-row-end: 4; */
-    place-self: center;
+    padding: 0.625em;
+
 }
 
-/*especificidad (0,0,2) */
-section>h3 {
-    flex: 1 100%;
-    /*que el encabezado ocupe una fila */
+input {
+    margin: 0.5em 0;
+    padding: 0.75em 1.25em;
+    border-width: 0.2em;
+    border-style: solid;
+    border-color: black;
+    box-sizing: border-box;
+    border-radius: 1.5em; 
+
 }

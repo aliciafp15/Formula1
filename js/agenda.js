@@ -53,6 +53,10 @@ class Agenda{
         
                 // Insertar la sección en el documento
                 $('body > main').append(section);
+
+                //deshabilitar boton
+                const button = document.querySelector("button")
+                button.disabled = true
             },
 
             error: function () {
@@ -62,4 +66,5 @@ class Agenda{
     }
 
 }
+
 

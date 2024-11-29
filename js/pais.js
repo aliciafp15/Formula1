@@ -77,6 +77,8 @@ class Pais {
     
                 // const article = $('<section>').attr('data-name', 'meteo');// una seccion que contenga 5 articulos
                 const section = $('<section>');// una seccion que contenga 5 articulos
+                const header = "<h2> Tiempo en la linea de meta de Monza para los próximos 5 días </h2>"
+                section.append(header);
 
     
                 filteredList.forEach(item => {

@@ -17,6 +17,7 @@ h3, section > p:last-child {
 }
 
 div {
+    /* color-color heredado de body*/
     background-color: #0007; 
     border: 0.5em solid #000000; 
     aspect-ratio: 1;
@@ -53,12 +54,12 @@ main.unload > section > div {
 @keyframes turnOn {
     from 
     {
-        /*color: #000000 heredado de section | PROPIEDAD HEREDABLE */
-        background-color: #000A; /* Redefinición de la propiedad | PROPIEDAD NO HEREDABLE */
+        /* color heredado de body*/
+        background-color: #000A; /* Redefinición de la propiedad*/
     } to 
     {
-        /*color: #000000 heredado de section | PROPIEDAD HEREDABLE */
-        background-color: #FF0000; /* Redefinición de la propiedad | PROPIEDAD NO HEREDABLE */
+        /* color heredado de body*/
+        background-color: #FF0000; /* Redefinición de la propiedad */
     }
 }
 
