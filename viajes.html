@@ -47,6 +47,12 @@
 
     <main>
         <h2>Viajes</h2>
+
+        <section  data-element="estatico">
+            <h3>Mapa estático - Ubicación Actual</h3>
+            <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
+        </section>
+        
         <section>
             <h3>Mapa dinámico - Ubicación Actual</h3>
             <!-- mapa dinamico -->
@@ -54,31 +60,10 @@
         </section>
 
 
-        <section  data-element="estatico">
-            <h3>Mapa estático - Ubicación Actual</h3>
-            <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
-        </section>
+        
         
 
-        <section data-element="zonaXML">
-            <h3>Carga de archivo XML</h3>
-            <!-- El atributo multiple por defecto es false, por lo que solo permite la carga de 1 archivo -->
-            <p><input type="file" accept=".xml" onchange="viajes.procesarXml(this.files);"></p>
-        </section>
-
-        <section data-element="zonaSVG">
-            <h3>Altimetría</h3>
-             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
-             <p><input type="file" accept=".svg" onchange="viajes.procesarAltimetria(this.files);" multiple></p>
-        </section>
-
-        <section data-element="zonaKML">
-            <h3>Planimetría</h3>
-             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
-             <p><input type="file" accept=".kml" onchange="viajes.procesarPlanimetria(this.files);" multiple></p>
-             <!-- mapa dinamico -->
-            <p id="mapaDinamicoKML"></p>
-        </section>
+        
 
        
 

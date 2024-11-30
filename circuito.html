@@ -12,7 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/circuito.css" />
+
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
+
+    <script src="js/circuito.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!--mapa dnámico-->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
 </head>
 
 <body>
@@ -34,7 +44,30 @@
 
     <main>
         <h2>Circuito</h2>
-        <p>En desarrollo...</p>
+
+        <section data-element="zonaXML">
+            <h3>Carga de archivo XML</h3>
+            <!-- El atributo multiple por defecto es false, por lo que solo permite la carga de 1 archivo -->
+            <p><input type="file" accept=".xml" onchange="circuito.procesarXml(this.files);"></p>
+        </section>
+
+        <section data-element="zonaSVG">
+            <h3>Altimetría</h3>
+             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
+             <p><input type="file" accept=".svg" onchange="circuito.procesarAltimetria(this.files);" multiple></p>
+        </section>
+
+        <section data-element="zonaKML">
+            <h3>Planimetría</h3>
+             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
+             <p><input type="file" accept=".kml" onchange="circuito.procesarPlanimetria(this.files);" multiple></p>
+             <!-- mapa dinamico -->
+            <p id="mapaDinamicoKML"></p>
+        </section>
+
+        <script>
+            var circuito = new Circuito();
+        </script>
     </main>
 </body>
 
