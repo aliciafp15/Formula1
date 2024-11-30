@@ -101,7 +101,7 @@ class Viajes {
             container: 'mapaDinamico', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
             center: [lng, lat], // starting position [lng, lat]
-            zoom: 9, // starting zoom
+            zoom: 15,
 
         });
         // no necesito añadir el mapa al DOM si ya tengo el contenedor
@@ -150,14 +150,14 @@ class Viajes {
         const pais = datos.find("pais").text();
 
         // Procesar las referencias como enlaces <a>
-        var cont=1;
+        var cont = 1;
         const referencias = datos.find("referencias referencia").map(function () {
             const url = $(this).text();
             const title = `Referencia ${cont}`;  // Título dinámico con el valor de cont
             cont++;  // Incrementar el contador para la siguiente referencia
             return `<li><a href="${url}" title="${title}">${url}</a></li>`;
-        }).get().join(""); 
-        
+        }).get().join("");
+
 
         const fotografia = datos.find("fotografias foto").text(); // Si hay fotografía asociada al circuito
         const coordenadas = datos.find("coordenadas");
@@ -207,6 +207,141 @@ class Viajes {
 
         return html;
     }
+
+
+
+    // Método para procesar los archivos KML y agregar las rutas al mapa
+    procesarPlanimetria(files) {
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                const contenidoKML = e.target.result;
+                const coordenadas = this.parsearKML(contenidoKML);
+
+                if (coordenadas.length > 0) {
+                    this.agregarRutaAlMapa(coordenadas, i); // Agregar la ruta al mapa dinámico
+                    // Ajustar el contenedor del mapa de planimetría
+                    var seccionPlanimetria = $("main>section[data-element='zonaKML']");
+                    var primerHijoSection = seccionPlanimetria.children("section:first");
+                    primerHijoSection.attr("data-element", "mapaPlanimetria");
+                } else {
+                    console.error('El archivo KML no contiene coordenadas válidas.');
+                }
+            };
+
+            reader.readAsText(file);
+        }
+    }
+
+    // Método para parsear el contenido del archivo KML y extraer las coordenadas
+    parsearKML(contenidoKML) {
+        const coordenadas = [];
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(contenidoKML, 'text/xml');
+
+        // Selector para obtener todas las coordenadas dentro de <coordinates> de tipo LineString
+        const coordinatesNodes = xmlDoc.querySelectorAll('kml\\:coordinates, coordinates');
+
+        coordinatesNodes.forEach((coordinatesNode) => {
+            const coordinatesText = coordinatesNode.textContent.trim();
+            const array = coordinatesText.split('\n').map((linea) => {
+                const [lng, lat, alt] = linea.split(',').map(parseFloat);
+                return [lng, lat, alt || 0]; // Asegurarse de que la altitud se defina aunque no esté presente
+            });
+            coordenadas.push(...array); // Agregar las coordenadas extraídas al array
+        });
+        return coordenadas;
+    }
+
+    agregarRutaAlMapa(coordenadas, rutaId) {
+        var lng = 9.281183;
+        var lat = 45.618978;
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbGdzMnZweWowZWEyM2NvYWZkODMxZXpoIn0.ghWod73o3jm9F1lPOhfsjw';
+
+        // Crear el mapa si aún no está creado
+        if (!this.mapPlanimetria) {
+            this.mapPlanimetria = new mapboxgl.Map({
+                container: 'mapaDinamicoKML',
+                style: 'mapbox://styles/mapbox/streets-v12',
+                center: [lng, lat],
+                zoom: 12,
+            });
+        }
+
+        // Esperar a que se cargue el estilo antes de agregar la capa
+        this.mapPlanimetria.on('style.load', () => {
+            const sourceId = `route-source-${rutaId}`;
+            const layerId = `route-layer-${rutaId}`;
+
+            // Verificar si la fuente ya existe en el mapa
+            let source = this.mapPlanimetria.getSource(sourceId);
+
+            if (!source) {
+                // Agregar la fuente solo si no existe
+                this.mapPlanimetria.addSource(sourceId, {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'Feature',
+                        'properties': {},
+                        'geometry': {
+                            'type': 'LineString',
+                            'coordinates': coordenadas
+                        }
+                    }
+                });
+            } else {
+                // Actualizar las coordenadas de la fuente existente
+                source.setData({
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                        type: 'LineString',
+                        coordinates: coordenadas
+                    }
+                });
+            }
+
+            // Verificar si la capa ya existe en el mapa
+            let layer = this.mapPlanimetria.getLayer(layerId);
+
+            if (!layer) {
+                // Agregar la capa solo si no existe
+                this.mapPlanimetria.addLayer({
+                    'id': layerId,
+                    'type': 'line',
+                    'source': sourceId,
+                    'layout': {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    'paint': {
+                        'line-color': '#FF0000',
+                        'line-width': 8
+                    }
+                });
+            }
+        });
+    }
+
+
+    procesarAltimetria(files) {
+
+        const file = files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            let xml = $.parseXML(reader.result);
+            //version al svg para el validador
+            let svg = $(xml).find("svg");
+            svg.attr("version", "1.1");
+
+            $("main>section[data-element='zonaSVG']").append(svg);
+        };
+
+        reader.readAsText(file);
+    }
+
 
 
 

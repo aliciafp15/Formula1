@@ -66,6 +66,23 @@
             <p><input type="file" accept=".xml" onchange="viajes.procesarXml(this.files);"></p>
         </section>
 
+        <section data-element="zonaSVG">
+            <h3>Altimetría</h3>
+             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
+             <p><input type="file" accept=".svg" onchange="viajes.procesarAltimetria(this.files);" multiple></p>
+        </section>
+
+        <section data-element="zonaKML">
+            <h3>Planimetría</h3>
+             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
+             <p><input type="file" accept=".kml" onchange="viajes.procesarPlanimetria(this.files);" multiple></p>
+             <!-- mapa dinamico -->
+            <p id="mapaDinamicoKML"></p>
+        </section>
+
+       
+
+
         <script>
             var viajes = new Viajes();
         </script>
