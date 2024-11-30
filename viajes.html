@@ -52,7 +52,19 @@
             <!-- mapa dinamico -->
             <p id="mapaDinamico"></p>
         </section>
-        <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
+
+
+        <section  data-element="estatico">
+            <h3>Mapa estático - Ubicación Actual</h3>
+            <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
+        </section>
+        
+
+        <section data-element="zonaXML">
+            <h3>Carga de archivo XML</h3>
+            <!-- El atributo multiple por defecto es false, por lo que solo permite la carga de 1 archivo -->
+            <p><input type="file" accept=".xml" onchange="viajes.procesarXml(this.files);"></p>
+        </section>
 
         <script>
             var viajes = new Viajes();

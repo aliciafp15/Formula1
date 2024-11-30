@@ -45,9 +45,6 @@ class Viajes {
     cargarMapaEstatico() {
         if (this.permisoConcedido) {
 
-            const section = $('<section>');// una seccion que contenga 5 articulos
-            const header = "<h3> Mapa estático con la ubicación del usuario</h3>"
-            section.append(header);
 
             var mapaEstatico = document.createElement("img");
 
@@ -65,11 +62,18 @@ class Viajes {
                 + tamMapa
                 + "?access_token=" + api_token;
 
+
+
             mapaEstatico.setAttribute("src", api_url);
             mapaEstatico.setAttribute("alt", "Mapa geográfico de tu ubicación actual");
 
-            section.append(mapaEstatico);
-            $("main").append(section);
+            var seccionEstatico = $("main>section[data-element='estatico']");
+            seccionEstatico.append(mapaEstatico);
+
+
+
+
+
         } else {
             var parrafoPermisoNoConcedido = document.createElement("p");
             var textoPermisoNoConcedido = document.createTextNode("Permiso de ubicación denegado, no se ha podido cargar el mapa estático");
@@ -82,7 +86,7 @@ class Viajes {
         }
 
         //elimina el botón que obtiene el mapa
-        document.querySelector("main > input:nth-of-type(1)").remove();
+        document.querySelector("section[data-element='estatico'] input[type='button']").remove();
 
     }
 
@@ -109,7 +113,103 @@ class Viajes {
     }
 
 
-   
+    procesarXml(files) {
+        const file = files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                const contenidoXml = e.target.result;
+                const contenidoHtml = this.parsearXmlAHtml(contenidoXml);
+                $("main>section[data-element='zonaXML']").append(contenidoHtml);
+
+
+            };
+
+            reader.readAsText(file);
+        }
+    }
+
+    parsearXmlAHtml(contenidoXml) {
+        const xmlDoc = $.parseXML(contenidoXml);
+        const $xml = $(xmlDoc);
+        console.log($xml)
+
+        let html = "";
+
+        // Extraer los datos principales del circuito
+        const datos = $xml.find("datos");
+        const nombre = datos.find("nombre").text();
+        const longitud = datos.find("longitud").text();
+        const anchuraMed = datos.find("anchuraMed").text();
+        const fecha = datos.find("fecha").text();
+        const hora = datos.find("hora").text();
+        const nVueltas = datos.find("nVueltas").text();
+        const localidad = datos.find("localidad").text();
+        const pais = datos.find("pais").text();
+
+        // Procesar las referencias como enlaces <a>
+        var cont=1;
+        const referencias = datos.find("referencias referencia").map(function () {
+            const url = $(this).text();
+            const title = `Referencia ${cont}`;  // Título dinámico con el valor de cont
+            cont++;  // Incrementar el contador para la siguiente referencia
+            return `<li><a href="${url}" title="${title}">${url}</a></li>`;
+        }).get().join(""); 
+        
+
+        const fotografia = datos.find("fotografias foto").text(); // Si hay fotografía asociada al circuito
+        const coordenadas = datos.find("coordenadas");
+        const longitudCircuito = coordenadas.find("longitudCircuito").text();
+        const latitudCircuito = coordenadas.find("latitudCircuito").text();
+        const altitudCircuito = coordenadas.find("altitudCircuito").text();
+
+        html += `
+            <article>
+                <h4>${nombre} - Circuito</h4>
+                <p>Localidad: ${localidad}, ${pais}</p>
+                <p>Longitud: ${longitud} km</p>
+                <p>Ancho medio: ${anchuraMed} m</p>
+                <p>Fecha: ${fecha}</p>
+                <p>Hora: ${hora}</p>
+                <p>Vueltas: ${nVueltas}</p>
+                <p>Referencias: </p>
+                <ul>${referencias}</ul>
+                <p>Coordenadas del Circuito: (${latitudCircuito}, ${longitudCircuito}) a ${altitudCircuito} m</p>
+                <p>Fotografía: ${fotografia}</p>
+        `;
+
+
+        // Procesar los tramos
+        $xml.find("tramos tramo").each((index, tramo) => {
+            const dist = $(tramo).find("dist").text();
+            const distUnidad = $(tramo).attr("distUnidad");
+            const nSector = $(tramo).find("nSector").text();
+
+            const coordenadasTramo = $(tramo).find("coordenadasTramo");
+            const longitudTramo = coordenadasTramo.find("longitudTramo").text();
+            const latitudTramo = coordenadasTramo.find("latitudTramo").text();
+            const altitudTramo = coordenadasTramo.find("altitudTramo").text();
+
+            html += `
+            <section>
+                <h5>Tramo ${index + 1}</h5>
+                <p>Distancia: ${dist} ${distUnidad}</p>
+                <p>Coordenadas del Tramo: (${latitudTramo}, ${longitudTramo}) a ${altitudTramo} m</p>
+                <p>Número de sector: ${nSector}</p>
+            </section>
+        `;
+        });
+
+        html += `</article>`
+
+
+        return html;
+    }
+
+
+
 
 
 }
