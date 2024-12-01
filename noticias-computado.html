@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>F1 Desktop - Noticias</title> <!--Asegurarme de que el título les guste-->
+    <meta name="author" content="Alicia Fernández Pushkina">
+    <meta name="description" content="documento para utilizar en otros módulos de la asignatura">
+    <meta name="keywords" content="html, css, index">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--definir la ventana gráfica-->
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/article_elements.css">
+    <link href="multimedia/imagenes/favicon.ico" rel="icon">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!--jquery min-->
+    <script src="js/noticias.js"></script>
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+        <h1><a href="index.html" title="Volver al inicio">F1 Desktop</a></h1>
+        <nav>
+            <a href="index.html" title="Volver a la página de inicio">Index</a>
+            <a href="piloto.html" title="Ver información sobre el piloto">Piloto</a>
+            <a href="noticias.html" class="active" title="Leer las últimas noticias">Noticias</a>
+            <a href="calendario.html" title="Consultar el calendario">Calendario</a>
+            <a href="metereologia.html" title="Revisar la meteorología">Metereología</a>
+            <a href="circuito.html" title="Información sobre el circuito">Circuito</a>
+            <a href="viajes.html" title="Planificar tus viajes">Viajes</a>
+            <a href="juegos.html" title="Explorar juegos">Juegos</a>
+        </nav>
+    </header>
+    <p>Estás en: <a href="index.html" title="Volver al inicio">Inicio</a> &gt;&gt; Noticias</p>
+    <main>
+        <section>
+            <h2>Noticias</h2>
+
+            <label for="subirNoticias">Subir noticias:</label>
+            <input id="subirNoticias" type="file" onchange="noticias.readInputFile(this.files)" accept=".txt">
+
+        <article><h3>Alonso, más cerca de ser historia en Asturias</h3><h4>El asturiano está en proceso de ampliar su museo y circuito consiguiendo algo nunca antes visto en el Principado</h4><p>Javier Pazos</p></article><article><h3>Briatore asegura que da igual el piloto que fiche Alpine para 2025</h3><h4>Cree que no marcará la diferencia y se quiere centrar en 2026</h4><p>Pol Hermoso</p></article><article><h3>En McLaren creen en la remontada de Aston Martin</h3><h4>Zak Brown, CEO de la escudería británica, asegura que en 2025 puede haber varios equipos que mejoren su rendimiento, cómo han hecho ellos este año</h4><p>Manuel Rodriguez</p></article><article><h3>Ejemplo de noticia</h3><h4>Ejemplo de entradilla para la noticia. Esta es corta</h4><p>Alicia Fernández Pushkina</p></article></section>
+
+        <section>
+            <h3>Nueva noticia</h3>
+            <form name="noticia">
+                <p><label for="titular">Titular:</label>
+                    <input type="text" id="titular" placeholder="Inserte el titular" required="">
+                </p>
+                <p><label for="entradilla">Entradilla:</label> 
+                    <input type="text" id="entradilla" placeholder="Inserte la entradilla" required=""></p>
+                <p><label for="autor">Autor:</label> 
+                    <input type="text" id="autor" placeholder="Inserte el autor" required="">
+                </p>
+                
+            </form>
+            <button onclick="noticias.incluirNuevaNoticiaHTML()">Añadir</button>
+        </section>
+    </main>
+    <script>
+        var noticias = new Noticias();
+
+    </script>
+
+
+</body></html>

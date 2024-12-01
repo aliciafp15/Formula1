@@ -26,15 +26,15 @@ class API {
             "Norris": "3°"
         };
 
-         // Estado para verificar si ya se ha tocado el sonido
-         this.soundPlayed = {
+        // Estado para verificar si ya se ha tocado el sonido
+        this.soundPlayed = {
             "Leclerc": false,
             "Piastri": false,
             "Norris": false
         };
 
-         // Inicializar el contexto de audio
-         this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        // Inicializar el contexto de audio
+        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 
     }
@@ -88,13 +88,12 @@ class API {
         this.ctx.fillText("2°", 250, 220); // Etiqueta 2º lugar
         this.ctx.fillText("3°", 550, 220); // Etiqueta 3º lugar
 
-        /*
         // Dibujar áreas válidas ampliadas (para depuración)
         this.ctx.strokeStyle = "red"; // Borde rojo para probar las áreas válidas
         this.ctx.strokeRect(330, 60, 160, 200); // Área ampliada 1º
         this.ctx.strokeRect(180, 130, 160, 160); // Área ampliada 2º
         this.ctx.strokeRect(480, 130, 160, 160); // Área ampliada 3º
-        */
+
     }
 
 
@@ -109,11 +108,19 @@ class API {
         pilotos.forEach(piloto => {
             piloto.addEventListener("dragstart", this.onDragStart.bind(this));
             piloto.addEventListener("dragend", this.onDragEnd.bind(this));
+
+            // Eventos para dispositivos táctiles
+            piloto.addEventListener("touchstart", this.onTouchStart.bind(this));
+            piloto.addEventListener("touchend", this.onTouchEnd.bind(this));
         });
 
         // Agregar eventos de Drop al canvas
         this.canvas.addEventListener("dragover", this.onDragOver.bind(this));
         this.canvas.addEventListener("drop", this.onDrop.bind(this));
+
+        // Eventos para dispositivos táctiles
+        this.canvas.addEventListener("touchmove", this.onTouchMove.bind(this));
+        this.canvas.addEventListener("touchend", this.onDrop.bind(this));
     }
 
     onDragStart(event) {
@@ -128,12 +135,60 @@ class API {
         event.preventDefault(); // Necesario para permitir soltar
     }
 
+    onTouchStart(event) {
+        event.preventDefault();  // Prevenir las acciones por defecto del navegador en dispositivos táctiles
+        this.draggedPilot = event.target; // Asignar el piloto arrastrado
+    
+        // Verificar si el piloto tiene un estilo `position: absolute`
+        this.draggedPilot.style.position = "absolute";  // Asegurarse de que el piloto sea "absolute"
+    
+        // Establecer la posición de inicio del toque
+        const touch = event.touches[0];
+        const rect = this.canvas.getBoundingClientRect();
+        this.offsetX = touch.clientX - rect.left - this.draggedPilot.offsetLeft;  // Distancia desde el borde izquierdo del canvas
+        this.offsetY = touch.clientY - rect.top - this.draggedPilot.offsetTop;   // Distancia desde el borde superior del canvas
+    
+        // Inicializar la posición en el punto donde se toca
+        this.draggedPilot.style.left = `${touch.clientX - rect.left - this.offsetX}px`;
+        this.draggedPilot.style.top = `${touch.clientY - rect.top - this.offsetY}px`;
+    }
+    
+    onTouchMove(event) {
+        event.preventDefault(); // Evitar el comportamiento por defecto del navegador
+    
+        const touch = event.touches[0];
+    
+        if (this.draggedPilot) {
+            const rect = this.canvas.getBoundingClientRect();
+            
+            // Calcular las nuevas coordenadas del toque
+            const x = touch.clientX - rect.left - this.offsetX;
+            const y = touch.clientY - rect.top - this.offsetY;
+            
+            // Actualizar la posición del piloto
+            this.draggedPilot.style.left = `${x}px`;
+            this.draggedPilot.style.top = `${y}px`;
+        }
+    }
+    
+    onTouchEnd(event) {
+        event.preventDefault(); // Evitar el comportamiento por defecto
+    
+        if (this.draggedPilot) {
+            this.onDrop(event); // Llamar a la función onDrop para manejar el drop del piloto
+            this.draggedPilot = null; // Limpiar la referencia del piloto arrastrado
+        }
+    }
+
     onDrop(event) {
         event.preventDefault();
         if (this.draggedPilot) {
             const rect = this.canvas.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
+
+            const x = event.changedTouches ? event.changedTouches[0].clientX - rect.left : event.clientX - rect.left;
+            const y = event.changedTouches ? event.changedTouches[0].clientY - rect.top : event.clientY - rect.top;
+    
+
 
             let position = null;
 

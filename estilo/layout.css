@@ -31,6 +31,15 @@ nav {
 }
 
 
+/* Asegúrate de que el canvas sea flexible */
+canvas {
+    width: 100%;
+    height: auto; /* Mantener la relación de aspecto */
+    max-width: 800px; /* Limitar el ancho máximo */
+    max-height: 400px; /* Limitar la altura máxima */
+}
+
+
 
 
 @media (max-width: 465px) {
