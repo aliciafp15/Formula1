@@ -28,7 +28,7 @@
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
-        <h1><a href="index.html" title="Volver al inicio" >F1 Desktop</a></h1>
+        <h1><a href="index.html" title="Volver al inicio">F1 Desktop</a></h1>
         <nav>
             <a href="index.html" title="Volver a la página de inicio">Index</a>
             <a href="piloto.html" title="Ver información sobre el piloto">Piloto</a>
@@ -48,20 +48,26 @@
         <section data-element="zonaXML">
             <h3>Carga de archivo XML</h3>
             <!-- El atributo multiple por defecto es false, por lo que solo permite la carga de 1 archivo -->
-            <p><input type="file" accept=".xml" onchange="circuito.procesarXml(this.files);"></p>
+            <p>Carga circuitoEsquema.xml para ver su contenido:</p>
+            <label for="xml">Archivos XML:</label>
+            <input id="xml" type="file" accept=".xml" onchange="circuito.procesarXml(this.files)">
         </section>
 
         <section data-element="zonaSVG">
             <h3>Altimetría</h3>
-             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
-             <p><input type="file" accept=".svg" onchange="circuito.procesarAltimetria(this.files);" multiple></p>
+            <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
+            <p>Carga perfil.svg para ver su contenido</p>
+            <label for="svg">Archivos SVG:</label>
+            <input id="svg" type="file" accept=".svg" onchange="circuito.procesarAltimetria(this.files);" multiple>
         </section>
 
         <section data-element="zonaKML">
             <h3>Planimetría</h3>
-             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
-             <p><input type="file" accept=".kml" onchange="circuito.procesarPlanimetria(this.files);" multiple></p>
-             <!-- mapa dinamico -->
+            <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
+            <p>Carga circuito.kml para ver su contenido</p>
+            <label for="kml">Archivos SVG:</label>
+            <input id="kml" type="file" accept=".kml" onchange="circuito.procesarPlanimetria(this.files);" multiple>
+            <!-- mapa dinamico -->
             <div id="mapaDinamicoKML"></div>
         </section>
 
