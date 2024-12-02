@@ -88,11 +88,13 @@ class API {
         this.ctx.fillText("2°", 250, 220); // Etiqueta 2º lugar
         this.ctx.fillText("3°", 550, 220); // Etiqueta 3º lugar
 
+        /*
         // Dibujar áreas válidas ampliadas (para depuración)
         this.ctx.strokeStyle = "red"; // Borde rojo para probar las áreas válidas
         this.ctx.strokeRect(330, 60, 160, 200); // Área ampliada 1º
         this.ctx.strokeRect(180, 130, 160, 160); // Área ampliada 2º
         this.ctx.strokeRect(480, 130, 160, 160); // Área ampliada 3º
+        */
 
     }
 
