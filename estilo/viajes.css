@@ -1,4 +1,15 @@
-#mapaDinamico{
-	width:60vw; 
-	height:50vw;
+
+
+#mapaDinamico {
+    width: 90%; 
+    height: 50vh; 
+	/*max-height: 50vh;*/
+
+}
+
+
+section[data-element='estatico'] img {
+    width: 100%;
+    max-width: 50vw;
+    height: auto; 
 }
