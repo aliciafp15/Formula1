@@ -7,7 +7,7 @@ class Circuito {
 
 
     procesarXml(files) {
-        const file = files[0];  
+        const file = files[0];
 
         if (file) {
             const reader = new FileReader();
@@ -52,7 +52,17 @@ class Circuito {
         }).get().join("");
 
 
-        const fotografia = datos.find("fotografias foto").text(); // Si hay fotografía asociada al circuito
+        
+
+        // Procesar las fotografías como múltiples <img>
+        const fotos = datos.find("fotografias foto").map(function () {
+            const url = $(this).text();
+            return url
+                ? `<img src="multimedia/imagenes/${url}" alt="Fotografía del circuito ${nombre}" >`
+                : ""; // Si la URL está vacía, no añade nada
+        }).get().join("");
+
+        // Procesar las coordenadas
         const coordenadas = datos.find("coordenadas");
         const longitudCircuito = coordenadas.find("longitudCircuito").text();
         const latitudCircuito = coordenadas.find("latitudCircuito").text();
@@ -70,7 +80,7 @@ class Circuito {
                 <p>Referencias: </p>
                 <ul>${referencias}</ul>
                 <p>Coordenadas del Circuito: (${latitudCircuito}, ${longitudCircuito}) a ${altitudCircuito} m</p>
-                <p>Fotografía: ${fotografia}</p>
+                ${fotos}
         `;
 
 

@@ -101,6 +101,17 @@ ol {
 video {
     max-width: 60%; /* Reduce el tamaño relativo al contenedor */
 }
+img {
+    width: 50vw;
+    height: auto;
+}
+
+/*especificidad (0,0,2) */
+article a {
+    /* acorta los enlaces para que las referencias no sobresalgan */
+    word-wrap: break-word;
+}
+
 
 
 /*adaptabilidad en móviles*/
@@ -113,6 +124,16 @@ video {
         height: auto;
         max-width: 100%;
     }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    svg {
+        width: 100vw;
+    }
+
 
 
 }
