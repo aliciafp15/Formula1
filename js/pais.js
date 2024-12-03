@@ -96,7 +96,7 @@ class Pais {
 
     
                     // Obtener la URL base para los iconos y agregar el nombre del icono
-                    const iconUrlBase = 'http://openweathermap.org/img/wn/';
+                    const iconUrlBase = 'https://openweathermap.org/img/wn/';
                     const iconUrl = `${iconUrlBase}${item.weather[0].icon}.png`;
     
                     // Agregar elementos al bloque del día
