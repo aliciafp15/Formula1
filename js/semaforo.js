@@ -9,6 +9,7 @@ class Semaforo {
         // Inicializar la dificultad del juego de forma aleatoria
         const randomIndex = Math.floor(Math.random() * 3); // Índice aleatorio entre 0 y 2
         this.difficulty = this.levels[randomIndex]; // Asignar dificultad
+        this.tiempo = 0;//almacenará el tiempo que tardó
 
         // Crear la estructura del juego en el HTML
         this.createStructure();
@@ -90,29 +91,67 @@ class Semaforo {
 
 
 
-    stopReaction()
-    {
-       
-            // obtener la fecha actual y guardarla en la variable clic_moment.
-            this.clic_moment = new Date().getTime();
-            //calcular la diferencia entre los valores de las variables unload_moment y clic_moment en milisegundos
-            var diferencia = ((this.clic_moment - this.unload_moment)/1000).toFixed(3);
+    stopReaction() {
 
-            // crear un párrafo donde informar el usuario de su tiempo de reacción y mostrarlo por pantalla.
-            var parrafo = document.createElement("p");
-            var rellenoParrafo = document.createTextNode("Tiempo de reacción: " + diferencia + " milisegundos");
-            parrafo.appendChild(rellenoParrafo);
-            var seccion = document.querySelector("body>main>section");
-            seccion.appendChild(parrafo);
+        // obtener la fecha actual y guardarla en la variable clic_moment.
+        this.clic_moment = new Date().getTime();
+        //calcular la diferencia en milisegundos
+        this.tiempo = ((this.clic_moment - this.unload_moment) / 1000).toFixed(3);
 
-            //quitar las clases load y unload de la etiqueta main;
-            var main = document.querySelector("body>main");
-            main.classList.remove("load");
-            main.classList.remove("unload");
+        // crear un párrafo donde informar el usuario de su tiempo de reacción y mostrarlo por pantalla.
+        var parrafo = document.createElement("p");
+        var rellenoParrafo = document.createTextNode("Tiempo de reacción: " + this.tiempo + " milisegundos");
+        parrafo.appendChild(rellenoParrafo);
+        var seccion = document.querySelector("body>main>section");
+        seccion.appendChild(parrafo);
 
-            //deshabilitar el botón “Reacción” y habilitar el botón “Arranque”.
-            document.querySelector("body>main>section>button:first-of-type").removeAttribute("disabled"); 
-            document.querySelector("body>main>section>button:nth-of-type(2)").setAttribute("disabled","true");
+        //quitar las clases load y unload de la etiqueta main;
+        var main = document.querySelector("body>main");
+        main.classList.remove("load");
+        main.classList.remove("unload");
+
+        //deshabilitar el botón “Reacción” y habilitar el botón “Arranque”.
+        document.querySelector("body>main>section>button:first-of-type").removeAttribute("disabled");
+        document.querySelector("body>main>section>button:nth-of-type(2)").setAttribute("disabled", "true");
+
+        //llamar al formulario de los records
+        this.createRecordForm();
+    }
+
+
+    /**añade un formulario debajo del juego del semaforo y de la puntuación*/
+    createRecordForm() {
+
+        // Crear el formulario
+        const form = $("<form></form>");
+
+        // form.attr("id", "recordForm");
+        form.attr("action", "#"); // la URL correcta para procesar el formulario en tu servidor
+        form.attr("method", "post");
+        form.attr("name", "record");
+
+        // Agregar campos al formulario 
+        form.append('<label for="nombre">Nombre:</label>');
+        form.append('<input type="text" id="nombre" name="nombre" required placeholder="Ingrese su nombre">');
+
+
+        form.append('<label for="apellidos">Apellidos:</label>');
+        form.append('<input type="text" id="apellidos" name="apellidos" required placeholder="Ingrese sus apellidos">');
+
+        // Agregar un campo oculto para el tiempo que tardó el usuario y el nivel
+        form.append('<label for="tiempo">Tiempo:</label>');
+        form.append(`<input type="text" id="tiempo" name="tiempo" value="${this.tiempo}" readonly />  `);
+
+        const nivel = this.difficulty;
+        form.append('<label for="nivel">Dificultad:</label>');
+        form.append(`<input type="text" id="nivel" name="nivel" value="${nivel}" readonly /> `);
+
+        // Agregar un botón de envío
+        form.append('<input type="submit" value="Guardar registro">');
+
+        // Agregar el formulario al final del documento
+        $("body").append(form);
+
     }
 }
 

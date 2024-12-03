@@ -1,0 +1,139 @@
+/*datos personales Alicia Fernández Pushkina y UO275727*/
+/* palet SECRET ROMANCE
+    sand dollar: #FCEFAB
+    tangerine: #d3a550
+    black: #121110
+    red: #940A0A
+
+*/
+/*especificidad (0,0,1) */
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    color: black;
+    background-color: white;
+
+}
+
+/*especificidad (0,0,2) */
+body>p {
+    font-size: 0.9em;
+}
+
+/*especificidad (0,0,1) */
+header {
+    background-color: #990000;
+    color: #FDF8DE;
+}
+
+/*especificidad (0,0,2) */
+header a {
+    /* background-color heredado de header*/
+    color: #FDF8DE;
+    text-decoration: none;
+}
+
+/*especificidad (0,0,3) */
+header>nav a {
+    /* background-color heredado de header*/
+    color: #FDF8DE;
+    /* #B4FEE7;*/
+
+}
+
+/*especificidad (0, 1, 3) */
+header>nav>a.active {
+    /* background-color heredado de header*/
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/*especificidad (0,1,1) */
+header nav a:hover {
+    /* background-color heredado de header*/
+    color: #FFEE00;
+}
+
+
+/*especificidad (0,0,1) */
+th {
+    background-color: #990000;
+    color: #FDF8DE;
+    font-weight: bold;
+    padding: 0.5em;
+}
+/*especificidad (0,0,1) */
+tr {
+    background-color: #FDF8DE;
+    /*color heredado de body*/
+    padding: 0.5em;
+}
+
+/*especificidad (0,0,1) */
+dt {
+    /* background-color heredado de body*/
+    color: #990000;
+    font-weight: bold;
+}
+
+/*especificidad (0,0,2) */
+main a {
+    /* background-color heredado de header*/
+    color: #990000;
+    font-weight: bold;
+}
+
+/*especificidad (0,0,1) */
+ul {
+    list-style: square;
+}
+/*especificidad (0,0,2) */
+ol ul {
+    list-style: circle;
+}
+
+/*especificidad (0,0,1) */
+ol {
+    list-style: upper-roman;
+}
+
+/*especificidad (0,0,1) */
+video {
+    max-width: 60%; /* Reduce el tamaño relativo al contenedor */
+}
+img {
+    width: 50vw;
+    height: auto;
+}
+
+/*especificidad (0,0,2) */
+article a {
+    /* acorta los enlaces para que las referencias no sobresalgan */
+    word-wrap: break-word;
+}
+
+
+
+/*adaptabilidad en móviles*/
+@media (max-width: 465px) {
+   
+
+    /*especificidad (0,0,1) */
+    video {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    svg {
+        width: 100vw;
+    }
+
+
+
+}
