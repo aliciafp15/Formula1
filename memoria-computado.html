@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="es"><head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>F1 Desktop - Memoria</title> <!--Asegurarme de que el título les guste-->
+    <meta name="author" content="Alicia Fernández Pushkina">
+    <meta name="description" content="documento para utilizar en otros módulos de la asignatura">
+    <meta name="keywords" content="html, css, index">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--definir la ventana gráfica-->
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/memoria.css">
+    <link href="multimedia/imagenes/favicon.ico" rel="icon">
+    <script src="js/memoria.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Datos con el contenidos que aparece en el navegador -->
+        <h1><a href="index.html" title="Volver al inicio">F1 Desktop</a></h1>
+        <nav>
+            <a href="index.html" title="Volver a la página de inicio">Index</a>
+            <a href="piloto.html" title="Ver información sobre el piloto">Piloto</a>
+            <a href="noticias.html" title="Leer las últimas noticias">Noticias</a>
+            <a href="calendario.html" title="Consultar el calendario">Calendario</a>
+            <a href="meteorologia.html" title="Revisar la meteorología">Meteorología</a>
+            <a href="circuito.html" title="Información sobre el circuito">Circuito</a>
+            <a href="viajes.html" title="Planificar tus viajes">Viajes</a>
+            <a href="juegos.html" class="active" title="Explorar juegos">Juegos</a>
+        </nav>
+        
+    </header>
+    <p>Estás en: <a href="index.html" title="Volver al inicio">Inicio</a> &gt;&gt; <a href="juegos.html" title="Volver a ver los juegos">Juegos</a> &gt;&gt; Memoria</p>
+    <!--menu de juegos-->
+    <section>
+        <h2>Juegos</h2>
+        <nav>
+          <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
+          <a href="semaforo.html" title="Ir al juego del semáforo">Semáforo</a>
+          <a href="api.html" title="Ir al juego de la API">API</a>
+      </nav>
+      </section>
+
+    <main>
+        <section>
+            <h3>Juego de Memoria</h3>
+
+        <article data-element="McLaren_a"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/McLaren.svg" alt="McLaren_a"></article><article data-element="Ferrari_b"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/Ferrari.svg" alt="Ferrari_b"></article><article data-element="McLaren_b"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/McLaren.svg" alt="McLaren_b"></article><article data-element="AstonMartin_b"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/AstonMartin.svg" alt="AstonMartin_b"></article><article data-element="Ferrari_a"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/Ferrari.svg" alt="Ferrari_a"></article><article data-element="RedBull_b"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/RedBull.svg" alt="RedBull_b"></article><article data-element="Mercedes_a"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/Mercedes.svg" alt="Mercedes_a"></article><article data-element="RedBull_a"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/RedBull.svg" alt="RedBull_a"></article><article data-element="Mercedes_b"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/Mercedes.svg" alt="Mercedes_b"></article><article data-element="Alpine_b"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/Alpine.svg" alt="Alpine_b"></article><article data-element="AstonMartin_a"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/AstonMartin.svg" alt="AstonMartin_a"></article><article data-element="Alpine_a"><h3>Tarjeta de memoria</h3><img src="multimedia/imagenes/logos/Alpine.svg" alt="Alpine_a"></article></section>
+    </main>
+
+    <script>
+        var juego = new Memoria();
+    </script>
+
+
+</body></html>

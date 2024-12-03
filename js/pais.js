@@ -77,7 +77,7 @@ class Pais {
     
                 // const article = $('<section>').attr('data-name', 'meteo');// una seccion que contenga 5 articulos
                 const section = $('<section>');// una seccion que contenga 5 articulos
-                const header = "<h2> Tiempo en la linea de meta de Monza para los próximos 5 días </h2>"
+                const header = "<h3> Tiempo en la linea de meta de Monza para los próximos 5 días </h3>"
                 section.append(header);
 
     
@@ -101,7 +101,7 @@ class Pais {
     
                     // Agregar elementos al bloque del día
                     dayArticle.html(`
-                        <h3>${fecha}</h3>
+                        <h4>${fecha}</h4>
                         <p>Temp. Máxima: ${tempMax}°C</p>
                         <p>Temp. Mínima: ${tempMin}°C</p>
                         <p>Humedad: ${humidity}%</p>

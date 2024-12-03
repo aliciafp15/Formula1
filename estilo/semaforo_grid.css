@@ -17,19 +17,14 @@ h3, section > p:last-child {
 }
 
 div {
-    /* color-color heredado de body*/
-    background-color: #0007; 
-    border: 0.5em solid #000000; 
+    /* color-color heredado de body */
+    background-color: #0007;
+    border-width: 0.5em;
+    border-style: solid;
+    border-color: #000000;
     aspect-ratio: 1;
-    border-radius: 50%; 
+    border-radius: 50%;
 }
-
-
-
-
-
-
-
 
 
 
@@ -37,14 +32,13 @@ div {
 @keyframes out {
     from 
     {
-        background-color: #FF0000; /* PROPIEDAD NO HEREDABLE */
+        background-color: #FF0000; /* propiedad no heredable */
     } to 
     {
-        background-color: #000A; /* PROPIEDAD NO HEREDABLE */
+        background-color: #000A; /* propiedad no heredable */
     }
 }
 
-/* Especificidad (013) */
 main.unload > section > div {
     animation-name: out;
     animation-duration: 0.1s;
@@ -63,14 +57,12 @@ main.unload > section > div {
     }
 }
 
-/* Especificidad (023) */
 main.load > section > div:first-of-type {
     animation-name: turnOn;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
 
-/* Especificidad (023) */
 main.load > section > div:nth-of-type(2) {
     animation-name: turnOn;
     animation-delay: 0.5s;
@@ -78,7 +70,6 @@ main.load > section > div:nth-of-type(2) {
     animation-fill-mode: forwards;
 }
 
-/* Especificidad (023) */
 main.load > section > div:nth-of-type(3) {
     animation-name: turnOn;
     animation-delay: 1s;
@@ -86,7 +77,6 @@ main.load > section > div:nth-of-type(3) {
     animation-fill-mode: forwards;
 }
 
-/* Especificidad (023) */
 main.load > section > div:nth-of-type(4) {
     animation-name: turnOn;
     animation-delay: 1.5s;

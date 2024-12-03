@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+  <!-- Datos que describen el documento -->
+  <meta charset="UTF-8">
+  <title>F1 Desktop - Metereología</title> <!--Asegurarme de que el título les guste-->
+  <meta name="author" content="Alicia Fernández Pushkina">
+  <meta name="description" content="documento para utilizar en otros módulos de la asignatura">
+  <meta name="keywords" content="html, css, index">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--definir la ventana gráfica-->
+  <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+  <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+  <link rel="stylesheet" type="text/css" href="estilo/article_elements.css">
+
+  <link href="multimedia/imagenes/favicon.ico" rel="icon">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
+  <script src="js/pais.js"></script>
+
+</head>
+
+<body>
+  <!-- Datos con el contenidos que aparece en el navegador -->
+  <header>
+    <h1><a href="index.html" title="Volver al inicio">F1 Desktop</a></h1>
+    <nav>
+      <a href="index.html" title="Volver a la página de inicio">Index</a>
+      <a href="piloto.html" title="Ver información sobre el piloto">Piloto</a>
+      <a href="noticias.html" title="Leer las últimas noticias">Noticias</a>
+      <a href="calendario.html" title="Consultar el calendario">Calendario</a>
+      <a href="meteorologia.html" class="active" title="Revisar la meteorologia">Meteorologia</a>
+      <a href="circuito.html" title="Información sobre el circuito">Circuito</a>
+      <a href="viajes.html" title="Planificar tus viajes">Viajes</a>
+      <a href="juegos.html" title="Explorar juegos">Juegos</a>
+    </nav>
+  </header>
+
+  <p>Estás en: <a href="index.html " title="Volver a inicio">Inicio</a> &gt;&gt; Meteorologia</p>
+  <main>
+    <h2>Meteorologia</h2>
+  </main>
+
+  <script>
+    var pais = new Pais("Italia", "Roma", 58990000);
+    pais.rellenarAtributos("Monza", "República parlamentaria unitaria", "45.616026", "9.280837", "Cristianismo");//lat, long //45.616026°N 9.280837°E
+
+    document.write("<p>País: " + pais.getNombre() + "</p>");
+    document.write("<p>Capital: " + pais.getCapital() + "</p>");
+    pais.obtenerCoordenadas();
+    document.write("<p>Más datos:</p>");
+    document.write(pais.obtenerInfoSecundaria());
+
+
+    pais.mirarTiempo();
+
+  </script><p>País: Italia</p><p>Capital: Roma</p><p>Más datos:</p>
+            <ul>
+                <li>Nombre del Circuito: Monza</li>
+                <li>Población: 58990000</li>
+                <li>Forma de Gobierno: República parlamentaria unitaria</li>
+                <li>Religión Mayoritaria:Cristianismo</li>
+            </ul>
+        
+
+
+
+<section><h2> Tiempo en la linea de meta de Monza para los próximos 5 días </h2><article>
+                        <h3>2024-12-03</h3>
+                        <p>Temp. Máxima: 9.43°C</p>
+                        <p>Temp. Mínima: 8.97°C</p>
+                        <p>Humedad: 67%</p>
+                        <p>Lluvia: 0 mm</p>
+                        <img src="https://openweathermap.org/img/wn/01d.png" alt="Icono del tiempo">
+                    </article><article>
+                        <h3>2024-12-04</h3>
+                        <p>Temp. Máxima: 9.68°C</p>
+                        <p>Temp. Mínima: 9.68°C</p>
+                        <p>Humedad: 45%</p>
+                        <p>Lluvia: 0 mm</p>
+                        <img src="https://openweathermap.org/img/wn/02d.png" alt="Icono del tiempo">
+                    </article><article>
+                        <h3>2024-12-05</h3>
+                        <p>Temp. Máxima: 8.39°C</p>
+                        <p>Temp. Mínima: 8.39°C</p>
+                        <p>Humedad: 38%</p>
+                        <p>Lluvia: 0 mm</p>
+                        <img src="https://openweathermap.org/img/wn/01d.png" alt="Icono del tiempo">
+                    </article><article>
+                        <h3>2024-12-06</h3>
+                        <p>Temp. Máxima: 7.76°C</p>
+                        <p>Temp. Mínima: 7.76°C</p>
+                        <p>Humedad: 27%</p>
+                        <p>Lluvia: 0 mm</p>
+                        <img src="https://openweathermap.org/img/wn/04d.png" alt="Icono del tiempo">
+                    </article><article>
+                        <h3>2024-12-07</h3>
+                        <p>Temp. Máxima: 6.87°C</p>
+                        <p>Temp. Mínima: 6.87°C</p>
+                        <p>Humedad: 44%</p>
+                        <p>Lluvia: 0 mm</p>
+                        <img src="https://openweathermap.org/img/wn/04d.png" alt="Icono del tiempo">
+                    </article></section></body></html>
