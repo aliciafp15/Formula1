@@ -1,5 +1,52 @@
 <?php
 
+class Carrusel
+{
+
+    private $capital;
+    private $pais;
+
+
+    public function __construct($capital, $pais)
+    {
+        $this->capital = $capital;
+        $this->pais = $pais;
+    }
+
+
+    /**Obtiene 10 fotos del país en cuestión */
+    function obtenerImagenes()
+    {
+        $apiKey = '87cd7336be903190374dc6fef69b087f';
+        $flickrAPI = "https://www.flickr.com/services/rest/?method=flickr.photos.search";
+
+        $params = array(
+            'api_key' => $apiKey,
+            'tags' => $this->pais . ',' . $this->capital,
+            'format' => 'json',
+            'per_page' => 10,
+            'nojsoncallback' => '1',
+            'sort' => 'relevance',  // Ordenar por relevancia
+        );
+
+        $url = $flickrAPI . '&' . http_build_query($params);
+        $respuesta = file_get_contents($url);
+        $data = json_decode($respuesta, true);
+
+        $carrusel = "<article data-element='carrusel'><h3>Carrusel de Italia</h3>";
+        foreach ($data["photos"]["photo"] as $foto) {
+            $titulo = $foto["title"];
+            $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_b.jpg";
+            $img = "<img data-element='carruselImg' alt='" . $titulo . "' src='" . $URLfoto . "' />";
+            $carrusel .= $img;
+        }
+        $carrusel .= "<button onclick='viajes.fotoSiguiente()' data-action='next'> > </button>
+      <button data-action='prev' onclick='viajes.fotoAnterior()'> < </button></article>";
+
+        return $carrusel;
+    }
+}
+
 class Moneda
 {
 
@@ -46,6 +93,8 @@ class Moneda
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
     <link rel="stylesheet" type="text/css" href="estilo/viajes.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/carrusel.css" />
+
 
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
     <script src="js/viajes.js"></script>
@@ -72,7 +121,7 @@ class Moneda
             <a href="calendario.html" title="Consultar el calendario">Calendario</a>
             <a href="meteorologia.html" title="Revisar la meteorologia">Meteorologia</a>
             <a href="circuito.html" title="Información sobre el circuito">Circuito</a>
-            <a href="viajes.html" class="active" title="Planificar tus viajes">Viajes</a>
+            <a href="viajes.php" class="active" title="Planificar tus viajes">Viajes</a>
             <a href="juegos.html" title="Explorar juegos">Juegos</a>
         </nav>
     </header>
@@ -82,6 +131,8 @@ class Moneda
         <h2>Viajes</h2>
         <?php
 
+        $carrusel = new Carrusel('Roma', 'Italia');
+        echo $carrusel->obtenerImagenes();
         //<!-- cambio de divisa -->
         $moneda = new Moneda('USD', 'EUR');
         echo $moneda->cambioDeMoneda();

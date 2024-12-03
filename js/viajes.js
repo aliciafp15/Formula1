@@ -1,8 +1,14 @@
 class Viajes {
 
+    curSlide = 0; //la primera imagen del carrusel será la 0
+    slides;
+
     constructor() {
         this.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbGdzMnZweWowZWEyM2NvYWZkODMxZXpoIn0.ghWod73o3jm9F1lPOhfsjw'; // Reemplaza con tu token de Mapbox
         navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this), this.verErrores.bind(this));
+
+        this.slides = document.querySelectorAll("main>article>img");//reune las imagenes dle carrusel;
+
 
     }
 
@@ -117,6 +123,52 @@ class Viajes {
 
         
     }
+
+
+    fotoSiguiente() {
+
+        // maximum number of slides
+        var maxSlide = 9;//son 10 imagenes, pero empiezo desde la 0
+
+
+        // check if current slide is the last and reset current slide
+        if (this.curSlide === maxSlide) {
+            this.curSlide = 0;
+        } else {
+            this.curSlide++;
+        }
+
+        //   move slide by -100%
+        this.slides.forEach((slide, indx) => {
+            var trans = 100 * (indx - this.curSlide);
+            $(slide).css('transform', 'translateX(' + trans + '%)')
+        });
+
+
+    }
+
+    fotoAnterior() {
+
+        // maximum number of slides
+        var maxSlide = 9;//son 10 imagenes, pero empiezo desde la 0
+
+
+        // check if current slide is the last and reset current slide
+        if (this.curSlide === 0) {
+            this.curSlide = maxSlide;
+        } else {
+            this.curSlide--;
+        }
+
+        //   move slide by -100%
+        this.slides.forEach((slide, indx) => {
+            var trans = 100 * (indx - this.curSlide);
+            $(slide).css('transform', 'translateX(' + trans + '%)')
+        });
+
+    }
+
+
 
 
 
