@@ -100,7 +100,7 @@ class Moneda
     <script src="js/viajes.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" />
+        <!--<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" />--quitar-->
 
     <!--mapa dnámico-->
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
@@ -138,7 +138,7 @@ class Moneda
         echo $moneda->cambioDeMoneda();
         ?>
 
-        <section data-element="estatico">
+        <section>
             <h3>Mapa estático - Ubicación Actual</h3>
             <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
         </section>

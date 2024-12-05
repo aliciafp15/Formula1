@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/circuito.css" />
 
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
 
@@ -45,7 +44,7 @@
     <main>
         <h2>Circuito</h2>
 
-        <section data-element="zonaXML">
+        <section>
             <h3>Carga de archivo XML</h3>
             <!-- El atributo multiple por defecto es false, por lo que solo permite la carga de 1 archivo -->
             <p>Carga circuitoEsquema.xml para ver su contenido:</p>
@@ -53,7 +52,7 @@
             <input id="xml" type="file" accept=".xml" onchange="circuito.procesarXml(this.files)">
         </section>
 
-        <section data-element="zonaSVG">
+        <section>
             <h3>Altimetría</h3>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p>Carga perfil.svg para ver su contenido</p>
@@ -61,11 +60,11 @@
             <input id="svg" type="file" accept=".svg" onchange="circuito.procesarAltimetria(this.files);" multiple>
         </section>
 
-        <section data-element="zonaKML">
+        <section>
             <h3>Planimetría</h3>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p>Carga circuito.kml para ver su contenido</p>
-            <label for="kml">Archivos SVG:</label>
+            <label for="kml">Archivos KML:</label>
             <input id="kml" type="file" accept=".kml" onchange="circuito.procesarPlanimetria(this.files);" multiple>
             <!-- mapa dinamico -->
             <div id="mapaDinamicoKML"></div>

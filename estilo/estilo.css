@@ -101,13 +101,21 @@ ol {
 video {
     max-width: 60%; /* Reduce el tamaño relativo al contenedor */
 }
-img {
+
+/*imagenes del xml del circuito, para que no afecten a otras imagenes*/
+section > img {
     width: 50vw;
     height: auto;
 }
 
+/*mapa dinamico*/
+section > div {
+    width: 90%; 
+    height: 50vh; 
+}
+
 /*especificidad (0,0,2) */
-article a {
+section a {
     /* acorta los enlaces para que las referencias no sobresalgan */
     word-wrap: break-word;
 }

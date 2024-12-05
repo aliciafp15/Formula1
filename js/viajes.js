@@ -98,16 +98,14 @@ class Viajes {
 
 
     getMapaDinamicoMapBox() {
-
-
         var lng = parseFloat(this.longitud);
         var lat = parseFloat(this.latitud)
         mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbGdzMnZweWowZWEyM2NvYWZkODMxZXpoIn0.ghWod73o3jm9F1lPOhfsjw';
         const map = new mapboxgl.Map({
             container: 'mapaDinamico', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [this.longitud, this.latitud], // starting position [lng, lat]
-            zoom: 15,
+            center: [lng, lat], // starting position [lng, lat]
+            zoom: 9,
 
         });
         // no necesito añadir el mapa al DOM si ya tengo el contenedor
@@ -116,12 +114,6 @@ class Viajes {
         const marker = new mapboxgl.Marker()
             .setLngLat([lng, lat])
             .addTo(map);
-
-        map.resize();
-
-        
-
-        
     }
 
 

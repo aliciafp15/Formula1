@@ -15,7 +15,7 @@ class Circuito {
             reader.onload = (e) => {
                 const contenidoXml = e.target.result;
                 const contenidoHtml = this.parsearXmlAHtml(contenidoXml);
-                $("main>section[data-element='zonaXML']").append(contenidoHtml);
+                $("main > section:first-of-type").append(contenidoHtml);
 
 
             };
@@ -69,7 +69,7 @@ class Circuito {
         const altitudCircuito = coordenadas.find("altitudCircuito").text();
 
         html += `
-            <article>
+            <section>
                 <h4>${nombre} - Circuito</h4>
                 <p>Localidad: ${localidad}, ${pais}</p>
                 <p>Longitud: ${longitud} km</p>
@@ -82,6 +82,7 @@ class Circuito {
                 <p>Coordenadas del Circuito: (${latitudCircuito}, ${longitudCircuito}) a ${altitudCircuito} m</p>
                 ${fotos}
         `;
+        html += `<ul>`
 
 
         // Procesar los tramos
@@ -96,16 +97,16 @@ class Circuito {
             const altitudTramo = coordenadasTramo.find("altitudTramo").text();
 
             html += `
-            <section>
-                <h5>Tramo ${index + 1}</h5>
-                <p>Distancia: ${dist} ${distUnidad}</p>
-                <p>Coordenadas del Tramo: (${latitudTramo}, ${longitudTramo}) a ${altitudTramo} m</p>
-                <p>Número de sector: ${nSector}</p>
-            </section>
+            <li>
+            Tramo ${index + 1} Distancia: ${dist} ${distUnidad} (${latitudTramo}, ${longitudTramo},${altitudTramo}m) NSector: ${nSector}</p>
+            </li>
         `;
         });
 
-        html += `</article>`
+        html += `</ul>`
+
+
+        html += `</section>`
 
 
         return html;
@@ -126,9 +127,8 @@ class Circuito {
                 if (coordenadas.length > 0) {
                     this.agregarRutaAlMapa(coordenadas, i); // Agregar la ruta al mapa dinámico
                     // Ajustar el contenedor del mapa de planimetría
-                    var seccionPlanimetria = $("main>section[data-element='zonaKML']");
+                    var seccionPlanimetria = $("main > section:nth-of-type(3)");
                     var primerHijoSection = seccionPlanimetria.children("section:first");
-                    primerHijoSection.attr("data-element", "mapaPlanimetria");
                 } else {
                     console.error('El archivo KML no contiene coordenadas válidas.');
                 }
@@ -239,7 +239,7 @@ class Circuito {
             let svg = $(xml).find("svg");
             svg.attr("version", "1.1");
 
-            $("main>section[data-element='zonaSVG']").append(svg);
+            $("main > section:nth-of-type(2)").append(svg);
         };
 
         reader.readAsText(file);
