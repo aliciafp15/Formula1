@@ -16,7 +16,7 @@ h3, section > p:last-child {
     text-align: center; 
 }
 
-div {
+section > div {
     /* color-color heredado de body */
     background-color: #0007;
     border-width: 0.5em;
@@ -24,6 +24,8 @@ div {
     border-color: #000000;
     aspect-ratio: 1;
     border-radius: 50%;
+    width: 85%;
+    height: auto;
 }
 
 

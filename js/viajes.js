@@ -54,7 +54,7 @@ class Viajes {
 
             var mapaEstatico = document.createElement("img");
 
-            var api_token = "pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbGdzMnZweWowZWEyM2NvYWZkODMxZXpoIn0.ghWod73o3jm9F1lPOhfsjw";
+            var api_token = "pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidnpucmIwM3ZoMmpzOHdiYmg4ZjNjIn0.l-Ye9cgCVtEZRsouG2-zcA";
             var zoom = 15; // zoom: 1 (el mundo), 5 (continentes), 10 (ciudad), 15 (calles), 20 (edificios)
             var tamMapa = "600x500"; // se define el tamaño en pixeles
             var colorPin = "ff0000";
@@ -73,7 +73,7 @@ class Viajes {
             mapaEstatico.setAttribute("src", api_url);
             mapaEstatico.setAttribute("alt", "Mapa geográfico de tu ubicación actual");
 
-            var seccionEstatico = $("main>section[data-element='estatico']");
+            var seccionEstatico = $("main > section:nth-of-type(1)");
             seccionEstatico.append(mapaEstatico);
 
 
@@ -92,7 +92,7 @@ class Viajes {
         }
 
         //elimina el botón que obtiene el mapa
-        document.querySelector("section[data-element='estatico'] input[type='button']").remove();
+        document.querySelector("main > section:nth-of-type(1) input[type='button']").remove();
 
     }
 
@@ -100,9 +100,10 @@ class Viajes {
     getMapaDinamicoMapBox() {
         var lng = parseFloat(this.longitud);
         var lat = parseFloat(this.latitud)
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbGdzMnZweWowZWEyM2NvYWZkODMxZXpoIn0.ghWod73o3jm9F1lPOhfsjw';
+        //st = sk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidzY3dDAwNHdhMndzYzFnaDdhNG92In0.8BMSzERGai1QdUdH90rlow
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidnpucmIwM3ZoMmpzOHdiYmg4ZjNjIn0.l-Ye9cgCVtEZRsouG2-zcA';
         const map = new mapboxgl.Map({
-            container: 'mapaDinamico', // container ID
+            container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
             center: [lng, lat], // starting position [lng, lat]
             zoom: 9,
@@ -114,6 +115,18 @@ class Viajes {
         const marker = new mapboxgl.Marker()
             .setLngLat([lng, lat])
             .addTo(map);
+    }
+
+    getMapaDinamicoMapBox2() {
+        var lng = parseFloat(this.longitud);
+        var lat = parseFloat(this.latitud)
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidnpucmIwM3ZoMmpzOHdiYmg4ZjNjIn0.l-Ye9cgCVtEZRsouG2-zcA';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [-74.5, 40],
+            zoom: 9 // starting zoom
+        });
+
     }
 
 

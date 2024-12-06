@@ -97,7 +97,7 @@ if (count($_POST) > 0) {
 <head>
   <!-- Datos que describen el documento -->
   <meta charset="UTF-8" />
-  <title>F1 Desktop - Memoria</title> <!--Asegurarme de que el título les guste-->
+  <title>F1 Desktop - Semáforo</title> <!--Asegurarme de que el título les guste-->
   <meta name="author" content="Alicia Fernández Pushkina" />
   <meta name="description" content="documento para utilizar en otros módulos de la asignatura" />
   <meta name="keywords" content="html, css, index" />
@@ -122,7 +122,7 @@ if (count($_POST) > 0) {
       <a href="calendario.html" title="Consultar el calendario">Calendario</a>
       <a href="meteorologia.html" title="Revisar la meteorología">Meteorología</a>
       <a href="circuito.html" title="Información sobre el circuito">Circuito</a>
-      <a href="viajes.html" title="Planificar tus viajes">Viajes</a>
+      <a href="viajes.php" title="Planificar tus viajes">Viajes</a>
       <a href="juegos.html" class="active" title="Explorar juegos">Juegos</a>
     </nav>
 

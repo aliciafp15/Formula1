@@ -92,7 +92,6 @@ class Moneda
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/viajes.css" />
     <link rel="stylesheet" type="text/css" href="estilo/carrusel.css" />
 
 
@@ -100,7 +99,6 @@ class Moneda
     <script src="js/viajes.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <!--<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" />--quitar-->
 
     <!--mapa dnámico-->
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
@@ -146,7 +144,7 @@ class Moneda
         <section>
             <h3>Mapa dinámico - Ubicación Actual</h3>
             <!-- mapa dinamico -->
-            <div id="mapaDinamico"></div>
+            <div id="map"></div>
         </section>
 
 

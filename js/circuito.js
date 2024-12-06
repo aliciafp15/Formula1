@@ -161,7 +161,7 @@ class Circuito {
     agregarRutaAlMapa(coordenadas, rutaId) {
         var lng = 9.281183;
         var lat = 45.618978;
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbGdzMnZweWowZWEyM2NvYWZkODMxZXpoIn0.ghWod73o3jm9F1lPOhfsjw';
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidnpucmIwM3ZoMmpzOHdiYmg4ZjNjIn0.l-Ye9cgCVtEZRsouG2-zcA';
 
         // Crear el mapa si aún no está creado
         if (!this.mapPlanimetria) {
