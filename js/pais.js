@@ -55,7 +55,7 @@ class Pais {
     }
 
     obtenerCoordenadas() {
-        return `Coordenadas de la línea de meta del circuito: ${this.latitud}, ${this.longitud}`;
+        return `Coordenadas de la línea de meta del circuito: (${this.latitud}, ${this.longitud})`;
     }
 
 
@@ -112,7 +112,7 @@ class Pais {
                     section.append(dayArticle);
                 });
     
-                $('body').append(section);
+                $('main').append(section);
                 console.log(filteredList);
             },
             error: function(error) {

@@ -47,10 +47,14 @@ nav {
         gap: 0.72em;
     }
 
-    /*especificidad (0,0,2) */
+    /*
+    para qué tengo esa regla?
+    /*especificidad (0,0,2) 
     body>p {
         display: none;
     }
+
+    */
 
 
 }

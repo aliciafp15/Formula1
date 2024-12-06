@@ -16,7 +16,8 @@
 
   <link href="multimedia/imagenes/favicon.ico" rel="icon" />
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
   <script src="js/pais.js"></script>
 
 </head>
@@ -39,23 +40,32 @@
 
   <p>Estás en: <a href="index.html " title="Volver a inicio">Inicio</a> >> Meteorologia</p>
   <main>
-    <h2>Meteorologia</h2>
+    <article>
+      <h2>Información de Monza
+      </h2>
+      <script>
+        var pais = new Pais("Italia", "Roma", 58990000);
+        pais.rellenarAtributos("Monza", "República parlamentaria unitaria", "45.616026", "9.280837", "Cristianismo");//lat, long //45.616026°N 9.280837°E
+
+        // Crear contenido dinámico
+        var contenido = `
+        <p>País: ${pais.getNombre()}</p>
+        <p>Capital: ${pais.getCapital()}</p>
+        <p>Coordenadas: ${pais.obtenerCoordenadas()}</p>
+        <h3>Información secundaria</h3>
+        ${pais.obtenerInfoSecundaria()}
+      `;
+
+        document.write(contenido);
+        pais.mirarTiempo();
+
+      </script>
+
+    </article>
+
   </main>
 
-  <script>
-    var pais = new Pais("Italia", "Roma", 58990000);
-    pais.rellenarAtributos("Monza", "República parlamentaria unitaria", "45.616026", "9.280837", "Cristianismo");//lat, long //45.616026°N 9.280837°E
 
-    document.write("<p>País: " + pais.getNombre() + "</p>");
-    document.write("<p>Capital: " + pais.getCapital() + "</p>");
-    pais.obtenerCoordenadas();
-    document.write("<p>Más datos:</p>");
-    document.write(pais.obtenerInfoSecundaria());
-
-
-    pais.mirarTiempo();
-
-  </script>
 
 </body>
 
