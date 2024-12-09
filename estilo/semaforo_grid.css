@@ -28,6 +28,21 @@ section > div {
     height: auto;
 }
 
+/* Botón de "Arrancar Semáforo" en la tercera fila, ocupando las 4 columnas */
+section > button:first-of-type {
+    grid-row: 3;             /* Ubicado en la tercera fila */
+    grid-column: span 4;     /* Ocupa 4 columnas */
+    justify-self: center;    /* Centrado horizontalmente */
+}
+
+/* Botón de "Pulsa para medir reacción" en la cuarta fila, ocupando las 4 columnas */
+section > button:nth-of-type(2) {
+    grid-row: 4;             /* Ubicado en la cuarta fila */
+    grid-column: span 4;     /* Ocupa 4 columnas */
+    justify-self: center;    /* Centrado horizontalmente */
+}
+
+
 
 
 

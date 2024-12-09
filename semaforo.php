@@ -38,9 +38,9 @@ class Record
       //ejecutar sentencia
       $consultaPreparada->execute();
       // mostrar mensaje
-      if ($consultaPreparada->affected_rows > 0) {
-        $this->mensaje = "<h4>Tiempo registrado</h4>";
-      }
+      //if ($consultaPreparada->affected_rows > 0) {
+      //  $this->mensaje = "<h4>Tiempo registrado</h4>";
+      //}
       $consultaPreparada->close();
       $db->close();
     }
@@ -63,11 +63,14 @@ class Record
       $resultado = $consultaPreparada->get_result();
       if ($resultado->fetch_assoc() != NULL) {
         $resultado->data_seek(0); // se posiciona al inicio del resultado de la búsqueda
+        $this->clasificacion .= "<section><h4>Ranking</h4>";
         $this->clasificacion .= "<ol>";
         while ($fila = $resultado->fetch_assoc()) {
           $this->clasificacion .= "<li>" . $fila['nombre'] . " " . $fila['apellidos'] . " ~ " . $fila['nivel'] . " ~ " . $fila["tiempo"] . "segundos </li>";
         }
-        $this->clasificacion .= "</ul>";
+        $this->clasificacion .= "</ol>";
+        $this->clasificacion .= "</section>";
+
       } //si no hay elementos en la base de datos, es que no se ha guardado ninguna persona en el formulario, por lo que no se muestra
       $consultaPreparada->close();
       $db->close();
