@@ -1,3 +1,12 @@
+/*datos personales Alicia Fernández Pushkina y UO275727*/
+/* palet SECRET ROMANCE
+    sand dollar: #FCEFAB
+    tangerine: #d3a550
+    black: #121110
+    red: #940A0A
+
+*/
+/*especificidad (0,1,2) */
 main > section:first-of-type {
 
     width: 65%;
@@ -10,12 +19,13 @@ main > section:first-of-type {
     align-items: center;
 }
 
-
+/*especificidad (0,1,2) */
 h3, section > p:last-child {
     grid-column: 1 / -1; 
     text-align: center; 
 }
 
+/*especificidad (0,0,2) */
 section > div {
     /* color-color heredado de body */
     background-color: #0007;
@@ -29,6 +39,7 @@ section > div {
 }
 
 /* Botón de "Arrancar Semáforo" en la tercera fila, ocupando las 4 columnas */
+/*especificidad (0,1,2) */
 section > button:first-of-type {
     grid-row: 3;             /* Ubicado en la tercera fila */
     grid-column: span 4;     /* Ocupa 4 columnas */
@@ -36,6 +47,7 @@ section > button:first-of-type {
 }
 
 /* Botón de "Pulsa para medir reacción" en la cuarta fila, ocupando las 4 columnas */
+/*especificidad (0,1,2) */
 section > button:nth-of-type(2) {
     grid-row: 4;             /* Ubicado en la cuarta fila */
     grid-column: span 4;     /* Ocupa 4 columnas */
@@ -56,6 +68,7 @@ section > button:nth-of-type(2) {
     }
 }
 
+/*especificidad (0,1,3) */
 main.unload > section > div {
     animation-name: out;
     animation-duration: 0.1s;
@@ -73,13 +86,14 @@ main.unload > section > div {
         background-color: #FF0000; /* Redefinición de la propiedad */
     }
 }
-
+/*especificidad (0,2,3) */
 main.load > section > div:first-of-type {
     animation-name: turnOn;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
 
+/*especificidad (0,2,3) */
 main.load > section > div:nth-of-type(2) {
     animation-name: turnOn;
     animation-delay: 0.5s;
@@ -87,20 +101,21 @@ main.load > section > div:nth-of-type(2) {
     animation-fill-mode: forwards;
 }
 
+/*especificidad (0,2,3) */
 main.load > section > div:nth-of-type(3) {
     animation-name: turnOn;
     animation-delay: 1s;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
-
+/*especificidad (0,2,3) */
 main.load > section > div:nth-of-type(4) {
     animation-name: turnOn;
     animation-delay: 1.5s;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
-
+/*especificidad (0,0,1) */
 form {
     display: flex;
     flex-direction: row;
@@ -109,14 +124,17 @@ form {
     justify-content: space-around;
 }
 
+/*especificidad (0,0,1) */
 input {
     margin: 0.5em 0;
     padding: 0.75em 1.25em;
-    border: 0.2em solid black;
+    border-width: 0.2em;
+    border-style: solid;
+    border-color: black;
     display: block;
     box-sizing: border-box;
 }
-
+/*especificidad (0,0,1) */
 label {
     font-size: 1.5em;  
 }

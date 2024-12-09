@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="es"><head>
+  <!-- Datos que describen el documento -->
+  <meta charset="UTF-8">
+  <title>F1 Desktop - Semáforo</title> <!--Asegurarme de que el título les guste-->
+  <meta name="author" content="Alicia Fernández Pushkina">
+  <meta name="description" content="documento para utilizar en otros módulos de la asignatura">
+  <meta name="keywords" content="html, css, index">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--definir la ventana gráfica-->
+  <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+  <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+  <link rel="stylesheet" type="text/css" href="estilo/semaforo_grid.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <link href="multimedia/imagenes/favicon.ico" rel="icon">
+  <script src="js/semaforo.js"></script>
+</head>
+
+<body>
+  <header>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <h1><a href="index.html" title="Volver al inicio">F1 Desktop</a></h1>
+    <nav>
+      <a href="index.html" title="Volver a la página de inicio">Index</a>
+      <a href="piloto.html" title="Ver información sobre el piloto">Piloto</a>
+      <a href="noticias.html" title="Leer las últimas noticias">Noticias</a>
+      <a href="calendario.html" title="Consultar el calendario">Calendario</a>
+      <a href="meteorologia.html" title="Revisar la meteorología">Meteorología</a>
+      <a href="circuito.html" title="Información sobre el circuito">Circuito</a>
+      <a href="viajes.php" title="Planificar tus viajes">Viajes</a>
+      <a href="juegos.html" class="active" title="Explorar juegos">Juegos</a>
+    </nav>
+
+  </header>
+  <p>Estás en: <a href="index.html" title="Volver al inicio">Inicio</a> &gt;&gt; <a href="juegos.html" title="Volver a ver los juegos">Juegos</a> &gt;&gt; Semáforo</p>
+  <!--menu de juegos-->
+  <section>
+    <h2>Juegos</h2>
+    <nav>
+      <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
+      <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
+      <a href="api.html" title="Ir al juego de la API">API</a>
+    </nav>
+  </section>
+
+  <main class="">
+  <section><h3>Juego del Semáforo</h3><div></div><div></div><div></div><div></div><button type="button">Arrancar Semáforo</button><button type="button" disabled="">Pulsa para medir reacción</button><p>Tiempo de reacción: 0.448 milisegundos</p></section><section><h4>Registra tu puntuación</h4><form action="#" method="post" name="record">
+            <label for="nombre">Nombre:
+                <input type="text" id="nombre" name="nombre" required="" placeholder="Ingrese su nombre">
+            </label>
+            <label for="apellidos">Apellidos:
+                <input type="text" id="apellidos" name="apellidos" required="" placeholder="Ingrese sus apellidos">
+            </label>
+            <label for="tiempo">Tiempo:
+                <input type="text" id="tiempo" name="tiempo" value="0.448" readonly="">
+            </label>
+            <label for="nivel">Dificultad:
+                <input type="text" id="nivel" name="nivel" value="0.5" readonly="">
+            </label>
+            <input type="submit" value="Guardar registro">
+        </form></section></main>
+
+  <!-- codigo php para mostrar la clasificación -->
+    <section><h4>Ranking</h4><ol><li>Alicia Fernández Pushkina ~ 0.2 ~ 0.451segundos </li><li>dsdgsdfesdfsfsdfsdf sdfsdfsdfsdfsf ~ 0.2 ~ 0.458segundos </li><li>Alicia Fernández Pushkina ~ 0.2 ~ 0.462segundos </li><li>Quiero Llorar ~ 0.2 ~ 0.481segundos </li><li>Alicia Fernández Pushkina ~ 0.2 ~ 0.491segundos </li><li>Lara Méndez ~ 0.2 ~ 0.494segundos </li><li>Lara Méndez ~ 0.2 ~ 0.564segundos </li><li>dsf ssdfsdf ~ 0.2 ~ 0.668segundos </li><li>rwerwer werwerwer ~ 0.2 ~ 0.712segundos </li><li>DFDFDFS SFSF ~ 0.2 ~ 1.068segundos </li></ol></section>
+  <script>
+    var juego = new Semaforo();
+  </script>
+
+
+</body></html>

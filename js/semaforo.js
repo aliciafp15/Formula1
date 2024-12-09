@@ -47,7 +47,7 @@ class Semaforo {
         reactionButton.textContent = "Pulsa para medir reacción";
         reactionButton.setAttribute("type", "button");
         reactionButton.onclick = this.stopReaction.bind(this);
-        reactionButton.setAttribute("disabled", "true");
+        reactionButton.setAttribute("disabled", "");
         seccion.appendChild(reactionButton);
 
         main.appendChild(seccion);
@@ -70,7 +70,7 @@ class Semaforo {
         // Deshabilitar el botón "Arrancar"
         document
             .querySelector("body > main > section > button:first-of-type")
-            .setAttribute("disabled", "true");
+            .setAttribute("disabled", "");
 
         setTimeout(() => {
             this.unload_moment = new Date().getTime(); //obtener la fecha y hora actual
@@ -112,7 +112,7 @@ class Semaforo {
 
         //deshabilitar el botón “Reacción” y habilitar el botón “Arranque”.
         document.querySelector("body>main>section>button:first-of-type").removeAttribute("disabled");
-        document.querySelector("body>main>section>button:nth-of-type(2)").setAttribute("disabled", "true");
+        document.querySelector("body>main>section>button:nth-of-type(2)").setAttribute("disabled", "");
 
         //llamar al formulario de los records
         this.createRecordForm();
