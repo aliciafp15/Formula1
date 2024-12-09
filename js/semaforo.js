@@ -153,5 +153,44 @@ class Semaforo {
         $("body").append(form);
 
     }
-}
 
+    createRecordForm() {
+        const main = document.querySelector("main");
+    
+        // Crear una nueva sección para el formulario y el ranking
+        const recordSection = document.createElement("section");
+        const encabezado = document.createElement("h4");
+        encabezado.textContent = "Registra tu puntuación";
+        recordSection.appendChild(encabezado);
+    
+        // Crear el formulario
+        const form = document.createElement("form");
+        form.setAttribute("action", "#");
+        form.setAttribute("method", "post");
+        form.setAttribute("name", "record");
+    
+        // Agregar campos al formulario con innerHTML o nodos DOM
+        form.innerHTML = `
+            <label for="nombre">Nombre:
+                <input type="text" id="nombre" name="nombre" required placeholder="Ingrese su nombre">
+            </label>
+            <label for="apellidos">Apellidos:
+                <input type="text" id="apellidos" name="apellidos" required placeholder="Ingrese sus apellidos">
+            </label>
+            <label for="tiempo">Tiempo:
+                <input type="text" id="tiempo" name="tiempo" value="${this.tiempo}" readonly>
+            </label>
+            <label for="nivel">Dificultad:
+                <input type="text" id="nivel" name="nivel" value="${this.difficulty}" readonly>
+            </label>
+            <input type="submit" value="Guardar registro">
+        `;
+    
+        // Agregar el formulario a la sección
+        recordSection.appendChild(form);
+    
+        // Agregar la sección al main
+        main.appendChild(recordSection);
+    }
+    
+}
