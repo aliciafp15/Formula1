@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 class Record
 {
   private $server;
@@ -133,7 +137,7 @@ if (count($_POST) > 0) {
     <h2>Juegos</h2>
     <nav>
       <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
-      <a href="semaforo.html" title="Ir al juego del semáforo">Semáforo</a>
+      <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
       <a href="api.html" title="Ir al juego de la API">API</a>
     </nav>
   </section>
