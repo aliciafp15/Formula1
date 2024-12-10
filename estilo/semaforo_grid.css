@@ -41,7 +41,8 @@ section > div {
 /* Botón de "Arrancar Semáforo" en la tercera fila, ocupando las 4 columnas */
 /*especificidad (0,1,2) */
 section > button:first-of-type {
-    grid-row: 3;             /* Redefinición de grid-row-start y Redefinición de grid-row-end */
+    grid-row-start: 3;             /* Redefinición de grid-row-start y Redefinición de grid-row-end */
+    grid-row-end: 3;
     grid-column: span 4;     
     justify-self: center;    
 }
@@ -49,7 +50,8 @@ section > button:first-of-type {
 /* Botón de "Pulsa para medir reacción" en la cuarta fila, ocupando las 4 columnas */
 /*especificidad (0,1,2) */
 section > button:nth-of-type(2) {
-    grid-row: 4;              /* Redefinición de grid-row-start y Redefinición de grid-row-end */
+    grid-row-start: 4;              /* Redefinición de grid-row-start y Redefinición de grid-row-end */
+    grid-row-end: 4;
     grid-column: span 4;     
     justify-self: center;   
 }
