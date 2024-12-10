@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es">
-<head>
+<html lang="es"><head>
   <!-- Datos que describen el documento -->
   <meta charset="UTF-8">
   <title>F1 Desktop - Metereología</title> <!--Asegurarme de que el título les guste-->
@@ -30,30 +29,38 @@
       <a href="calendario.html" title="Consultar el calendario">Calendario</a>
       <a href="meteorologia.html" class="active" title="Revisar la meteorologia">Meteorologia</a>
       <a href="circuito.html" title="Información sobre el circuito">Circuito</a>
-      <a href="viajes.html" title="Planificar tus viajes">Viajes</a>
+      <a href="viajes.php" title="Planificar tus viajes">Viajes</a>
       <a href="juegos.html" title="Explorar juegos">Juegos</a>
     </nav>
   </header>
 
   <p>Estás en: <a href="index.html " title="Volver a inicio">Inicio</a> &gt;&gt; Meteorologia</p>
   <main>
-    <h2>Meteorologia</h2>
-  </main>
+    <article>
+      <h2>Información de Monza
+      </h2>
+      <script>
+        var pais = new Pais("Italia", "Roma", 58990000);
+        pais.rellenarAtributos("Monza", "República parlamentaria unitaria", "45.616026", "9.280837", "Cristianismo");//lat, long //45.616026°N 9.280837°E
 
-  <script>
-    var pais = new Pais("Italia", "Roma", 58990000);
-    pais.rellenarAtributos("Monza", "República parlamentaria unitaria", "45.616026", "9.280837", "Cristianismo");//lat, long //45.616026°N 9.280837°E
+        // Crear contenido dinámico
+        var contenido = `
+        <p>País: ${pais.getNombre()}</p>
+        <p>Capital: ${pais.getCapital()}</p>
+        <p>Coordenadas: ${pais.obtenerCoordenadas()}</p>
+        <h3>Información secundaria</h3>
+        ${pais.obtenerInfoSecundaria()}
+      `;
 
-    document.write("<p>País: " + pais.getNombre() + "</p>");
-    document.write("<p>Capital: " + pais.getCapital() + "</p>");
-    pais.obtenerCoordenadas();
-    document.write("<p>Más datos:</p>");
-    document.write(pais.obtenerInfoSecundaria());
+        document.write(contenido);
+        pais.mirarTiempo();
 
-
-    pais.mirarTiempo();
-
-  </script><p>País: Italia</p><p>Capital: Roma</p><p>Más datos:</p>
+      </script>
+        <p>País: Italia</p>
+        <p>Capital: Roma</p>
+        <p>Coordenadas: Coordenadas de la línea de meta del circuito: (45.616026, 9.280837)</p>
+        <h3>Información secundaria</h3>
+        
             <ul>
                 <li>Nombre del Circuito: Monza</li>
                 <li>Población: 58990000</li>
@@ -61,42 +68,49 @@
                 <li>Religión Mayoritaria:Cristianismo</li>
             </ul>
         
+      
 
+    </article>
 
-
-<section><h2> Tiempo en la linea de meta de Monza para los próximos 5 días </h2><article>
-                        <h3>2024-12-03</h3>
-                        <p>Temp. Máxima: 9.43°C</p>
-                        <p>Temp. Mínima: 8.97°C</p>
+  <section><h3>Tiempo en la linea de meta de Monza para los próximos 5 días</h3><article>
+                        <h4>2024-12-11</h4>
+                        <p>Temp. Máxima: 8.32°C</p>
+                        <p>Temp. Mínima: 8.32°C</p>
+                        <p>Humedad: 49%</p>
+                        <p>Lluvia: 0 mm</p>
+                        <img src="https://openweathermap.org/img/wn/01d.png" alt="Icono del tiempo">
+                    </article><article>
+                        <h4>2024-12-12</h4>
+                        <p>Temp. Máxima: 7.12°C</p>
+                        <p>Temp. Mínima: 7.12°C</p>
+                        <p>Humedad: 65%</p>
+                        <p>Lluvia: 0 mm</p>
+                        <img src="https://openweathermap.org/img/wn/01d.png" alt="Icono del tiempo">
+                    </article><article>
+                        <h4>2024-12-13</h4>
+                        <p>Temp. Máxima: 5.73°C</p>
+                        <p>Temp. Mínima: 5.73°C</p>
                         <p>Humedad: 67%</p>
                         <p>Lluvia: 0 mm</p>
-                        <img src="https://openweathermap.org/img/wn/01d.png" alt="Icono del tiempo">
+                        <img src="https://openweathermap.org/img/wn/04d.png" alt="Icono del tiempo">
                     </article><article>
-                        <h3>2024-12-04</h3>
-                        <p>Temp. Máxima: 9.68°C</p>
-                        <p>Temp. Mínima: 9.68°C</p>
-                        <p>Humedad: 45%</p>
-                        <p>Lluvia: 0 mm</p>
-                        <img src="https://openweathermap.org/img/wn/02d.png" alt="Icono del tiempo">
-                    </article><article>
-                        <h3>2024-12-05</h3>
-                        <p>Temp. Máxima: 8.39°C</p>
-                        <p>Temp. Mínima: 8.39°C</p>
-                        <p>Humedad: 38%</p>
-                        <p>Lluvia: 0 mm</p>
-                        <img src="https://openweathermap.org/img/wn/01d.png" alt="Icono del tiempo">
-                    </article><article>
-                        <h3>2024-12-06</h3>
-                        <p>Temp. Máxima: 7.76°C</p>
-                        <p>Temp. Mínima: 7.76°C</p>
-                        <p>Humedad: 27%</p>
+                        <h4>2024-12-14</h4>
+                        <p>Temp. Máxima: 6.47°C</p>
+                        <p>Temp. Mínima: 6.47°C</p>
+                        <p>Humedad: 69%</p>
                         <p>Lluvia: 0 mm</p>
                         <img src="https://openweathermap.org/img/wn/04d.png" alt="Icono del tiempo">
                     </article><article>
-                        <h3>2024-12-07</h3>
-                        <p>Temp. Máxima: 6.87°C</p>
-                        <p>Temp. Mínima: 6.87°C</p>
-                        <p>Humedad: 44%</p>
+                        <h4>2024-12-15</h4>
+                        <p>Temp. Máxima: 7.97°C</p>
+                        <p>Temp. Mínima: 7.97°C</p>
+                        <p>Humedad: 41%</p>
                         <p>Lluvia: 0 mm</p>
-                        <img src="https://openweathermap.org/img/wn/04d.png" alt="Icono del tiempo">
-                    </article></section></body></html>
+                        <img src="https://openweathermap.org/img/wn/01d.png" alt="Icono del tiempo">
+                    </article></section></main>
+
+
+
+
+
+</body></html>
