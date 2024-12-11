@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es">
-<head>
+<html lang="es"><head>
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8">
     <title>F1 Desktop - Noticias</title> <!--Asegurarme de que el título les guste-->
@@ -32,7 +31,7 @@
             <a href="juegos.html" title="Explorar juegos">Juegos</a>
         </nav>
     </header>
-    <p>Estás en: <a href="index.html" title="Volver al inicio">Inicio</a>  Noticias</p>
+    <p>Estás en: <a href="index.html" title="Volver al inicio">Inicio</a> &gt;&gt; Noticias</p>
     <main>
         <section>
             <h2>Noticias</h2>
@@ -42,17 +41,19 @@
             </label>
 
 
-        <article><h3>Alonso, más cerca de ser historia en Asturias</h3><h4>El asturiano está en proceso de ampliar su museo y circuito consiguiendo algo nunca antes visto en el Principado</h4><p>Javier Pazos</p></article><article><h3>Briatore asegura que da igual el piloto que fiche Alpine para 2025</h3><h4>Cree que no marcará la diferencia y se quiere centrar en 2026</h4><p>Pol Hermoso</p></article><article><h3>En McLaren creen en la remontada de Aston Martin</h3><h4>Zak Brown, CEO de la escudería británica, asegura que en 2025 puede haber varios equipos que mejoren su rendimiento, cómo han hecho ellos este año</h4><p>Manuel Rodriguez</p></article></section>
+        </section>
 
         <section>
             <h3>Nueva noticia</h3>
             <form name="noticia">
-                <p><label for="titular">Titular: <input type="text" placeholder="Inserte el titular" required=""></label>
-                </p>
+                <label>
+                    Titular:
+                    <input type="text" placeholder="Inserte el titular" required="">
+                </label>
 
-                <p><label for="entradilla">Entradilla:<input type="text" placeholder="Inserte la entradilla" required=""></label></p>
+                <label>Entradilla:<input type="text" placeholder="Inserte la entradilla" required=""></label>
 
-                <p><label for="autor">Autor:<input type="text" placeholder="Inserte el autor" required=""></label></p>
+                <label>Autor:<input type="text" placeholder="Inserte el autor" required=""></label>
 
             </form>
             <button onclick="noticias.incluirNuevaNoticiaHTML()">Añadir</button>
