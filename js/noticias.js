@@ -71,9 +71,9 @@ class Noticias {
         // Añadir elementos a la sección
         $("main>section:last")
             .append("<h3>Nueva noticia</h3>")
-            .append("<p><label for='titulo'>Titulo:</label> <input type='text' id='titulo' placeholder='Inserte el titulo' required></p>")
-            .append("<p><label for='entradilla'>Entradilla:</label> <input type='text' id='subtitulo' placeholder='Inserte la entradilla' required></p>")
-            .append("<p><label for='autor'>Autor:</label> <input type='text' id='autor' placeholder='Inserte el autor' required></p>")
+            .append("<label><input type='text'  placeholder='Inserte el titulo' required>Titulo:</label> ")
+            .append("<label><input type='text'  placeholder='Inserte la entradilla' required>Entradilla:</label> ")
+            .append("<label></label> <input type='text' placeholder='Inserte el autor' required>Autor:")
             .append("<button type='button'>Añadir</button>")
             .find("button") // Busca el último botón dentro de la sección
             .on("click", () => this.incluirNuevaNoticiaHTML());
@@ -83,9 +83,9 @@ class Noticias {
 
     incluirNuevaNoticiaHTML() {
         // Obtener valores de los inputs
-        var titular = $("main > section:last form p:first input").val();
-        var entradilla = $("main > section:last form p:nth-of-type(2) input").val();
-        var autor = $("main > section:last form p:last input").val();
+        var titular = $("main > section:last form input:first").val();
+        var entradilla = $("main > section:last form input:eq(2)").val();
+        var autor = $("main > section:last form  input:last").val();
 
         // Validar campos
         if (!titular || !entradilla || !autor) {

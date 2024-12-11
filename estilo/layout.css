@@ -50,6 +50,7 @@ form {
     header>nav {
         /* Redefinición de flex-direction: para pantallas pequeñas */
         flex-direction: column;
+         /* Redefinición de gap: para pantallas pequeñas */
         gap: 0.72em;
     }
 
