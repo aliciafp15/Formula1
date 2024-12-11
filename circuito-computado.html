@@ -9,10 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
-    <link rel="stylesheet" type="text/css" href="estilo/circuito.css">
-
     <link href="multimedia/imagenes/favicon.ico" rel="icon">
-
     <script src="js/circuito.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -26,29 +23,29 @@
     <header>
         <h1><a href="index.html" title="Volver al inicio">F1 Desktop</a></h1>
         <nav>
-            <a href="index.html" title="Volver a la página de inicio">Index</a>
-            <a href="piloto.html" title="Ver información sobre el piloto">Piloto</a>
-            <a href="noticias.html" title="Leer las últimas noticias">Noticias</a>
-            <a href="calendario.html" title="Consultar el calendario">Calendario</a>
-            <a href="meteorologia.html" title="Revisar la meteorología">Meteorología</a>
-            <a href="circuito.html" class="active" title="Información sobre el circuito">Circuito</a>
-            <a href="viajes.html" title="Planificar tus viajes">Viajes</a>
-            <a href="juegos.html" title="Explorar juegos">Juegos</a>
+          <a href="index.html" title="Volver a la página de inicio">Index</a>
+          <a href="piloto.html" title="Ver información sobre el piloto">Piloto</a>
+          <a href="noticias.html" title="Leer las últimas noticias">Noticias</a>
+          <a href="calendario.html" title="Consultar el calendario">Calendario</a>
+          <a href="meteorologia.html" title="Revisar la meteorologia">Meteorologia</a>
+          <a href="circuito.html" class="active" title="Información sobre el circuito">Circuito</a>
+          <a href="viajes.php" title="Planificar tus viajes">Viajes</a>
+          <a href="juegos.html" title="Explorar juegos">Juegos</a>
         </nav>
-    </header>
+      </header>
     <p>Estás en: <a href="index.html" title="Volver al inicio">Inicio</a> &gt;&gt; Circuito</p>
 
     <main>
         <h2>Circuito</h2>
 
-        <section data-element="zonaXML">
+        <section>
             <h3>Carga de archivo XML</h3>
             <!-- El atributo multiple por defecto es false, por lo que solo permite la carga de 1 archivo -->
             <p>Carga circuitoEsquema.xml para ver su contenido:</p>
-            <label for="xml">Archivos XML:</label>
-            <input id="xml" type="file" accept=".xml" onchange="circuito.procesarXml(this.files)">
+            <label>Archivos XML:<input type="file" accept=".xml" onchange="circuito.procesarXml(this.files)"></label>
+            
         
-            <article>
+            <section>
                 <h4>Monza - Circuito</h4>
                 <p>Localidad: Monza, Italia</p>
                 <p>Longitud: 5793 km</p>
@@ -60,166 +57,106 @@
                 <ul><li><a href="https://es.wikipedia.org/wiki/Autodromo_Nazionale_di_Monza" title="Referencia 1">https://es.wikipedia.org/wiki/Autodromo_Nazionale_di_Monza</a></li><li><a href="https://www.dazn.com/es-ES/news/motor/circuito-monza-donde-esta-como-es-caracteristicas-como-llegar-fotos-escenario-gp-italia-mundial-f1/1rvwgg1hco88f14fi4ivfb1g00" title="Referencia 2">https://www.dazn.com/es-ES/news/motor/circuito-monza-donde-esta-como-es-caracteristicas-como-llegar-fotos-escenario-gp-italia-mundial-f1/1rvwgg1hco88f14fi4ivfb1g00</a></li><li><a href="https://www.f1italy.com/es/la-historia-del-circuito-de-monza" title="Referencia 3">https://www.f1italy.com/es/la-historia-del-circuito-de-monza</a></li></ul>
                 <p>Coordenadas del Circuito: (45.618978, 9.281183) a 183 m</p>
                 <img src="multimedia/imagenes/monza.jpeg" alt="Fotografía del circuito Monza"><img src="multimedia/imagenes/monza_colores.jpeg" alt="Fotografía del circuito Monza">
+        <ul>
+            <li>
+            Tramo 1 Distancia: 618.53 m (45.624517, 9.281925,187m) NSector: 1<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 1</h5>
-                <p>Distancia: 618.53 m</p>
-                <p>Coordenadas del Tramo: (45.624517, 9.281925) a 187 m</p>
-                <p>Número de sector: 1</p>
-            </section>
+            <li>
+            Tramo 2 Distancia: 45.06 m (45.624655, 9.282475,187m) NSector: 1<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 2</h5>
-                <p>Distancia: 45.06 m</p>
-                <p>Coordenadas del Tramo: (45.624655, 9.282475) a 187 m</p>
-                <p>Número de sector: 1</p>
-            </section>
+            <li>
+            Tramo 3 Distancia: 155.7 m (45.626000, 9.282080,188m) NSector: 1<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 3</h5>
-                <p>Distancia: 155.7 m</p>
-                <p>Coordenadas del Tramo: (45.626000, 9.282080) a 188 m</p>
-                <p>Número de sector: 1</p>
-            </section>
+            <li>
+            Tramo 4 Distancia: 330.18 m (45.628892, 9.283190,189m) NSector: 1<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 4</h5>
-                <p>Distancia: 330.18 m</p>
-                <p>Coordenadas del Tramo: (45.628892, 9.283190) a 189 m</p>
-                <p>Número de sector: 1</p>
-            </section>
+            <li>
+            Tramo 5 Distancia: 168.94 m (45.629882, 9.284807,191m) NSector: 1<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 5</h5>
-                <p>Distancia: 168.94 m</p>
-                <p>Coordenadas del Tramo: (45.629882, 9.284807) a 191 m</p>
-                <p>Número de sector: 1</p>
-            </section>
+            <li>
+            Tramo 6 Distancia: 157.46 m (45.629956, 9.286829,191m) NSector: 1<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 6</h5>
-                <p>Distancia: 157.46 m</p>
-                <p>Coordenadas del Tramo: (45.629956, 9.286829) a 191 m</p>
-                <p>Número de sector: 1</p>
-            </section>
+            <li>
+            Tramo 7 Distancia: 358.21 m (45.630188, 9.291394,191m) NSector: 2<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 7</h5>
-                <p>Distancia: 358.21 m</p>
-                <p>Coordenadas del Tramo: (45.630188, 9.291394) a 191 m</p>
-                <p>Número de sector: 2</p>
-            </section>
+            <li>
+            Tramo 8 Distancia: 45.22 m (45.630559, 9.291632,191m) NSector: 2<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 8</h5>
-                <p>Distancia: 45.22 m</p>
-                <p>Coordenadas del Tramo: (45.630559, 9.291632) a 191 m</p>
-                <p>Número de sector: 2</p>
-            </section>
+            <li>
+            Tramo 9 Distancia: 318.7 m (45.631368, 9.295553,188m) NSector: 2<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 9</h5>
-                <p>Distancia: 318.7 m</p>
-                <p>Coordenadas del Tramo: (45.631368, 9.295553) a 188 m</p>
-                <p>Número de sector: 2</p>
-            </section>
+            <li>
+            Tramo 10 Distancia: 94.66 m (45.630896, 9.296557,188m) NSector: 2<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 10</h5>
-                <p>Distancia: 94.66 m</p>
-                <p>Coordenadas del Tramo: (45.630896, 9.296557) a 188 m</p>
-                <p>Número de sector: 2</p>
-            </section>
+            <li>
+            Tramo 11 Distancia: 267.67 m (45.628494, 9.296825,188m) NSector: 2<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 11</h5>
-                <p>Distancia: 267.67 m</p>
-                <p>Coordenadas del Tramo: (45.628494, 9.296825) a 188 m</p>
-                <p>Número de sector: 2</p>
-            </section>
+            <li>
+            Tramo 12 Distancia: 501.63 m (45.626077, 9.291383,190m) NSector: 2<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 12</h5>
-                <p>Distancia: 501.63 m</p>
-                <p>Coordenadas del Tramo: (45.626077, 9.291383) a 190 m</p>
-                <p>Número de sector: 2</p>
-            </section>
+            <li>
+            Tramo 13 Distancia: 570.98 m (45.622678, 9.285911,186m) NSector: 3<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 13</h5>
-                <p>Distancia: 570.98 m</p>
-                <p>Coordenadas del Tramo: (45.622678, 9.285911) a 186 m</p>
-                <p>Número de sector: 3</p>
-            </section>
+            <li>
+            Tramo 14 Distancia: 110.8 m (45.621694, 9.285775,201m) NSector: 3<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 14</h5>
-                <p>Distancia: 110.8 m</p>
-                <p>Coordenadas del Tramo: (45.621694, 9.285775) a 201 m</p>
-                <p>Número de sector: 3</p>
-            </section>
+            <li>
+            Tramo 15 Distancia: 78.92 m (45.621184, 9.285069,185m) NSector: 3<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 15</h5>
-                <p>Distancia: 78.92 m</p>
-                <p>Coordenadas del Tramo: (45.621184, 9.285069) a 185 m</p>
-                <p>Número de sector: 3</p>
-            </section>
+            <li>
+            Tramo 16 Distancia: 975.9 m (45.612462, 9.283690,180m) NSector: 3<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 16</h5>
-                <p>Distancia: 975.9 m</p>
-                <p>Coordenadas del Tramo: (45.612462, 9.283690) a 180 m</p>
-                <p>Número de sector: 3</p>
-            </section>
+            <li>
+            Tramo 17 Distancia: 87.69 m (45.611887, 9.282932,180m) NSector: 3<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 17</h5>
-                <p>Distancia: 87.69 m</p>
-                <p>Coordenadas del Tramo: (45.611887, 9.282932) a 180 m</p>
-                <p>Número de sector: 3</p>
-            </section>
+            <li>
+            Tramo 18 Distancia: 182.59 m (45.612787, 9.281007,191m) NSector: 3<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 18</h5>
-                <p>Distancia: 182.59 m</p>
-                <p>Coordenadas del Tramo: (45.612787, 9.281007) a 191 m</p>
-                <p>Número de sector: 3</p>
-            </section>
+            <li>
+            Tramo 19 Distancia: 360.46 m (45.616026, 9.280837,182m) NSector: 3<p></p>
+            </li>
         
-            <section>
-                <h5>Tramo 19</h5>
-                <p>Distancia: 360.46 m</p>
-                <p>Coordenadas del Tramo: (45.616026, 9.280837) a 182 m</p>
-                <p>Número de sector: 3</p>
-            </section>
-        
-            <section>
-                <h5>Tramo 20</h5>
-                <p>Distancia: 330 m</p>
-                <p>Coordenadas del Tramo: (45.618978, 9.281183) a 183 m</p>
-                <p>Número de sector: 3</p>
-            </section>
-        </article></section>
+            <li>
+            Tramo 20 Distancia: 330 m (45.618978, 9.281183,183m) NSector: 3<p></p>
+            </li>
+        </ul></section></section>
 
-        <section data-element="zonaSVG">
+        <section>
             <h3>Altimetría</h3>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p>Carga perfil.svg para ver su contenido</p>
-            <label for="svg">Archivos SVG:</label>
-            <input id="svg" type="file" accept=".svg" onchange="circuito.procesarAltimetria(this.files);" multiple="">
+            <label>Archivos SVG:<input type="file" accept=".svg" onchange="circuito.procesarAltimetria(this.files);" multiple=""></label>
+            
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1000" height="500">
 <polyline points=" 107.39673224176548,333.33333333333337 115.22059972566109,333.33333333333337 142.2551351726772,309.5238095238095 199.58501901272723,285.7142857142857 228.91844494990713,238.09523809523807 256.2585730904798,238.09523809523807 318.4553678398417,238.09523809523807 326.30701647769695,238.09523809523807 381.6436025211397,309.5238095238095 398.0796277325369,309.5238095238095 444.55576198496345,309.5238095238095 531.6548886149358,261.9047619047619 630.7954091643082,357.1428571428571 650.0338582813883,0.0 663.7369124720018,380.95238095238096 833.1845884048408,500.0 848.4103970968694,500.0 880.1139027312347,238.09523809523807 942.7013699581547,452.3809523809524 1000.0,428.57142857142856 107.39673224176548,333.33333333333337 " style="fill:none;stroke:red;stroke-width:2"></polyline>
 </svg></section>
 
-        <section data-element="zonaKML">
+        <section>
             <h3>Planimetría</h3>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p>Carga circuito.kml para ver su contenido</p>
-            <label for="kml">Archivos SVG:</label>
-            <input id="kml" type="file" accept=".kml" onchange="circuito.procesarPlanimetria(this.files);" multiple="">
+            <label>Archivos KML: <input type="file" accept=".kml" onchange="circuito.procesarPlanimetria(this.files);" multiple=""></label>
+           
             <!-- mapa dinamico -->
-            <div id="mapaDinamicoKML" class="mapboxgl-map"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" role="region" width="756" height="630" style="width: 755.391px; height: 629.5px;"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-right"></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib"><button class="mapboxgl-ctrl-attrib-button" type="button" aria-label="Toggle attribution"><span class="mapboxgl-ctrl-icon" aria-hidden="true" title="Toggle attribution"></span></button><div class="mapboxgl-ctrl-attrib-inner"><a href="https://www.mapbox.com/about/maps/" target="_blank" title="Mapbox" aria-label="Mapbox">© Mapbox</a> <a href="https://www.openstreetmap.org/about/" target="_blank" title="OpenStreetMap" aria-label="OpenStreetMap">© OpenStreetMap</a> <a class="mapbox-improve-map" href="https://apps.mapbox.com/feedback/?owner=mapbox&amp;id=streets-v12&amp;access_token=pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbGdzMnZweWowZWEyM2NvYWZkODMxZXpoIn0.ghWod73o3jm9F1lPOhfsjw#/9.28118/45.61898/12" target="_blank" title="Improve this map" aria-label="Improve this map" rel="noopener nofollow">Improve this map</a></div></div></div><div class="mapboxgl-ctrl-bottom"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: block;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox homepage"></a></div></div><div class="mapboxgl-ctrl-left"></div></div></div>
+            <div id="mapaDinamicoKML" class="mapboxgl-map"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" role="region" width="596" height="473" style="width: 595.844px; height: 472.5px;"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-right"></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact"><button class="mapboxgl-ctrl-attrib-button" type="button" aria-label="Toggle attribution"><span class="mapboxgl-ctrl-icon" aria-hidden="true" title="Toggle attribution"></span></button><div class="mapboxgl-ctrl-attrib-inner"><a href="https://www.mapbox.com/about/maps/" target="_blank" title="Mapbox" aria-label="Mapbox">© Mapbox</a> <a href="https://www.openstreetmap.org/about/" target="_blank" title="OpenStreetMap" aria-label="OpenStreetMap">© OpenStreetMap</a> <a class="mapbox-improve-map" href="https://apps.mapbox.com/feedback/?owner=mapbox&amp;id=streets-v12&amp;access_token=pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidnpucmIwM3ZoMmpzOHdiYmg4ZjNjIn0.l-Ye9cgCVtEZRsouG2-zcA#/9.28118/45.61898/12" target="_blank" title="Improve this map" aria-label="Improve this map" rel="noopener nofollow">Improve this map</a></div></div></div><div class="mapboxgl-ctrl-bottom"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: block;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox homepage"></a></div></div><div class="mapboxgl-ctrl-left"></div></div></div>
         </section>
 
         <script>

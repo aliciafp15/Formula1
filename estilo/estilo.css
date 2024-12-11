@@ -111,13 +111,13 @@ video {
 
 /*imagenes del xml del circuito, para que no afecten a otras imagenes*/
 section>img {
-    width: 60vw;
+    width: 40vw;
     height: auto;
 }
 
 /*mapa dinamico*/
 section>div {
-    width: 100%;
+    width: 85%;
     height: 50vh;
 }
 

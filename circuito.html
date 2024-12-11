@@ -12,9 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
-
     <script src="js/circuito.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -48,24 +46,24 @@
             <h3>Carga de archivo XML</h3>
             <!-- El atributo multiple por defecto es false, por lo que solo permite la carga de 1 archivo -->
             <p>Carga circuitoEsquema.xml para ver su contenido:</p>
-            <label for="xml">Archivos XML:</label>
-            <input id="xml" type="file" accept=".xml" onchange="circuito.procesarXml(this.files)">
+            <label>Archivos XML:<input type="file" accept=".xml" onchange="circuito.procesarXml(this.files)"></label>
+            
         </section>
 
         <section>
             <h3>Altimetría</h3>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p>Carga perfil.svg para ver su contenido</p>
-            <label for="svg">Archivos SVG:</label>
-            <input id="svg" type="file" accept=".svg" onchange="circuito.procesarAltimetria(this.files);" multiple>
+            <label>Archivos SVG:<input type="file" accept=".svg" onchange="circuito.procesarAltimetria(this.files);" ></label>
+            
         </section>
 
         <section>
             <h3>Planimetría</h3>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p>Carga circuito.kml para ver su contenido</p>
-            <label for="kml">Archivos KML:</label>
-            <input id="kml" type="file" accept=".kml" onchange="circuito.procesarPlanimetria(this.files);" multiple>
+            <label>Archivos KML: <input  type="file" accept=".kml" onchange="circuito.procesarPlanimetria(this.files);"></label>
+           
             <!-- mapa dinamico -->
             <div id="mapaDinamicoKML"></div>
         </section>
