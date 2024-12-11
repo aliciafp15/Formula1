@@ -40,9 +40,8 @@
         <section>
             <h2>Noticias</h2>
 
-            <label>Subir noticias:
-                <input type="file" onchange="noticias.readInputFile(this.files)" accept=".txt">
-            </label>
+            <label for="subirNoticias">Subir noticias:</label>
+            <input id="subirNoticias" type="file" onchange="noticias.readInputFile(this.files)" accept=".txt"><!--solo se utiliza el ID por accesibilidad-->
 
 
         </section>
@@ -50,10 +49,7 @@
         <section>
             <h3>Nueva noticia</h3>
             <form name="noticia">
-                <label>
-                    Titular:
-                    <input type="text" placeholder="Inserte el titular" required>
-                </label>
+                <label>Titular:<input type="text" placeholder="Inserte el titular" required> </label>
 
                 <label>Entradilla:<input type="text" placeholder="Inserte la entradilla" required></label>
 
