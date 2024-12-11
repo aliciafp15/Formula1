@@ -40,23 +40,24 @@
         <section>
             <h2>Noticias</h2>
 
-            <label for="subirNoticias">Subir noticias:</label>
-            <input id="subirNoticias" type="file" onchange="noticias.readInputFile(this.files)" accept=".txt">
+            <label for="subirNoticias">Subir noticias:
+                <input id="subirNoticias" type="file" onchange="noticias.readInputFile(this.files)" accept=".txt">
+            </label>
+
 
         </section>
 
         <section>
             <h3>Nueva noticia</h3>
             <form name="noticia">
-                <p><label for="titular">Titular:</label>
-                    <input type="text" id="titular" placeholder="Inserte el titular" required>
+                <p><label for="titular">Titular: <input type="text" placeholder="Inserte el titular" required></label>
                 </p>
-                <p><label for="entradilla">Entradilla:</label> 
-                    <input type="text" id="entradilla" placeholder="Inserte la entradilla" required></p>
-                <p><label for="autor">Autor:</label> 
-                    <input type="text" id="autor" placeholder="Inserte el autor" required>
-                </p>
-                
+
+                <p><label for="entradilla">Entradilla:<input type="text" placeholder="Inserte la entradilla"
+                            required></label></p>
+
+                <p><label for="autor">Autor:<input type="text" placeholder="Inserte el autor" required></label></p>
+
             </form>
             <button onclick="noticias.incluirNuevaNoticiaHTML()">Añadir</button>
         </section>
