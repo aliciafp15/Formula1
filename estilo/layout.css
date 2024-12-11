@@ -30,9 +30,15 @@ nav {
     gap: 0.5em;
 }
 
-
-
-
+/* layout para el formulario */
+/*especificidad (0,0,1) */
+form {
+    display: flex;
+    gap: 1.2em;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
 
 
