@@ -26,6 +26,7 @@ def generar_svg(archivo_xml, archivo_svg):
             distancias.append(distancia_acumulada)
             altitudes.append(float(altitud_element.text))
 
+
     # Definir los rangos de dimensiones
     max_distancia = max(distancias)
     max_altitud = max(altitudes)
@@ -35,27 +36,24 @@ def generar_svg(archivo_xml, archivo_svg):
     ancho_svg = 1000
     alto_svg = 500
 
-    # Factor de escala para reducir aún más los valores
-    factor_escala = 0.5 
-
     # Crear el archivo SVG
     with open(archivo_svg, 'w') as svg_file:
         svg_file.write('<?xml version="1.0" encoding="UTF-8" ?>\n')
         svg_file.write(f'<svg xmlns="http://www.w3.org/2000/svg" version="2.0" width="{ancho_svg}" height="{alto_svg}">\n')
         
+        # Iniciar la polilínea
         svg_file.write('<polyline points="\n')
 
         # Escalar y agregar cada punto
         for i in range(len(distancias)):
-            # Reescalar la distancia y la altitud con un factor más pequeño
-            x = (distancias[i] / max_distancia) * ancho_svg * factor_escala  # Aplicar el factor de escala a la distancia
-            y = alto_svg - ((altitudes[i] - min_altitud) / (max_altitud - min_altitud) * alto_svg * factor_escala)  # Aplicar el factor de escala a la altitud
-            
+            x = (distancias[i] / max_distancia) * ancho_svg #escalar la distancia a la anchura del SVG.
+            y = alto_svg - ((altitudes[i] - min_altitud) / (max_altitud - min_altitud) * alto_svg) # Dado que la altitud está entre 180 y 201, este rango es relativamente estrecho.
+                                                                                                    #debería traducir la altitud mínima (180) al borde inferior y la máxima (201) al borde superior,
             svg_file.write(f"{x},{y} ")
 
         # Agregar el primer punto al final para cerrar el circuito
-        x0 = (distancias[0] / max_distancia) * ancho_svg * factor_escala
-        y0 = alto_svg - ((altitudes[0] - min_altitud) / (max_altitud - min_altitud) * alto_svg * factor_escala)
+        x0 = (distancias[0] / max_distancia) * ancho_svg
+        y0 = alto_svg - ((altitudes[0] - min_altitud) / (max_altitud - min_altitud) * alto_svg)
         svg_file.write(f"{x0},{y0} ")  # Añadir el punto inicial al final para cerrar el circuito
 
         # Cerrar la etiqueta polyline y agregar el estilo
