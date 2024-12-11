@@ -111,7 +111,7 @@ video {
 
 /*imagenes del xml del circuito, para que no afecten a otras imagenes*/
 section>img {
-    width: 35vw;
+    width: 60vw;
     height: auto;
 }
 
@@ -148,7 +148,7 @@ section a {
         max-width: 100%;
     }
 
-    img {
+    img, section>img {
         width: 100%;
         height: auto;
     }
