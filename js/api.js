@@ -17,7 +17,7 @@ class API {
 
         // Referencias para arrastrar y soltar
         this.draggedPilot = null;
-        this.initDragAndDrop();
+        //this.initDragAndDrop();
 
         // Mapeo de posiciones correctas
         this.correctPositions = {
@@ -34,20 +34,67 @@ class API {
         };
 
         // Inicializar el contexto de audio
-        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        //this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
         // Asegurar que el contexto de audio se activa tras una interacción del usuario
-        document.body.addEventListener("click", this.resumeAudioContext.bind(this), { once: true });
-        document.body.addEventListener("touchstart", this.resumeAudioContext.bind(this), { once: true });
-
-        document.getElementById("enable-audio").addEventListener("click", () => {
-            if (!this.audioContext) {
-                this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            this.resumeAudioContext();
-        });
-        
+        //document.body.addEventListener("click", this.resumeAudioContext.bind(this), { once: true });
+        //document.body.addEventListener("touchstart", this.resumeAudioContext.bind(this), { once: true });
 
 
+    }
+
+    /*
+    Habilita el contexto de audio, principalmente necesario para dispositivos táctiles.
+    Crea la section de los pilots
+    */
+    iniciarJuego() {
+        //habilita o reinicia el audio
+        if (!this.audioContext) {
+            this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        this.resumeAudioContext();
+
+        // Crear la sección de pilotos dinámicamente
+        const pilotosSection = document.createElement("section");
+        pilotosSection.innerHTML = `
+        <h3>Pilotos</h3>
+        <p draggable="true" id="Piastri">Piastri</p>
+        <p draggable="true" id="Leclerc">Leclerc</p>
+        <p draggable="true" id="Norris">Norris</p>
+    `;
+
+        // Agregar la sección al DOM en el main
+        const main = document.querySelector("main");
+        main.appendChild(pilotosSection);
+
+
+        // Inicializar eventos de Drag and Drop para los nuevos elementos
+        this.initDragAndDrop();
+        // Limpiar el podio en el canvas
+        //this.dibujarPodio();
+
+        //deshabilitar boton
+        const button = document.querySelector("button")
+        button.disabled = true
+
+    }
+
+    resumeAudioContext() {
+
+        if (!this.audioContext) {
+            console.error("AudioContext no está inicializado.");
+            return;
+        }
+
+        console.log("Intentando reanudar AudioContext...");
+        if (this.audioContext.state === "suspended") {
+            this.audioContext.resume().then(() => {
+                console.log("AudioContext reanudado con éxito.");
+            }).catch(error => {
+                console.error("Error al reanudar AudioContext:", error);
+            });
+        } else {
+            console.log("AudioContext no estaba suspendido. Estado actual:", this.audioContext.state);
+        }
     }
 
     playSound(src) {
@@ -73,25 +120,8 @@ class API {
         request.send();
     }
 
-    resumeAudioContext() {
 
-        if (!this.audioContext) {
-            console.error("AudioContext no está inicializado.");
-            return;
-        }
-        
-        console.log("Intentando reanudar AudioContext...");
-        if (this.audioContext.state === "suspended") {
-            this.audioContext.resume().then(() => {
-                console.log("AudioContext reanudado con éxito.");
-            }).catch(error => {
-                console.error("Error al reanudar AudioContext:", error);
-            });
-        } else {
-            console.log("AudioContext no estaba suspendido. Estado actual:", this.audioContext.state);
-        }
-    }
-    
+
 
 
 
@@ -120,12 +150,12 @@ class API {
         this.ctx.fillText("3°", 550, 220); // Etiqueta 3º lugar
 
         /*
-        // Dibujar áreas válidas ampliadas (para depuración)
+        // Dibujar áreas válidas ampliadas (para depuración)  */
         this.ctx.strokeStyle = "red"; // Borde rojo para probar las áreas válidas
         this.ctx.strokeRect(330, 60, 160, 200); // Área ampliada 1º
         this.ctx.strokeRect(180, 130, 160, 160); // Área ampliada 2º
         this.ctx.strokeRect(480, 130, 160, 160); // Área ampliada 3º
-        */
+
 
     }
 
@@ -247,6 +277,23 @@ class API {
                         this.playSound('multimedia/audios/correcto.mp3');
                         this.soundPlayed[pilotId] = true;
                     }
+
+                    // Mover el piloto a la posición correcta en el podio
+                    this.draggedPilot.style.position = "absolute";  // Asegurar que el piloto quede fijo
+                    if (position === "1°") {
+                        this.draggedPilot.style.left = "350px";  // Ajustar la posición en X
+                        this.draggedPilot.style.top = "80px";   // Ajustar la posición en Y
+                    } else if (position === "2°") {
+                        this.draggedPilot.style.left = "200px";  // Ajustar la posición en X
+                        this.draggedPilot.style.top = "140px";   // Ajustar la posición en Y
+                    } else if (position === "3°") {
+                        this.draggedPilot.style.left = "500px";  // Ajustar la posición en X
+                        this.draggedPilot.style.top = "140px";   // Ajustar la posición en Y
+                    }
+
+                    // Eliminar el piloto de la lista de pilotos disponibles
+                    this.draggedPilot.parentElement.removeChild(this.draggedPilot);
+
                     this.ctx.fillStyle = "#000";
                     this.ctx.font = "20px Arial";
                     this.ctx.fillText(this.draggedPilot.textContent, x - 20, y);
@@ -256,6 +303,7 @@ class API {
             }
         }
     }
+
 
 
 
