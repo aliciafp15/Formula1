@@ -56,14 +56,17 @@
         <section>
             <h3>Coches en la fórmula 1</h3>
             <p>Toca el dibujo del coche.</p>
-
-            <!-- Campo para subir la imagen -->
-            <label for="subirCoche">Subir coche (imagen JPEG):</label>
-            <input id="subirCoche" type="file" accept="image/jpeg" onchange="api.leerCoche(this.files)"><!--solo se utiliza el ID por accesibilidad-->
             <canvas></canvas>
 
+           
+
         </section>
-        <section></section>
+        <section>
+            <h3>Coches clásicos</h3>
+             <!-- Campo para subir la imagen -->
+             <label for="subirCoche">Sube ferrari.jpeg, maserati.jpeg o tu coche:</label>
+             <input id="subirCoche" type="file" accept="image/jpeg" onchange="api.leerCoche(this.files)"><!--solo se utiliza el ID por accesibilidad-->
+        </section>
 
         
 

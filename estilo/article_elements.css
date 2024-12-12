@@ -19,6 +19,11 @@ main >section > article {
 
 }
 
+/*especificidad (0,0,4) */
+main >section > article>img {
+    max-width: 80%;
+}
+
 /*especificidad (0,0,1) */
 input {
     margin: 0.5em 0;
