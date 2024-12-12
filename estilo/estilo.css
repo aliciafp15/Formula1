@@ -123,10 +123,9 @@ section>div {
 
 /* Asegúrate de que el canvas DE LA API sea flexible 
 */
-section>canvas {
-    width: 100%;
+canvas {
+    width: 50%;
     height: auto;
-    max-width: 800px;
 }
 
 /*especificidad (0,0,2) */
@@ -148,9 +147,14 @@ section a {
         max-width: 100%;
     }
 
-    img, section>img {
+    img,
+    section>img {
         width: 100%;
         height: auto;
+    }
+
+    canvas {
+        width: 100%;
     }
 
     svg {

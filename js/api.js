@@ -124,40 +124,54 @@ class API {
 
 
 
-
     dibujarPodio() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        // Dibujar el podio con mayor altura
-        // Dimensiones ajustadas para ocupar más espacio hacia abajo
+    
+        // Establecer el ancho y la altura de los rectángulos
+        const podioWidth = this.canvas.width * 0.8;   // Ancho de cada rectángulo, 80% del ancho del canvas
+        const podioHeight = this.canvas.height * 0.2;  // Altura de cada rectángulo, 20% de la altura del canvas
+        const spaceBetween = this.canvas.height * 0.04; // Espacio entre los rectángulos, 4% de la altura del canvas
+    
+        // Posición inicial de los rectángulos (centrados)
+        let startX = (this.canvas.width - podioWidth) / 2;  // Centrado horizontal
+        let startY = (this.canvas.height - (podioHeight * 3 + spaceBetween * 2)) / 2; // Centrado vertical
+    
+        // Dibujar el primer lugar (Oro)
         this.ctx.fillStyle = "#FFD700"; // Oro
-        this.ctx.fillRect(350, 80, 120, 180); // Primer lugar (más alto)
-        this.ctx.strokeRect(350, 80, 120, 180);
-
-        this.ctx.fillStyle = "#C0C0C0"; // Plata
-        this.ctx.fillRect(200, 140, 120, 140); // Segundo lugar (ajustado más abajo)
-        this.ctx.strokeRect(200, 140, 120, 140);
-
-        this.ctx.fillStyle = "#cd7f32"; // Bronce
-        this.ctx.fillRect(500, 140, 120, 140); // Tercer lugar (ajustado más abajo)
-        this.ctx.strokeRect(500, 140, 120, 140);
-
-        // Dibujar etiquetas para el podio
+        this.ctx.fillRect(startX, startY, podioWidth, podioHeight); // Primer lugar
+        this.ctx.strokeRect(startX, startY, podioWidth, podioHeight); // Contorno del rectángulo
+    
+        // Etiqueta 1º
         this.ctx.fillStyle = "#000";
         this.ctx.font = "24px Arial";
-        this.ctx.fillText("1°", 400, 150); // Etiqueta 1º lugar
-        this.ctx.fillText("2°", 250, 220); // Etiqueta 2º lugar
-        this.ctx.fillText("3°", 550, 220); // Etiqueta 3º lugar
-
-        /*
-        // Dibujar áreas válidas ampliadas (para depuración)  */
-        this.ctx.strokeStyle = "red"; // Borde rojo para probar las áreas válidas
-        this.ctx.strokeRect(330, 60, 160, 200); // Área ampliada 1º
-        this.ctx.strokeRect(180, 130, 160, 160); // Área ampliada 2º
-        this.ctx.strokeRect(480, 130, 160, 160); // Área ampliada 3º
-
-
+        this.ctx.fillText("1°", startX + podioWidth / 2 - 10, startY + podioHeight / 2 + 10); // Etiqueta 1º lugar
+    
+        // Dibujar el segundo lugar (Plata)
+        startY += podioHeight + spaceBetween;  // Mover la posición hacia abajo
+        this.ctx.fillStyle = "#C0C0C0"; // Plata
+        this.ctx.fillRect(startX, startY, podioWidth, podioHeight); // Segundo lugar
+        this.ctx.strokeRect(startX, startY, podioWidth, podioHeight); // Contorno del rectángulo
+    
+        // Etiqueta 2º
+        this.ctx.fillStyle = "#000";
+        this.ctx.font = "24px Arial";
+        this.ctx.fillText("2°", startX + podioWidth / 2 - 10, startY + podioHeight / 2 + 10); // Etiqueta 2º lugar
+    
+        // Dibujar el tercer lugar (Bronce)
+        startY += podioHeight + spaceBetween;  // Mover la posición hacia abajo
+        this.ctx.fillStyle = "#cd7f32"; // Bronce
+        this.ctx.fillRect(startX, startY, podioWidth, podioHeight); // Tercer lugar
+        this.ctx.strokeRect(startX, startY, podioWidth, podioHeight); // Contorno del rectángulo
+    
+        // Etiqueta 3º
+        this.ctx.fillStyle = "#000";
+        this.ctx.font = "24px Arial";
+        this.ctx.fillText("3°", startX + podioWidth / 2 - 10, startY + podioHeight / 2 + 10); // Etiqueta 3º lugar
     }
+    
+    
+    
+    
 
 
 
@@ -251,49 +265,71 @@ class API {
 
     onDrop(event) {
         if (this.draggedPilot) {
-            const rect = this.canvas.getBoundingClientRect();
-
+            const rect = this.canvas.getBoundingClientRect(); // Obtener las coordenadas del canvas
+        
             // Detectar si es táctil o ratón
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
-
+    
+            // Imprimir las coordenadas relativas
+            console.log("Coordenadas del piloto:", x, y);
+    
+            // Obtener las dimensiones del canvas
+            const canvasWidth = this.canvas.width;
+            const canvasHeight = this.canvas.height;
+        
+            // Calcular las posiciones relativas en base a porcentajes
             let position = null;
-
-            // Verificar en qué área del podio se soltó el piloto
-            if (x >= 330 && x <= 490 && y >= 60 && y <= 260) { // Primer lugar (1º)
+        
+            // Definir áreas del podio como porcentajes (relativos)
+            const firstPlace = { x: 0.3, y: 0.15, width: 0.2, height: 0.2 }; // 1º lugar
+            const secondPlace = { x: 0.3, y: 0.25, width: 0.2, height: 0.2 }; // 2º lugar
+            const thirdPlace = { x: 0.3, y: 0.35, width: 0.2, height: 0.2 };  // 3º lugar
+    
+            // Mostrar los valores de las áreas del podio para depuración
+            console.log("Áreas del podio:", { firstPlace, secondPlace, thirdPlace });
+    
+            // Verificar si la posición está dentro de las áreas relativas del podio
+            if (x >= firstPlace.x * canvasWidth && x <= (firstPlace.x + firstPlace.width) * canvasWidth && y >= firstPlace.y * canvasHeight && y <= (firstPlace.y + firstPlace.height) * canvasHeight) {
                 position = "1°";
-            } else if (x >= 180 && x <= 340 && y >= 130 && y <= 290) { // Segundo lugar (2º)
+                console.log("Posición 1° detectada");
+            } else if (x >= secondPlace.x * canvasWidth && x <= (secondPlace.x + secondPlace.width) * canvasWidth && y >= secondPlace.y * canvasHeight && y <= (secondPlace.y + secondPlace.height) * canvasHeight) {
                 position = "2°";
-            } else if (x >= 480 && x <= 640 && y >= 130 && y <= 290) { // Tercer lugar (3º)
+                console.log("Posición 2° detectada");
+            } else if (x >= thirdPlace.x * canvasWidth && x <= (thirdPlace.x + thirdPlace.width) * canvasWidth && y >= thirdPlace.y * canvasHeight && y <= (thirdPlace.y + thirdPlace.height) * canvasHeight) {
                 position = "3°";
+                console.log("Posición 3° detectada");
             }
-
+    
             if (position) {
                 const pilotId = this.draggedPilot.id;
                 const correctPosition = this.correctPositions[pilotId];
-
+    
+                // Verificar si el piloto está en la posición correcta
+                console.log("Posición esperada para", pilotId, ":", correctPosition);
+                console.log("Posición detectada:", position);
+    
                 if (correctPosition === position) {
                     if (!this.soundPlayed[pilotId]) {
                         this.playSound('multimedia/audios/correcto.mp3');
                         this.soundPlayed[pilotId] = true;
                     }
-
+    
                     // Mover el piloto a la posición correcta en el podio
-                    this.draggedPilot.style.position = "absolute";  // Asegurar que el piloto quede fijo
+                    this.draggedPilot.style.position = "absolute";  // Asegurarse de que el piloto quede fijo
                     if (position === "1°") {
-                        this.draggedPilot.style.left = "350px";  // Ajustar la posición en X
-                        this.draggedPilot.style.top = "80px";   // Ajustar la posición en Y
+                        this.draggedPilot.style.left = `${firstPlace.x * canvasWidth}px`;
+                        this.draggedPilot.style.top = `${firstPlace.y * canvasHeight}px`;
                     } else if (position === "2°") {
-                        this.draggedPilot.style.left = "200px";  // Ajustar la posición en X
-                        this.draggedPilot.style.top = "140px";   // Ajustar la posición en Y
+                        this.draggedPilot.style.left = `${secondPlace.x * canvasWidth}px`;
+                        this.draggedPilot.style.top = `${secondPlace.y * canvasHeight}px`;
                     } else if (position === "3°") {
-                        this.draggedPilot.style.left = "500px";  // Ajustar la posición en X
-                        this.draggedPilot.style.top = "140px";   // Ajustar la posición en Y
+                        this.draggedPilot.style.left = `${thirdPlace.x * canvasWidth}px`;
+                        this.draggedPilot.style.top = `${thirdPlace.y * canvasHeight}px`;
                     }
-
+    
                     // Eliminar el piloto de la lista de pilotos disponibles
                     this.draggedPilot.parentElement.removeChild(this.draggedPilot);
-
                     this.ctx.fillStyle = "#000";
                     this.ctx.font = "20px Arial";
                     this.ctx.fillText(this.draggedPilot.textContent, x - 20, y);
@@ -303,6 +339,8 @@ class API {
             }
         }
     }
+    
+    
 
 
 
