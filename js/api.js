@@ -113,16 +113,13 @@ class API {
 
             // Eventos para dispositivos táctiles
             piloto.addEventListener("touchstart", this.onTouchStart.bind(this));
+            piloto.addEventListener("touchmove", this.onTouchMove.bind(this));
             piloto.addEventListener("touchend", this.onTouchEnd.bind(this));
         });
 
         // Agregar eventos de Drop al canvas
         this.canvas.addEventListener("dragover", this.onDragOver.bind(this));
         this.canvas.addEventListener("drop", this.onDrop.bind(this));
-
-        // Eventos para dispositivos táctiles
-        this.canvas.addEventListener("touchmove", this.onTouchMove.bind(this));
-        this.canvas.addEventListener("touchend", this.onDrop.bind(this));
     }
 
     onDragStart(event) {
@@ -137,60 +134,66 @@ class API {
         event.preventDefault(); // Necesario para permitir soltar
     }
 
+    /** PARA PANTALLAS TÁCTILES */
+
+    /**Equivalente al mouseDown pero para dispositivos táctiles*/
     onTouchStart(event) {
-        event.preventDefault();  // Prevenir las acciones por defecto del navegador en dispositivos táctiles
-        this.draggedPilot = event.target; // Asignar el piloto arrastrado
-    
-        // Verificar si el piloto tiene un estilo `position: absolute`
-        this.draggedPilot.style.position = "absolute";  // Asegurarse de que el piloto sea "absolute"
-    
-        // Establecer la posición de inicio del toque
+        this.draggedPilot = event.target;
+
+        // Asegúrate de que el piloto tenga `position: absolute`
+        this.draggedPilot.style.position = "absolute";
+
+        // Calcular offset inicial
         const touch = event.touches[0];
         const rect = this.canvas.getBoundingClientRect();
-        this.offsetX = touch.clientX - rect.left - this.draggedPilot.offsetLeft;  // Distancia desde el borde izquierdo del canvas
-        this.offsetY = touch.clientY - rect.top - this.draggedPilot.offsetTop;   // Distancia desde el borde superior del canvas
-    
-        // Inicializar la posición en el punto donde se toca
+        this.offsetX = touch.clientX - rect.left - this.draggedPilot.offsetLeft;
+        this.offsetY = touch.clientY - rect.top - this.draggedPilot.offsetTop;
+
+        // Ajustar posición inicial del piloto
         this.draggedPilot.style.left = `${touch.clientX - rect.left - this.offsetX}px`;
         this.draggedPilot.style.top = `${touch.clientY - rect.top - this.offsetY}px`;
     }
-    
+
     onTouchMove(event) {
-        event.preventDefault(); // Evitar el comportamiento por defecto del navegador
-    
-        const touch = event.touches[0];
-    
         if (this.draggedPilot) {
+            const touch = event.touches[0];
             const rect = this.canvas.getBoundingClientRect();
-            
-            // Calcular las nuevas coordenadas del toque
+
+            // Calcular nueva posición
             const x = touch.clientX - rect.left - this.offsetX;
             const y = touch.clientY - rect.top - this.offsetY;
-            
-            // Actualizar la posición del piloto
+
+            // Actualizar posición del piloto
             this.draggedPilot.style.left = `${x}px`;
             this.draggedPilot.style.top = `${y}px`;
         }
     }
-    
+
     onTouchEnd(event) {
-        event.preventDefault(); // Evitar el comportamiento por defecto
-    
+
         if (this.draggedPilot) {
-            this.onDrop(event); // Llamar a la función onDrop para manejar el drop del piloto
-            this.draggedPilot = null; // Limpiar la referencia del piloto arrastrado
+            // Llamar a onDrop con coordenadas táctiles
+            const touch = event.changedTouches[0];
+            const rect = this.canvas.getBoundingClientRect();
+
+            // Crear un evento simulado para `onDrop`
+            const simulatedEvent = {
+                clientX: touch.clientX,
+                clientY: touch.clientY,
+            };
+
+            this.onDrop(simulatedEvent);
+            this.draggedPilot = null; // Limpiar referencia
         }
     }
 
     onDrop(event) {
-        event.preventDefault();
         if (this.draggedPilot) {
             const rect = this.canvas.getBoundingClientRect();
 
-            const x = event.changedTouches ? event.changedTouches[0].clientX - rect.left : event.clientX - rect.left;
-            const y = event.changedTouches ? event.changedTouches[0].clientY - rect.top : event.clientY - rect.top;
-    
-
+            // Detectar si es táctil o ratón
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
 
             let position = null;
 
@@ -209,22 +212,19 @@ class API {
 
                 if (correctPosition === position) {
                     if (!this.soundPlayed[pilotId]) {
-                        // Reproducir sonido solo si no se ha reproducido antes para este piloto
                         this.playSound('multimedia/audios/correcto.mp3');
-                        this.soundPlayed[pilotId] = true; // Marcar como que ya se tocó el sonido
+                        this.soundPlayed[pilotId] = true;
                     }
-                    // Dibujar el nombre del piloto en la posición correcta
                     this.ctx.fillStyle = "#000";
                     this.ctx.font = "20px Arial";
                     this.ctx.fillText(this.draggedPilot.textContent, x - 20, y);
-                } else {
-                    alert(`${pilotId} no pertenece a la posición ${position}.`);
-                }
+                } 
             } else {
                 console.warn("El piloto no fue soltado en una posición válida.");
             }
         }
     }
+
 
 
 }
