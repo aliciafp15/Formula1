@@ -70,7 +70,6 @@ class Record
         }
         $this->clasificacion .= "</ol>";
         $this->clasificacion .= "</section>";
-
       } //si no hay elementos en la base de datos, es que no se ha guardado ninguna persona en el formulario, por lo que no se muestra
       $consultaPreparada->close();
       $db->close();
@@ -141,7 +140,7 @@ if (count($_POST) > 0) {
     <nav>
       <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
       <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
-      <a href="api.html" title="Ir al juego de la API">API</a>
+      <a href="api.html" title="Ir al juego de los coches">Coches</a>
     </nav>
   </section>
 

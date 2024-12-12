@@ -1,348 +1,202 @@
 class API {
-
-
     constructor() {
-        // Obtener el canvas del DOM
-        this.canvas = document.querySelector("canvas");
-        if (!this.canvas) {
-            console.error("No se encontró el elemento canvas en el DOM.");
-            return;
-        }
+        // Seleccionamos el único canvas en la página sin usar id
+        this.canvas = document.querySelector('canvas');
+        this.ctx = this.canvas.getContext('2d');
 
-        // Obtener el contexto 2D
-        this.ctx = this.canvas.getContext("2d");
-        if (!this.ctx) {
-            console.error("No se pudo obtener el contexto 2D del canvas.");
-        }
+        // Inicializa el audio context
+        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        this.isPlaying = false; // Controla si el sonido está en reproducción
 
-        // Referencias para arrastrar y soltar
-        this.draggedPilot = null;
-        //this.initDragAndDrop();
-
-        // Mapeo de posiciones correctas
-        this.correctPositions = {
-            "Leclerc": "1°",
-            "Piastri": "2°",
-            "Norris": "3°"
-        };
-
-        // Estado para verificar si ya se ha tocado el sonido
-        this.soundPlayed = {
-            "Leclerc": false,
-            "Piastri": false,
-            "Norris": false
-        };
-
-        // Inicializar el contexto de audio
-        //this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        // Asegurar que el contexto de audio se activa tras una interacción del usuario
-        //document.body.addEventListener("click", this.resumeAudioContext.bind(this), { once: true });
-        //document.body.addEventListener("touchstart", this.resumeAudioContext.bind(this), { once: true });
-
-
+        // Cargar el sonido del coche (puedes usar un archivo local o URL)
+        this.loadSound();
     }
 
-    /*
-    Habilita el contexto de audio, principalmente necesario para dispositivos táctiles.
-    Crea la section de los pilots
-    */
-    iniciarJuego() {
-        //habilita o reinicia el audio
-        if (!this.audioContext) {
-            this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        this.resumeAudioContext();
 
-        // Crear la sección de pilotos dinámicamente
-        const pilotosSection = document.createElement("section");
-        pilotosSection.innerHTML = `
-        <h3>Pilotos</h3>
-        <p draggable="true" id="Piastri">Piastri</p>
-        <p draggable="true" id="Leclerc">Leclerc</p>
-        <p draggable="true" id="Norris">Norris</p>
-    `;
+    loadSound() {
+        // Carga el archivo de audio
 
-        // Agregar la sección al DOM en el main
-        const main = document.querySelector("main");
-        main.appendChild(pilotosSection);
-
-
-        // Inicializar eventos de Drag and Drop para los nuevos elementos
-        this.initDragAndDrop();
-        // Limpiar el podio en el canvas
-        //this.dibujarPodio();
-
-        //deshabilitar boton
-        const button = document.querySelector("button")
-        button.disabled = true
-
+        fetch('multimedia/audios/f1.mp3')
+            .then(response => response.arrayBuffer())
+            .then(data => this.audioContext.decodeAudioData(data))
+            .then(buffer => {
+                this.soundBuffer = buffer;
+            })
+            .catch(error => console.error('Error loading the sound:', error));
     }
 
-    resumeAudioContext() {
 
-        if (!this.audioContext) {
-            console.error("AudioContext no está inicializado.");
-            return;
-        }
+    playSound() {
+        if (this.isPlaying) return;
 
-        console.log("Intentando reanudar AudioContext...");
-        if (this.audioContext.state === "suspended") {
-            this.audioContext.resume().then(() => {
-                console.log("AudioContext reanudado con éxito.");
-            }).catch(error => {
-                console.error("Error al reanudar AudioContext:", error);
-            });
-        } else {
-            console.log("AudioContext no estaba suspendido. Estado actual:", this.audioContext.state);
-        }
+        // Reproduce el sonido
+        const soundSource = this.audioContext.createBufferSource();
+        soundSource.buffer = this.soundBuffer;
+        soundSource.connect(this.audioContext.destination);
+        soundSource.loop = false; // El sonido NO se repite en bucle
+        soundSource.start();
+
+        this.isPlaying = true;
     }
 
-    playSound(src) {
-        const request = new XMLHttpRequest();
-        request.open("GET", src, true);
-        request.responseType = "arraybuffer";
+    dibujarCoche() {
+        // Asegúrate de que el canvas tiene las dimensiones correctas
+        this.updateCanvasSize();  // Este método debe asegurarse de que el canvas ocupe todo el tamaño disponible.
 
-        request.onload = () => {
-            this.audioContext.decodeAudioData(request.response, buffer => {
-                const source = this.audioContext.createBufferSource();
-                source.buffer = buffer;
-                source.connect(this.audioContext.destination);
-                source.start();
-            }, error => {
-                console.error("Error al decodificar el sonido:", error);
-            });
-        };
+        const ctx = this.ctx;
+        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Limpiar el canvas
 
-        request.onerror = () => {
-            console.error("Error al cargar el sonido.");
-        };
+        // Obtén las dimensiones del canvas
+        const canvasWidth = this.canvas.width;
+        const canvasHeight = this.canvas.height;
 
-        request.send();
+        // Relación de escala, la idea es que el coche ocupe todo el canvas
+        const scaleX = canvasWidth / 350; // Escala en X según el tamaño del canvas
+        const scaleY = canvasHeight / 180; // Escala en Y según el tamaño del canvas
+
+        // Dibuja el cuerpo del coche (un rectángulo grande con curvas)
+        ctx.beginPath();
+        ctx.moveTo(50 * scaleX, 150 * scaleY); // Parte inferior izquierda
+        ctx.lineTo(300 * scaleX, 150 * scaleY); // Parte inferior derecha
+        ctx.lineTo(300 * scaleX, 100 * scaleY); // Línea hacia arriba en la derecha
+        ctx.quadraticCurveTo(275 * scaleX, 70 * scaleY, 220 * scaleX, 70 * scaleY); // Curva superior
+        ctx.quadraticCurveTo(160 * scaleX, 70 * scaleY, 150 * scaleX, 100 * scaleY); // Curva descendente
+        ctx.lineTo(50 * scaleX, 100 * scaleY); // Línea hacia abajo en la izquierda
+        ctx.closePath();
+        ctx.fillStyle = '#990000'; // Color rojo para el coche
+        ctx.fill();
+        ctx.strokeStyle = 'black';
+        ctx.stroke();
+
+        // Dibuja las ruedas (dos círculos)
+        ctx.beginPath();
+        ctx.arc(100 * scaleX, 150 * scaleY, 20 * scaleX, 0, Math.PI * 2); // Rueda izquierda
+        ctx.arc(250 * scaleX, 150 * scaleY, 20 * scaleX, 0, Math.PI * 2); // Rueda derecha
+        ctx.fillStyle = 'black'; // Color de las ruedas
+        ctx.fill();
+        ctx.stroke();
+
+        // Añadir interacción con el coche: si haces clic en el coche, reproduce el sonido
+        this.canvas.addEventListener('click', () => this.playSound());
+    }
+
+    updateCanvasSize() {
+        // Actualiza el tamaño del canvas a las dimensiones del contenedor
+        this.canvas.width = this.canvas.parentElement.offsetWidth;
+        this.canvas.height = this.canvas.parentElement.offsetHeight;
+        this.ctx = canvas.getContext('2d');
     }
 
 
 
 
 
-    dibujarPodio() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    
-        // Establecer el ancho y la altura de los rectángulos
-        const podioWidth = this.canvas.width * 0.8;   // Ancho de cada rectángulo, 80% del ancho del canvas
-        const podioHeight = this.canvas.height * 0.2;  // Altura de cada rectángulo, 20% de la altura del canvas
-        const spaceBetween = this.canvas.height * 0.04; // Espacio entre los rectángulos, 4% de la altura del canvas
-    
-        // Posición inicial de los rectángulos (centrados)
-        let startX = (this.canvas.width - podioWidth) / 2;  // Centrado horizontal
-        let startY = (this.canvas.height - (podioHeight * 3 + spaceBetween * 2)) / 2; // Centrado vertical
-    
-        // Dibujar el primer lugar (Oro)
-        this.ctx.fillStyle = "#FFD700"; // Oro
-        this.ctx.fillRect(startX, startY, podioWidth, podioHeight); // Primer lugar
-        this.ctx.strokeRect(startX, startY, podioWidth, podioHeight); // Contorno del rectángulo
-    
-        // Etiqueta 1º
-        this.ctx.fillStyle = "#000";
-        this.ctx.font = "24px Arial";
-        this.ctx.fillText("1°", startX + podioWidth / 2 - 10, startY + podioHeight / 2 + 10); // Etiqueta 1º lugar
-    
-        // Dibujar el segundo lugar (Plata)
-        startY += podioHeight + spaceBetween;  // Mover la posición hacia abajo
-        this.ctx.fillStyle = "#C0C0C0"; // Plata
-        this.ctx.fillRect(startX, startY, podioWidth, podioHeight); // Segundo lugar
-        this.ctx.strokeRect(startX, startY, podioWidth, podioHeight); // Contorno del rectángulo
-    
-        // Etiqueta 2º
-        this.ctx.fillStyle = "#000";
-        this.ctx.font = "24px Arial";
-        this.ctx.fillText("2°", startX + podioWidth / 2 - 10, startY + podioHeight / 2 + 10); // Etiqueta 2º lugar
-    
-        // Dibujar el tercer lugar (Bronce)
-        startY += podioHeight + spaceBetween;  // Mover la posición hacia abajo
-        this.ctx.fillStyle = "#cd7f32"; // Bronce
-        this.ctx.fillRect(startX, startY, podioWidth, podioHeight); // Tercer lugar
-        this.ctx.strokeRect(startX, startY, podioWidth, podioHeight); // Contorno del rectángulo
-    
-        // Etiqueta 3º
-        this.ctx.fillStyle = "#000";
-        this.ctx.font = "24px Arial";
-        this.ctx.fillText("3°", startX + podioWidth / 2 - 10, startY + podioHeight / 2 + 10); // Etiqueta 3º lugar
-    }
-    
-    
-    
-    
-
-
-
-
-
-
-
-    initDragAndDrop() {
-        // Agregar eventos Drag and Drop a los pilotos
-        const pilotos = document.querySelectorAll("p[draggable='true']");
-        pilotos.forEach(piloto => {
-            piloto.addEventListener("dragstart", this.onDragStart.bind(this));
-            piloto.addEventListener("dragend", this.onDragEnd.bind(this));
-
-            // Eventos para dispositivos táctiles
-            piloto.addEventListener("touchstart", this.onTouchStart.bind(this));
-            piloto.addEventListener("touchmove", this.onTouchMove.bind(this));
-            piloto.addEventListener("touchend", this.onTouchEnd.bind(this));
-        });
-
-        // Agregar eventos de Drop al canvas
-        this.canvas.addEventListener("dragover", this.onDragOver.bind(this));
-        this.canvas.addEventListener("drop", this.onDrop.bind(this));
+    updateCanvasSize() {
+        // Sincroniza el tamaño del canvas con el tamaño visible en CSS
+        this.canvas.width = this.canvas.offsetWidth;
+        this.canvas.height = this.canvas.offsetHeight;
     }
 
-    onDragStart(event) {
-        this.draggedPilot = event.target;
-    }
-
-    onDragEnd() {
-        this.draggedPilot = null;
-    }
-
-    onDragOver(event) {
-        event.preventDefault(); // Necesario para permitir soltar
-    }
-
-    /** PARA PANTALLAS TÁCTILES */
-
-    /**Equivalente al mouseDown pero para dispositivos táctiles*/
-    onTouchStart(event) {
-        this.draggedPilot = event.target;
-
-        // Asegúrate de que el piloto tenga `position: absolute`
-        this.draggedPilot.style.position = "absolute";
-
-        // Calcular offset inicial
-        const touch = event.touches[0];
-        const rect = this.canvas.getBoundingClientRect();
-        this.offsetX = touch.clientX - rect.left - this.draggedPilot.offsetLeft;
-        this.offsetY = touch.clientY - rect.top - this.draggedPilot.offsetTop;
-
-        // Ajustar posición inicial del piloto
-        this.draggedPilot.style.left = `${touch.clientX - rect.left - this.offsetX}px`;
-        this.draggedPilot.style.top = `${touch.clientY - rect.top - this.offsetY}px`;
-    }
-
-    onTouchMove(event) {
-        if (this.draggedPilot) {
-            const touch = event.touches[0];
-            const rect = this.canvas.getBoundingClientRect();
 
 
-            // Calcular nueva posición
-            const x = touch.clientX - rect.left - this.offsetX;
-            const y = touch.clientY - rect.top - this.offsetY;
+    leerCoche(files) {
+        // Solo tomamos el primer archivo
+        const file = files[0];
 
-            // Actualizar posición del piloto
-            this.draggedPilot.style.left = `${x}px`;
-            this.draggedPilot.style.top = `${y}px`;
-        }
-    }
 
-    onTouchEnd(event) {
 
-        if (this.draggedPilot) {
-            // Llamar a onDrop con coordenadas táctiles
-            const touch = event.changedTouches[0];
-            const rect = this.canvas.getBoundingClientRect();
+        // Crea un FileReader para leer la imagen
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
 
-            // Crear un evento simulado para `onDrop`
-            const simulatedEvent = {
-                clientX: touch.clientX,
-                clientY: touch.clientY,
-            };
-
-            this.onDrop(simulatedEvent);
-            this.draggedPilot = null; // Limpiar referencia
-        }
-    }
-
-    onDrop(event) {
-        if (this.draggedPilot) {
-            const rect = this.canvas.getBoundingClientRect(); // Obtener las coordenadas del canvas
-        
-            // Detectar si es táctil o ratón
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-    
-            // Imprimir las coordenadas relativas
-            console.log("Coordenadas del piloto:", x, y);
-    
-            // Obtener las dimensiones del canvas
-            const canvasWidth = this.canvas.width;
-            const canvasHeight = this.canvas.height;
-        
-            // Calcular las posiciones relativas en base a porcentajes
-            let position = null;
-        
-            // Definir áreas del podio como porcentajes (relativos)
-            const firstPlace = { x: 0.3, y: 0.15, width: 0.2, height: 0.2 }; // 1º lugar
-            const secondPlace = { x: 0.3, y: 0.25, width: 0.2, height: 0.2 }; // 2º lugar
-            const thirdPlace = { x: 0.3, y: 0.35, width: 0.2, height: 0.2 };  // 3º lugar
-    
-            // Mostrar los valores de las áreas del podio para depuración
-            console.log("Áreas del podio:", { firstPlace, secondPlace, thirdPlace });
-    
-            // Verificar si la posición está dentro de las áreas relativas del podio
-            if (x >= firstPlace.x * canvasWidth && x <= (firstPlace.x + firstPlace.width) * canvasWidth && y >= firstPlace.y * canvasHeight && y <= (firstPlace.y + firstPlace.height) * canvasHeight) {
-                position = "1°";
-                console.log("Posición 1° detectada");
-            } else if (x >= secondPlace.x * canvasWidth && x <= (secondPlace.x + secondPlace.width) * canvasWidth && y >= secondPlace.y * canvasHeight && y <= (secondPlace.y + secondPlace.height) * canvasHeight) {
-                position = "2°";
-                console.log("Posición 2° detectada");
-            } else if (x >= thirdPlace.x * canvasWidth && x <= (thirdPlace.x + thirdPlace.width) * canvasWidth && y >= thirdPlace.y * canvasHeight && y <= (thirdPlace.y + thirdPlace.height) * canvasHeight) {
-                position = "3°";
-                console.log("Posición 3° detectada");
-            }
-    
-            if (position) {
-                const pilotId = this.draggedPilot.id;
-                const correctPosition = this.correctPositions[pilotId];
-    
-                // Verificar si el piloto está en la posición correcta
-                console.log("Posición esperada para", pilotId, ":", correctPosition);
-                console.log("Posición detectada:", position);
-    
-                if (correctPosition === position) {
-                    if (!this.soundPlayed[pilotId]) {
-                        this.playSound('multimedia/audios/correcto.mp3');
-                        this.soundPlayed[pilotId] = true;
-                    }
-    
-                    // Mover el piloto a la posición correcta en el podio
-                    this.draggedPilot.style.position = "absolute";  // Asegurarse de que el piloto quede fijo
-                    if (position === "1°") {
-                        this.draggedPilot.style.left = `${firstPlace.x * canvasWidth}px`;
-                        this.draggedPilot.style.top = `${firstPlace.y * canvasHeight}px`;
-                    } else if (position === "2°") {
-                        this.draggedPilot.style.left = `${secondPlace.x * canvasWidth}px`;
-                        this.draggedPilot.style.top = `${secondPlace.y * canvasHeight}px`;
-                    } else if (position === "3°") {
-                        this.draggedPilot.style.left = `${thirdPlace.x * canvasWidth}px`;
-                        this.draggedPilot.style.top = `${thirdPlace.y * canvasHeight}px`;
-                    }
-    
-                    // Eliminar el piloto de la lista de pilotos disponibles
-                    this.draggedPilot.parentElement.removeChild(this.draggedPilot);
-                    this.ctx.fillStyle = "#000";
-                    this.ctx.font = "20px Arial";
-                    this.ctx.fillText(this.draggedPilot.textContent, x - 20, y);
+                // Verifica el nombre del archivo y agrega más HTML
+                if (file.name.toLowerCase().includes('ferrari')) {
+                    this.addFerrariHtml(img);  // Pasa la imagen al método
+                } else if (file.name.toLowerCase().includes('maserati')) {
+                    this.addMaseratiHtml(img); // Pasa la imagen al método
+                } else {
+                    // Si no es ni Ferrari ni Maserati, puedes mostrar algo genérico
+                    this.addGenericHtml(img);
                 }
-            } else {
-                console.warn("El piloto no fue soltado en una posición válida.");
-            }
-        }
+            };
+            img.src = e.target.result;  // Establecer la fuente de la imagen como el contenido leído
+        };
+
+        reader.readAsDataURL(file);  // Leer el archivo como una URL de datos
     }
-    
-    
 
 
 
+    // Añadir Ferrari a un nuevo article
+    addFerrariHtml(img) {
+        const articulo = $('<article></article>');
 
+        const header = $('<h4></h4>').text('Ferrari 312B (1970)');
+        articulo.append(header);
+
+        const p1 = $('<p></p>').text('Debutó en 1970, año en que Jacky Ickx luchó contra Jochen Rindt y los Lotus 49/72...');
+        articulo.append(p1);
+
+        const p2 = $('<p></p>').text('En 1971, Mario Andretti se llevó el GP de Sudáfrica, en su debut en la F1...');
+        articulo.append(p2);
+
+        // Crear la imagen y añadirla al final del article
+        const image = $('<img>')
+            .attr('src', img.src)
+            .attr('alt', 'Imagen de Ferrari 312B (1970)');  // Añadir el atributo alt con una descripción
+        articulo.append(image);
+
+        $('main').find('section').eq(1).append(articulo);
+    }
+
+
+    addMaseratiHtml(img) {
+        // Crear la sección dentro del <main>
+        const articulo = $('<article></article>');
+
+        // Crear y añadir el encabezado
+        const header = $('<h4></h4>').text('Maserati 250F (1954)');
+        articulo.append(header);
+
+        // Crear y añadir el primer párrafo
+        const p1 = $('<p></p>').text('Compitió en 46 carreras que contabilizaron un total de 277 inscripciones entre pilotos oficiales y privados. Juan Manuel Fangio logró las dos primeras victorias del modelo, antes de partir a Mercedes. 1955 fue un año en blanco por el dominio aléman, mientras que 1956 Stirling Moss ganó en Mónaco y Monza. 1957 fue un año en que Maserati y Vanwall se llevaron las victorias, y donde Fangio, a pesar de ganar en Argentina, Mónaco y Francia, tuvo que sudar tinta en Alemania para superar a los Ferrari, en una de las mejores carreras de la historia.');
+        articulo.append(p1);
+
+        // Crear y añadir el segundo párrafo
+        const p2 = $('<p></p>').text('El aura de esa victoria en Nürburgring convierte al 250F, de líneas fluidas y equilibradas, en el icono de la década');
+        articulo.append(p2);
+
+
+        // Crear la imagen y añadirla al final del article
+        const image = $('<img>')
+            .attr('src', img.src)  // Establece la fuente de la imagen
+            .attr('alt', 'Maserati 250F en la temporada de F1 de 1954');  // Añadir el atributo alt con una descripción
+
+        articulo.append(image);
+
+        $('main').find('section').eq(1).append(articulo);
+
+    }
+
+
+    addGenericHtml(img) {
+        const articulo = $('<article></article>');
+
+        const header = $('<h4></h4>').text('Tu coche');
+        articulo.append(header);
+
+        // Crear y añadir el  párrafo
+        const p1 = $('<p></p>').text('¡No reconozco el coche pero seguro es interesante!');
+        articulo.append(p1);
+        // Crear la imagen y añadirla al final del article
+        const image = $('<img>')
+            .attr('src', img.src)
+            .attr('alt', 'Imagen de tu coche personal');  // Añadir el atributo alt con una descripción
+        articulo.append(image);
+
+
+        $('main').find('section').eq(1).append(articulo);
+    }
 }
