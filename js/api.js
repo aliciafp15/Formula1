@@ -35,6 +35,17 @@ class API {
 
         // Inicializar el contexto de audio
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        // Asegurar que el contexto de audio se activa tras una interacción del usuario
+        document.body.addEventListener("click", this.resumeAudioContext.bind(this), { once: true });
+        document.body.addEventListener("touchstart", this.resumeAudioContext.bind(this), { once: true });
+
+        document.getElementById("enable-audio").addEventListener("click", () => {
+            if (!this.audioContext) {
+                this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            this.resumeAudioContext();
+        });
+        
 
 
     }
@@ -61,6 +72,26 @@ class API {
 
         request.send();
     }
+
+    resumeAudioContext() {
+
+        if (!this.audioContext) {
+            console.error("AudioContext no está inicializado.");
+            return;
+        }
+        
+        console.log("Intentando reanudar AudioContext...");
+        if (this.audioContext.state === "suspended") {
+            this.audioContext.resume().then(() => {
+                console.log("AudioContext reanudado con éxito.");
+            }).catch(error => {
+                console.error("Error al reanudar AudioContext:", error);
+            });
+        } else {
+            console.log("AudioContext no estaba suspendido. Estado actual:", this.audioContext.state);
+        }
+    }
+    
 
 
 
@@ -159,6 +190,7 @@ class API {
             const touch = event.touches[0];
             const rect = this.canvas.getBoundingClientRect();
 
+
             // Calcular nueva posición
             const x = touch.clientX - rect.left - this.offsetX;
             const y = touch.clientY - rect.top - this.offsetY;
@@ -218,7 +250,7 @@ class API {
                     this.ctx.fillStyle = "#000";
                     this.ctx.font = "20px Arial";
                     this.ctx.fillText(this.draggedPilot.textContent, x - 20, y);
-                } 
+                }
             } else {
                 console.warn("El piloto no fue soltado en una posición válida.");
             }
