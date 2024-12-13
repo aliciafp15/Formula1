@@ -52,7 +52,7 @@ class Formula1
         $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
         $selectedTabla = "";
         ini_set("auto_detect_line_endings", true);
-    
+
         if (($handle = fopen($archivo, 'r')) !== false) {
             // Leer los datos del archivo CSV e insertarlos en las tablas
             while (($fila = fgetcsv($handle, 2000, ",")) !== false) {
@@ -76,28 +76,28 @@ class Formula1
                             $stmt->execute();
                             $stmt->close();
                             break;
-    
+
                         case "pilotos":
                             $stmt = $db->prepare('INSERT INTO pilotos (piloto_id, nombre, apellido, fecha_nacimiento, nacionalidad, equipo_id) VALUES (?, ?, ?, ?, ?, ?)');
                             $stmt->bind_param('ssssss', $fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5]);
                             $stmt->execute();
                             $stmt->close();
                             break;
-    
+
                         case "circuitos":
                             $stmt = $db->prepare('INSERT INTO circuitos (circuito_id, nombre, pais, longitud_km) VALUES (?, ?, ?, ?)');
                             $stmt->bind_param('ssss', $fila[0], $fila[1], $fila[2], $fila[3]);
                             $stmt->execute();
                             $stmt->close();
                             break;
-    
+
                         case "carreras":
                             $stmt = $db->prepare('INSERT INTO carreras (carrera_id, nombre, fecha, circuito_id) VALUES (?, ?, ?, ?)');
                             $stmt->bind_param('ssss', $fila[0], $fila[1], $fila[2], $fila[3]);
                             $stmt->execute();
                             $stmt->close();
                             break;
-    
+
                         case "resultados":
                             $stmt = $db->prepare('INSERT INTO resultados (resultado_id, carrera_id, piloto_id, posicion, tiempo, puntos) VALUES (?, ?, ?, ?, ?, ?)');
                             $stmt->bind_param('ssssss', $fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5]);
@@ -114,18 +114,18 @@ class Formula1
             $this->mensaje .= "Error al abrir el archivo CSV";
         }
     }
-    
+
     public function exportarCSV()
     {
         $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
-    
+
         $csvFile = 'exportacion.csv';
         // Establecer encabezados para la descarga
         header('Content-Type: text/csv');
         header('Content-Disposition: attachment; filename="' . $csvFile . '"');
         // Abrir el archivo CSV para escritura
         $file = fopen('php://output', 'w');
-    
+
         // Exportar datos de la tabla equipos
         fputcsv($file, array('equipo_id', 'nombre', 'pais', 'jefe_equipo'));
         $query_equipos = "SELECT * FROM equipos";
@@ -135,7 +135,7 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-    
+
         // Exportar datos de la tabla pilotos
         fputcsv($file, array('piloto_id', 'nombre', 'apellido', 'fecha_nacimiento', 'nacionalidad', 'equipo_id'));
         $query_pilotos = "SELECT * FROM pilotos";
@@ -145,7 +145,7 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-    
+
         // Exportar datos de la tabla circuitos
         fputcsv($file, array('circuito_id', 'nombre', 'pais', 'longitud_km'));
         $query_circuitos = "SELECT * FROM circuitos";
@@ -155,7 +155,7 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-    
+
         // Exportar datos de la tabla carreras
         fputcsv($file, array('carrera_id', 'nombre', 'fecha', 'circuito_id'));
         $query_carreras = "SELECT * FROM carreras";
@@ -165,7 +165,7 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-    
+
         // Exportar datos de la tabla resultados
         fputcsv($file, array('resultado_id', 'carrera_id', 'piloto_id', 'posicion', 'tiempo', 'puntos'));
         $query_resultados = "SELECT * FROM resultados";
@@ -175,16 +175,41 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-    
+
         // Cerrar el archivo y la conexión a la base de datos
         fclose($file);
         $db->close();
         exit;
     }
-    
+
+    public function rankingPilotos()
+    {
+        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+
+        // Consulta para obtener el ranking de pilotos basado en los puntos
+        $query = "
+        SELECT p.piloto_id, p.nombre, p.apellido, SUM(r.puntos) AS puntos_totales
+        FROM pilotos p
+        JOIN resultados r ON p.piloto_id = r.piloto_id
+        GROUP BY p.piloto_id
+        ORDER BY puntos_totales DESC";
 
 
-    
+        $result = $db->query($query);
+        if ($result->num_rows > 0) {
+            $tabla = "<section><h3>Ranking de Pilotos</h3><table><tr><th>Posición</th><th>Nombre</th><th>Puntos Totales</th></tr>";
+            $posicion = 1;
+            while ($row = $result->fetch_assoc()) {
+                $tabla .= "<tr><td>" . $posicion++ . "</td><td>" . $row['nombre'] . " " . $row['apellido'] . "</td><td>" . $row['puntos_totales'] . "</td></tr>";
+            }
+            $tabla .= "</table></section>";
+            echo $tabla;
+        } else {
+            echo "No se encontraron datos.";
+        }
+
+        $db->close();
+    }
 }
 
 $formula1 = new Formula1();
@@ -197,6 +222,8 @@ if (isset($_POST['importarCSV'])) {
 if (isset($_POST['exportarCSV'])) {
     $formula1->exportarCSV();
 }
+
+
 ?>
 
 
@@ -272,10 +299,17 @@ if (isset($_POST['exportarCSV'])) {
         </form>
 
         <form action="#" method="post">
-            <label for="verMenus">Ver menus</label>
-            <input id="verMenus" type="submit" name="verMenus" value="Buscar">
+            <label for="rankingPilotos">Ver los mejores pilotos</label>
+            <input id="rankingPilotos" type="submit" name="rankingPilotos" value="Buscar">
         </form>
 
+        <?php
+
+        if (isset($_POST['rankingPilotos'])) {
+            // leer bd y rellenar csv
+            $formula1->rankingPilotos();
+        }
+        ?>
     </main>
 
 
