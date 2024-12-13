@@ -115,19 +115,19 @@ class Formula1
         }
     }
     
-
-
-
     public function exportarCSV()
     {
         $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
-
-        $csvFile = 'salida.csv';
+    
+        $csvFile = 'exportacion.csv';
+        // Establecer encabezados para la descarga
         header('Content-Type: text/csv');
         header('Content-Disposition: attachment; filename="' . $csvFile . '"');
+        // Abrir el archivo CSV para escritura
         $file = fopen('php://output', 'w');
-
-        fputcsv($file, array('equipo_id', 'nombre_equipo', 'nacionalidad'));
+    
+        // Exportar datos de la tabla equipos
+        fputcsv($file, array('equipo_id', 'nombre', 'pais', 'jefe_equipo'));
         $query_equipos = "SELECT * FROM equipos";
         $result_equipos = $db->query($query_equipos);
         if ($result_equipos->num_rows > 0) {
@@ -135,8 +135,9 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-
-        fputcsv($file, array('piloto_id', 'nombre_piloto', 'edad', 'equipo_id'));
+    
+        // Exportar datos de la tabla pilotos
+        fputcsv($file, array('piloto_id', 'nombre', 'apellido', 'fecha_nacimiento', 'nacionalidad', 'equipo_id'));
         $query_pilotos = "SELECT * FROM pilotos";
         $result_pilotos = $db->query($query_pilotos);
         if ($result_pilotos->num_rows > 0) {
@@ -144,8 +145,9 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-
-        fputcsv($file, array('circuito_id', 'nombre_circuito', 'pais'));
+    
+        // Exportar datos de la tabla circuitos
+        fputcsv($file, array('circuito_id', 'nombre', 'pais', 'longitud_km'));
         $query_circuitos = "SELECT * FROM circuitos";
         $result_circuitos = $db->query($query_circuitos);
         if ($result_circuitos->num_rows > 0) {
@@ -153,8 +155,9 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-
-        fputcsv($file, array('carrera_id', 'circuito_id', 'fecha'));
+    
+        // Exportar datos de la tabla carreras
+        fputcsv($file, array('carrera_id', 'nombre', 'fecha', 'circuito_id'));
         $query_carreras = "SELECT * FROM carreras";
         $result_carreras = $db->query($query_carreras);
         if ($result_carreras->num_rows > 0) {
@@ -162,8 +165,9 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-
-        fputcsv($file, array('resultado_id', 'carrera_id', 'piloto_id', 'posicion'));
+    
+        // Exportar datos de la tabla resultados
+        fputcsv($file, array('resultado_id', 'carrera_id', 'piloto_id', 'posicion', 'tiempo', 'puntos'));
         $query_resultados = "SELECT * FROM resultados";
         $result_resultados = $db->query($query_resultados);
         if ($result_resultados->num_rows > 0) {
@@ -171,11 +175,16 @@ class Formula1
                 fputcsv($file, $row);
             }
         }
-
+    
+        // Cerrar el archivo y la conexión a la base de datos
         fclose($file);
         $db->close();
         exit;
     }
+    
+
+
+    
 }
 
 $formula1 = new Formula1();
