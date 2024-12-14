@@ -49,6 +49,11 @@ class Formula1
 
     public function importarCSV($archivo)
     {
+        if (empty($archivo)) {
+            $this->mensaje .= "No se ha seleccionado ningún archivo CSV.";
+            return; // Si no se selecciona un archivo, sale del método
+        }
+        
         $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
         $selectedTabla = "";
         ini_set("auto_detect_line_endings", true);
