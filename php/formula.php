@@ -53,7 +53,7 @@ class Formula1
             $this->mensaje .= "No se ha seleccionado ningún archivo CSV.";
             return; // Si no se selecciona un archivo, sale del método
         }
-        
+
         $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
         $selectedTabla = "";
         ini_set("auto_detect_line_endings", true);
@@ -242,7 +242,7 @@ if (isset($_POST['exportarCSV'])) {
 <head>
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8">
-    <title>F1 Desktop - Coches</title> <!--Asegurarme de que el título les guste-->
+    <title>F1 Desktop - Clasificaciones</title> <!--Asegurarme de que el título les guste-->
     <meta name="author" content="Alicia Fernández Pushkina">
     <meta name="description" content="Documento inicial del F1 Desktop">
     <meta name="keywords" content="html, css, index">
@@ -263,33 +263,33 @@ if (isset($_POST['exportarCSV'])) {
     <header>
         <h1><a href="index.html" title="Volver al inicio">F1 Desktop</a></h1>
         <nav>
-            <a href="index.html" title="Volver a la página de inicio">Index</a>
-            <a href="piloto.html" title="Ver información sobre el piloto">Piloto</a>
-            <a href="noticias.html" title="Leer las últimas noticias">Noticias</a>
-            <a href="calendario.html" title="Consultar el calendario">Calendario</a>
-            <a href="meteorologia.html" title="Revisar la meteorologia">Meteorologia</a>
-            <a href="circuito.html" title="Información sobre el circuito">Circuito</a>
-            <a href="viajes.php" title="Planificar tus viajes">Viajes</a>
-            <a href="juegos.html" class="active" title="Explorar juegos">Juegos</a>
+            <a href="../index.html" title="Volver a la página de inicio">Index</a>
+            <a href="../piloto.html" title="Ver información sobre el piloto">Piloto</a>
+            <a href="../noticias.html" title="Leer las últimas noticias">Noticias</a>
+            <a href="../calendario.html" title="Consultar el calendario">Calendario</a>
+            <a href="../meteorologia.html" title="Revisar la meteorologia">Meteorologia</a>
+            <a href="../circuito.html" title="Información sobre el circuito">Circuito</a>
+            <a href="../viajes.php" title="Planificar tus viajes">Viajes</a>
+            <a href="../juegos.html" class="active" title="Explorar juegos">Juegos</a>
         </nav>
     </header>
 
     <p>Estás en: <a href="index.html" title="Volver al inicio">Inicio</a> >> <a href="juegos.html"
-            title="Volver a ver los juegos">Juegos</a> >> Formula</p>
+            title="Volver a ver los juegos">Juegos</a> >> Clasificaciones</p>
     <!--menu de juegos-->
     <section>
         <h2>Juegos</h2>
         <nav>
-            <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
-            <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
-            <a href="api.html" title="Ir al juego de los coches">Coches</a>
-            <a href="formula.html" title="Ir al juego de la formula">Formula</a>
-
-        </nav>
+        <nav>
+        <a href="../memoria.html" title="Ir al juego de memoria">Memoria</a>
+        <a href="../semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
+        <a href="../api.html" title="Ir al juego de los coches">Coches</a>
+        <a href="../formula.html" title="Ir a las clasificaciones">Clasificaciones</a>
+    </nav>
     </section>
     <main>
 
-        <h3>Formula</h3>
+        <h3>Clasificaciones</h3>
 
         <form action="#" method="post">
             <label for="init">Crear BD o resetear</label>

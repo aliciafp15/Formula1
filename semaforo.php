@@ -138,10 +138,11 @@ if (count($_POST) > 0) {
   <section>
     <h2>Juegos</h2>
     <nav>
-      <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
-      <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
-      <a href="api.html" title="Ir al juego de los coches">Coches</a>
-    </nav>
+        <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
+        <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
+        <a href="api.html" title="Ir al juego de los coches">Coches</a>
+        <a href="php/formula.php" title="Ir a las clasificaciones">Clasificaciones</a>
+        </nav>
   </section>
 
   <main>
