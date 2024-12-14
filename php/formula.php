@@ -210,6 +210,10 @@ class Formula1
 
         $db->close();
     }
+
+    /**consulta para listar las posiciones de la primera carrera, la de Bahrein
+     * SELECT r.posicion,p.apellido, p.nombre , e.nombre AS equipo FROM resultados r JOIN pilotos p ON r.piloto_id = p.piloto_id JOIN equipos e ON p.equipo_id = e.equipo_id WHERE r.carrera_id = 1 ORDER BY r.posicion;
+     */
 }
 
 $formula1 = new Formula1();

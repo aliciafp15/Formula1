@@ -18,17 +18,36 @@ piloto_id,nombre,apellido,fecha_nacimiento,nacionalidad,equipo_id
 6,"Charles","Leclerc","1997-10-16","Mónaco",3
 7,"Oliver","Bearman","2005-05-08","Reino Unido",4
 8,"Esteban","Ocon","1996-09-17","Francia",4
-9,"Lando","Norris","1999-11-13","Reino Unido",5
-10,"Oscar","Piastri","2001-04-06","Australia",5
-11,"George","Russell","1998-02-15","Reino Unido",6
-12,"Kimi","Antonelli","2006-08-25","Italia",6
-13,"Max","Verstappen","1997-09-30","Países Bajos",7
-14,"Sergio","Pérez","1990-01-26","México",7
-15,"Nico","Hulkenberg","1987-08-19","Alemania",8
-16,"Gabriel","Bortoleto","2004-10-14","Brasil",8
-17,"Yuki","Tsunoda","2000-05-11","Japón",9
-18,"Alex","Albon","1996-03-23","Tailandia",10
-19,"Carlos","Sainz","1994-09-01","España",10
+9,"Kevin","Magnussen","1992-10-05","Dinamarca",4
+10,"Lando","Norris","1999-11-13","Reino Unido",5
+11,"Oscar","Piastri","2001-04-06","Australia",5
+12,"George","Russell","1998-02-15","Reino Unido",6
+13,"Kimi","Antonelli","2006-08-25","Italia",6
+14,"Valtteri","Bottas","1989-08-28","Finlandia",6
+15,"Max","Verstappen","1997-09-30","Paises Bajos",7
+16,"Sergio","Pérez","1990-01-26","México",7
+17,"Daniel","Ricciardo","1989-07-01","Australia",7
+18,"Nico","Hulkenberg","1987-08-19","Alemania",8
+19,"Gabriel","Bortoleto","2004-10-14","Brasil",8
+20,"Guanyu","Zhou","1999-05-30","China",8
+21,"Yuki","Tsunoda","2000-05-11","Japón",9
+22,"Alex","Albon","1996-03-23","Tailandia",10
+23,"Carlos","Sainz","1994-09-01","España",10
+circuito_id,nombre,pais,longitud_km
+1,"Bahréin International Circuit","Bahrein",5.412
+2,"Street Circuit","Jeddah",6.174
+3,"Albert Park Circuit","Australia",5.303
+4,"Circuit de Barcelona-Catalunya","España",4.675
+5,"Circuit de Monaco","Mónaco",3.337
+6,"Shanghai International Circuit","China",5.450
+7,"Suzuka International Racing Course","Japón",5.807
+8,"Miami International Autodrome","Estados Unidos",5.412
+9,"Autodromo Enzo e Dino Ferrari","Italia",4.909
+10,"Circuit Gilles Villeneuve","Canadá",4.361
+11,"Red Bull Ring","Austria",4.318
+12,"Silverstone Circuit","Reino Unido",5.891
+
+
 carrera_id,nombre,fecha,circuito_id
 1,"Gran Premio de Bahréin","2024-03-02",1
 2,"Gran Premio de Arabia Saudita","2024-03-09",2
@@ -42,7 +61,34 @@ carrera_id,nombre,fecha,circuito_id
 10,"Gran Premio de Canadá","2024-06-15",10
 11,"Gran Premio de Austria","2024-06-29",11
 12,"Gran Premio de Gran Bretaña","2024-07-06",12
+
+
 resultado_id,carrera_id,piloto_id,posicion,tiempo,puntos
+1,1,15,1,"1:31'44.742",26
+2,1,16,2,"1:32'07.199",18
+3,1,23,3,"1:32'09.852",15
+
+4,1,6,4,"1:32'24.411",12
+5,1,12,5,"1:32'31.530",10
+6,1,10,6,"1:32'33.200",8
+
+7,1,5,7,"1:32'35.066",6
+8,1,11,8,"1:32'40.824",4
+9,1,3,9,"1:32'59.629",2
+
+10,1,4,10,"1:33'17.958",1
+11,1,20,11,"1:31'51.501",0
+12,1,9,12,"1:31'53.058",0
+13,1,17,13,"1:31'53.700",0
+14,1,21,14,"1:31'54.224",0
+15,1,22,15,"1:31'56.628",0
+16,1,18,16,"1:32'02.374",0
+17,1,8,17,"1:32'16.192",0
+18,1,1,18,"1:32'17.159",0
+19,1,14,19,"1:33'07.972",0
+20,1,24,20,"1:32'05.537",0
+
+
 
 
 
