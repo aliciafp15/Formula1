@@ -5,41 +5,41 @@ DROP TABLE IF EXISTS pilotos;
 DROP TABLE IF EXISTS equipos;
 
 CREATE TABLE equipos (
-  equipo_id VARCHAR(100) PRIMARY KEY,
+  equipo_id INT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   pais VARCHAR(100) NOT NULL,
   jefe_equipo VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE pilotos (
-  piloto_id VARCHAR(100) PRIMARY KEY,
+  piloto_id INT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   apellido VARCHAR(100) NOT NULL,
   fecha_nacimiento DATE NOT NULL,
   nacionalidad VARCHAR(100) NOT NULL,
-  equipo_id VARCHAR(100),
+  equipo_id INT,
   FOREIGN KEY (equipo_id) REFERENCES equipos(equipo_id)
 );
 
 CREATE TABLE circuitos (
-  circuito_id VARCHAR(100) PRIMARY KEY,
+  circuito_id INT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   pais VARCHAR(100) NOT NULL,
   longitud_km DECIMAL(5,2) NOT NULL
 );
 
 CREATE TABLE carreras (
-  carrera_id VARCHAR(100) PRIMARY KEY,
+  carrera_id INT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   fecha DATE NOT NULL,
-  circuito_id VARCHAR(100),
+  circuito_id INT,
   FOREIGN KEY (circuito_id) REFERENCES circuitos(circuito_id)
 );
 
 CREATE TABLE resultados (
-  resultado_id VARCHAR(100) PRIMARY KEY,
-  carrera_id VARCHAR(100),
-  piloto_id VARCHAR(100),
+  resultado_id INT PRIMARY KEY,
+  carrera_id INT,
+  piloto_id INT,
   posicion INT NOT NULL,
   tiempo VARCHAR(100) NOT NULL,
   puntos INT NOT NULL,

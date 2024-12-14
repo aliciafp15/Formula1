@@ -1,34 +1,48 @@
 equipo_id,nombre,pais,jefe_equipo
-1,Mercedes,Alemania,Toto Wolff
-2,Red Bull Racing,Austria,Christian Horner
-3,Ferrari,Italia,Frédéric Vasseur
-4,Aston Martin,Reino Unido,Mike Krack
-5,McLaren,Reino Unido,Andrea Stella
+1,"Alpine","Francia","Oliver Oakes"
+2,"Aston Martin","Reino Unido","Mike Krack"
+3,"Ferrari","Italia","Frédéric Vasseur"
+4,"Haas","Estados Unidos","Ayao Komatsu"
+5,"McLaren","Reino Unido","Andrea Stella"
+6,"Mercedes","Alemania","Toto Wolff"
+7,"Red Bull Racing","Austria","Christian Horner"
+8,"Sauber","Suiza","Mattia Binotto"
+9,"Racing Bulls","Italia","Peter Bayer"
+10,"Williams","Reino Unido","James Vowles"
 piloto_id,nombre,apellido,fecha_nacimiento,nacionalidad,equipo_id
-1,Lewis,Hamilton,1985-01-07,Reino Unido,1
-2,Max,Verstappen,1997-09-30,Países Bajos,2
-3,Charles,Leclerc,1997-10-16,Mónaco,3
-4,Fernando,Alonso,1981-07-29,España,4
-5,Carlos,Sainz,1994-09-01,España,3
-circuito_id,nombre,pais,longitud_km
-1,Bahréin International Circuit,Bahrein,5.412
-2,Street Circuit,Jeddah,6.175
-3,Albert Park Circuit,Australia,5.303
-4,Circuit de Barcelona-Catalunya,España,4.675
-5,Circuit de Monaco,Mónaco,3.337
+1,"Pierre","Gasly","1996-02-07","Francia",1
+2,"Jack","Doohan","2003-01-20","Australia",1
+3,"Fernando","Alonso","1981-07-29","España",2
+4,"Lance","Stroll","1998-10-29","Canadá",2
+5,"Lewis","Hamilton","1985-01-07","Reino Unido",3
+6,"Charles","Leclerc","1997-10-16","Mónaco",3
+7,"Oliver","Bearman","2005-05-08","Reino Unido",4
+8,"Esteban","Ocon","1996-09-17","Francia",4
+9,"Lando","Norris","1999-11-13","Reino Unido",5
+10,"Oscar","Piastri","2001-04-06","Australia",5
+11,"George","Russell","1998-02-15","Reino Unido",6
+12,"Kimi","Antonelli","2006-08-25","Italia",6
+13,"Max","Verstappen","1997-09-30","Países Bajos",7
+14,"Sergio","Pérez","1990-01-26","México",7
+15,"Nico","Hulkenberg","1987-08-19","Alemania",8
+16,"Gabriel","Bortoleto","2004-10-14","Brasil",8
+17,"Yuki","Tsunoda","2000-05-11","Japón",9
+18,"Alex","Albon","1996-03-23","Tailandia",10
+19,"Carlos","Sainz","1994-09-01","España",10
 carrera_id,nombre,fecha,circuito_id
-1,Gran Premio de Bahréin,2024-03-03,1
-2,Gran Premio de Arabia Saudita,2024-03-17,2
-3,Gran Premio de Australia,2024-03-31,3
-4,Gran Premio de España,2024-06-09,4
-5,Gran Premio de Mónaco,2024-05-26,5
+1,"Gran Premio de Bahréin","2024-03-02",1
+2,"Gran Premio de Arabia Saudita","2024-03-09",2
+3,"Gran Premio de Australia","2024-03-16",3
+4,"Gran Premio de Japón","2024-04-06",7
+5,"Gran Premio de China","2024-03-23",6
+6,"Gran Premio de Miami","2024-05-04",8
+7,"Gran Premio de Mónaco","2024-05-25",5
+8,"Gran Premio de Emilia-Romaña","2024-05-18",9
+9,"Gran Premio de España","2024-06-01",4
+10,"Gran Premio de Canadá","2024-06-15",10
+11,"Gran Premio de Austria","2024-06-29",11
+12,"Gran Premio de Gran Bretaña","2024-07-06",12
 resultado_id,carrera_id,piloto_id,posicion,tiempo,puntos
-1,1,1,1,1:32:03,25
-2,1,2,2,1:32:45,18
-3,1,3,3,1:33:12,15
-4,2,2,1,1:28:12,25
-5,2,1,2,1:28:30,18
-6,2,3,3,1:29:01,15
-7,3,4,1,1:35:45,25
-8,3,5,2,1:36:12,18
-9,3,3,3,1:36:30,15
+
+
+
