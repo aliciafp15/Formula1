@@ -36,7 +36,7 @@ class Carrusel
         $carrusel = "<article><h3>Carrusel de Italia</h3>";
         foreach ($data["photos"]["photo"] as $foto) {
             $titulo = $foto["title"];
-            $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_m.jpg";
+            $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_q.jpg";
             $img = "<img alt='" . $titulo . "' src='" . $URLfoto . "' />";
             $carrusel .= $img;
         }
