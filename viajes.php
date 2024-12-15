@@ -128,7 +128,7 @@ class Moneda
 
 
         <section>
-            <h3>Mapa estático - Ubicación Actual</h3>
+            <h3>Ubicación Actual</h3>
             <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
         </section>
 
