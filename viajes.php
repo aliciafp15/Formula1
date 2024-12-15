@@ -58,45 +58,36 @@ class Moneda
         $this->monedaDestino = $monedaDestino;
     }
 
-    function cambioDeMoneda()
-    {
 
-        $curl = curl_init();
+    function getCambio(){
+        $api_key = 'de39ddc359418324e41d36ed2351325c69564171';
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.apilayer.com/currency_data/live?source=USD&currencies=EUR",
-            CURLOPT_HTTPHEADER => array(
-              "Content-Type: text/plain",
-              "apikey: y3PjSipSFnU6nyr2rSVK95WSJqNuMPxn"
-            ),
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET"
-          ));
-          $response = curl_exec($curl);
-          $data = json_decode($response, true);
+        // Tengo 100 usos diarios
+        $url = "https://api.getgeoapi.com/v2/currency/convert";
+        $url .= '?api_key=' . $api_key;
+        $url .= '&from=' . $this->monedaOrigen;
+        $url .= '&to=' . $this->monedaDestino;
+        $url .= '&format=json';
 
-          curl_close($curl);
+        $respuesta = file_get_contents($url);
+        $json = json_decode($respuesta);
 
-
-        // Comprobamos si la decodificación JSON fue exitosa
-        // Comprobamos si la decodificación JSON fue exitosa y si la clave "quotes" existe
-        if ($data && isset($data['quotes']['USDEUR'])) {
-            $cambio = $data['quotes']['USDEUR'];
+        $cambio = "";
+        if($json==null) {
+            $cambio = "<h3>Error en el archivo JSON de camnio de moneda recibido</h3>";
         } else {
-            // Si la clave no existe o la respuesta es inválida, asignamos un valor por defecto
-            $cambio = 'No disponible';
+            echo "<section>";
+            echo "<h2>Cambio de moneda</h2>";
+            $cambio = $json->rates->EUR->rate;
+            echo "<p>El equivalente a 1$ son " . $cambio . "€</p>";             
+            echo "</section>";
         }
 
-        $salida = "<section>";
-        $salida .= "<h3>Cambio de divisa</h3>";
-        $salida .= '<p>1 ' . $this->monedaOrigen . ' son ' . $cambio . ' ' . $this->monedaDestino . '</p></section>';
-        return $salida;
-    }
+
+
+    }   
+
+
 }
 ?>
 <!DOCTYPE HTML>
@@ -161,7 +152,7 @@ class Moneda
         echo $carrusel->obtenerImagenes();
         //<!-- cambio de divisa -->
         $moneda = new Moneda('USD', 'EUR');
-        //echo $moneda->cambioDeMoneda();
+        //echo $moneda->getCambio()
         ?>
 
 
