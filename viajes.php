@@ -60,16 +60,36 @@ class Moneda
 
     function cambioDeMoneda()
     {
-        $key = 'bceb6a81c9022edfb7ed1aa06d69e3c3';
-        $url = 'http://apilayer.net/api/live?access_key=' . $key . '&currencies=' . $this->monedaDestino . '&source=' . $this->monedaOrigen . '&format=1';
 
-        $respuesta = file_get_contents($url);
-        $data = json_decode($respuesta, true);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.apilayer.com/currency_data/live?source=USD&currencies=EUR",
+            CURLOPT_HTTPHEADER => array(
+              "Content-Type: text/plain",
+              "apikey: y3PjSipSFnU6nyr2rSVK95WSJqNuMPxn"
+            ),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET"
+          ));
+          $response = curl_exec($curl);
+          $data = json_decode($response, true);
+
+          curl_close($curl);
+
 
         // Comprobamos si la decodificación JSON fue exitosa
-        if ($data) {
-            // Imprimir o utilizar elementos específicos del array
+        // Comprobamos si la decodificación JSON fue exitosa y si la clave "quotes" existe
+        if ($data && isset($data['quotes']['USDEUR'])) {
             $cambio = $data['quotes']['USDEUR'];
+        } else {
+            // Si la clave no existe o la respuesta es inválida, asignamos un valor por defecto
+            $cambio = 'No disponible';
         }
 
         $salida = "<section>";
@@ -141,7 +161,7 @@ class Moneda
         echo $carrusel->obtenerImagenes();
         //<!-- cambio de divisa -->
         $moneda = new Moneda('USD', 'EUR');
-        echo $moneda->cambioDeMoneda();
+        //echo $moneda->cambioDeMoneda();
         ?>
 
 
