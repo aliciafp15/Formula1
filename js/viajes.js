@@ -117,18 +117,7 @@ class Viajes {
             .addTo(map);
     }
 
-    getMapaDinamicoMapBox2() {
-        var lng = parseFloat(this.longitud);
-        var lat = parseFloat(this.latitud)
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidnpucmIwM3ZoMmpzOHdiYmg4ZjNjIn0.l-Ye9cgCVtEZRsouG2-zcA';
-        const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            center: [-74.5, 40],
-            zoom: 9 // starting zoom
-        });
-
-    }
-
+  
 
     fotoSiguiente() {
 

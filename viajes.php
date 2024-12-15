@@ -33,11 +33,11 @@ class Carrusel
         $respuesta = file_get_contents($url);
         $data = json_decode($respuesta, true);
 
-        $carrusel = "<article data-element='carrusel'><h3>Carrusel de Italia</h3>";
+        $carrusel = "<article><h3>Carrusel de Italia</h3>";
         foreach ($data["photos"]["photo"] as $foto) {
             $titulo = $foto["title"];
-            $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_b.jpg";
-            $img = "<img data-element='carruselImg' alt='" . $titulo . "' src='" . $URLfoto . "' />";
+            $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_m.jpg";
+            $img = "<img alt='" . $titulo . "' src='" . $URLfoto . "' />";
             $carrusel .= $img;
         }
         $carrusel .= "<button onclick='viajes.fotoSiguiente()' data-action='next'> > </button>
@@ -72,8 +72,9 @@ class Moneda
             $cambio = $data['quotes']['USDEUR'];
         }
 
-        $salida = "<h3>Cambio de divisa</h3>";
-        $salida .= '<p>1 ' . $this->monedaOrigen . ' son ' . $cambio . ' ' . $this->monedaDestino . '</p>';
+        $salida = "<section>";
+        $salida .= "<h3>Cambio de divisa</h3>";
+        $salida .= '<p>1 ' . $this->monedaOrigen . ' son ' . $cambio . ' ' . $this->monedaDestino . '</p></section>';
         return $salida;
     }
 }
@@ -92,13 +93,10 @@ class Moneda
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/carrusel.css" />
 
 
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
     <script src="js/viajes.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!--mapa dnámico-->
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
@@ -127,6 +125,16 @@ class Moneda
 
     <main>
         <h2>Viajes</h2>
+
+
+        <section>
+            <h3>Mapa estático - Ubicación Actual</h3>
+            <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
+        </section>
+
+        <!-- mapa dinamico -->
+        <div id="map"></div>
+
         <?php
 
         $carrusel = new Carrusel('Roma', 'Italia');
@@ -136,18 +144,10 @@ class Moneda
         echo $moneda->cambioDeMoneda();
         ?>
 
-        <section>
-            <h3>Mapa estático - Ubicación Actual</h3>
-            <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
-        </section>
-
-        <section>
-            <h3>Mapa dinámico - Ubicación Actual</h3>
-            <!-- mapa dinamico -->
-            <div id="map"></div>
-        </section>
 
 
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script>
             var viajes = new Viajes();
         </script>
