@@ -9,11 +9,14 @@ class Semaforo {
         // Inicializar la dificultad del juego de forma aleatoria
         const randomIndex = Math.floor(Math.random() * 3); // Índice aleatorio entre 0 y 2
         this.difficulty = this.levels[randomIndex]; // Asignar dificultad
+        this.difficultyText = this.getDifficultyText(this.difficulty); // Texto de dificultad
         this.tiempo = 0;//almacenará el tiempo que tardó
 
         // Crear la estructura del juego en el HTML
         this.createStructure();
     }
+
+
 
     // Método para crear la estructura HTML del semáforo y otros elementos del juego
     createStructure() {
@@ -121,54 +124,23 @@ class Semaforo {
 
     /**añade un formulario debajo del juego del semaforo y de la puntuación*/
     createRecordForm() {
-
-        // Crear el formulario
-        const form = $("<form></form>");
-
-        // form.attr("id", "recordForm");
-        form.attr("action", "#"); // la URL correcta para procesar el formulario en tu servidor
-        form.attr("method", "post");
-        form.attr("name", "record");
-
-        // Agregar campos al formulario 
-        form.append('<label for="nombre">Nombre:</label>');
-        form.append('<input type="text" id="nombre" name="nombre" required placeholder="Ingrese su nombre">');
-
-
-        form.append('<label for="apellidos">Apellidos:</label>');
-        form.append('<input type="text" id="apellidos" name="apellidos" required placeholder="Ingrese sus apellidos">');
-
-        // Agregar un campo oculto para el tiempo que tardó el usuario y el nivel
-        form.append('<label for="tiempo">Tiempo:</label>');
-        form.append(`<input type="text" id="tiempo" name="tiempo" value="${this.tiempo}" readonly />  `);
-
-        const nivel = this.difficulty;
-        form.append('<label for="nivel">Dificultad:</label>');
-        form.append(`<input type="text" id="nivel" name="nivel" value="${nivel}" readonly /> `);
-
-        // Agregar un botón de envío
-        form.append('<input type="submit" value="Guardar registro">');
-
-        // Agregar el formulario al final del documento
-        $("body").append(form);
-
-    }
-
-    createRecordForm() {
         const main = document.querySelector("main");
-    
+
         // Crear una nueva sección para el formulario y el ranking
         const recordSection = document.createElement("section");
         const encabezado = document.createElement("h4");
         encabezado.textContent = "Registra tu puntuación";
         recordSection.appendChild(encabezado);
-    
+
         // Crear el formulario
         const form = document.createElement("form");
         form.setAttribute("action", "#");
         form.setAttribute("method", "post");
         form.setAttribute("name", "record");
-    
+
+
+
+
         // Agregar campos al formulario con innerHTML o nodos DOM
         form.innerHTML = `
             <label for="nombre">Nombre:
@@ -181,16 +153,26 @@ class Semaforo {
                 <input type="text" id="tiempo" name="tiempo" value="${this.tiempo}" readonly>
             </label>
             <label for="nivel">Dificultad:
-                <input type="text" id="nivel" name="nivel" value="${this.difficulty}" readonly>
+                <input type="text" id="nivel" name="nivel" value="${this.difficultyText}" readonly>
             </label>
             <input type="submit" value="Guardar registro">
         `;
-    
+
         // Agregar el formulario a la sección
         recordSection.appendChild(form);
-    
+
         // Agregar la sección al main
         main.appendChild(recordSection);
     }
-    
+
+    getDifficultyText(level) {
+        switch (level) {
+            case 0.2: return "Fácil";
+            case 0.5: return "Medio";
+            case 0.8: return "Difícil";
+            default: return "Desconocido";
+        }
+    }
+
+
 }

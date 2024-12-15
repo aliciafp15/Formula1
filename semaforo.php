@@ -66,7 +66,10 @@ class Record
         $this->clasificacion .= "<section><h4>Ranking</h4>";
         $this->clasificacion .= "<ol>";
         while ($fila = $resultado->fetch_assoc()) {
-          $this->clasificacion .= "<li>" . $fila['nombre'] . " " . $fila['apellidos'] . " ~ " . $fila['nivel'] . " ~ " . $fila["tiempo"] . "segundos </li>";
+
+        
+
+          $this->clasificacion .= "<li>" . $fila['nombre'] . " " . $fila['apellidos'] . " ~ " . $fila['nivel'] . " ~ " . $fila["tiempo"] . " segundos </li>";
         }
         $this->clasificacion .= "</ol>";
         $this->clasificacion .= "</section>";
@@ -138,11 +141,11 @@ if (count($_POST) > 0) {
   <section>
     <h2>Juegos</h2>
     <nav>
-        <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
-        <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
-        <a href="api.html" title="Ir al juego de los coches">Coches</a>
-        <a href="php/formula.php" title="Ir a las clasificaciones">Clasificaciones</a>
-        </nav>
+      <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
+      <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
+      <a href="api.html" title="Ir al juego de los coches">Coches</a>
+      <a href="php/formula.php" title="Ir a las clasificaciones">Clasificaciones</a>
+    </nav>
   </section>
 
   <main>
