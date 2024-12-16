@@ -31,7 +31,7 @@ class Memoria {
 
         //iniciliaza init_time
         this.init_time = new Date();
-        this.cont=0;
+        this.cont = 0;
 
     }
 
@@ -80,8 +80,8 @@ class Memoria {
         this.cont++;//aumento el contador
 
 
-         //comprobar final del juego
-         if (this.cont == (this.elements.length/2)) { //si llegó a 6, siendo 12 cartas, es que están todas
+        //comprobar final del juego
+        if (this.cont == (this.elements.length / 2)) { //si llegó a 6, siendo 12 cartas, es que están todas
             //iniciar endtime
             this.end_time = new Date();
 
@@ -89,14 +89,22 @@ class Memoria {
             var tiempoFinal = this.calculate_date_difference();
 
             //avisar al usuario
-            alert("El juego ha terminado!!. Duración: " + tiempoFinal)
-            //cambiar el alert por un <p>
+            // crear un nuevo <p> con el mensaje
+            var mensaje = document.createElement('p');
+            mensaje.textContent = "¡¡El juego ha terminado!! Duración: " + tiempoFinal;
+
+            // seleccionar el <main> y el <section> hijo
+            var main = document.querySelector('main');
+            var section = document.querySelector('main > section');
+
+            // insertar el <p> justo antes del <section>
+            main.insertBefore(mensaje, section);
         }
     }
 
-     /** cuenta con los valores de las variables init_time y end_time para obtener el tiempo total invertido en resolver 
-      * horas:minutos:segundos.*/
-     calculate_date_difference() {
+    /** cuenta con los valores de las variables init_time y end_time para obtener el tiempo total invertido en resolver 
+     * horas:minutos:segundos.*/
+    calculate_date_difference() {
         var tiempo = this.end_time - this.init_time;
 
         var horas = Math.floor(tiempo / ((1000 * 60) * 60));

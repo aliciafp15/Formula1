@@ -2,7 +2,7 @@
 
 
 /*especificidad (0,0,2) */
-main > section {
+main>section {
   gap: 1em;
   display: flex;
   /* column-gap: 0.3em; */
@@ -10,12 +10,15 @@ main > section {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 80%;
+  /*Incluido como mejora en la prueba de usabilidad*/
 }
 
 
 /*especificidad (0,0,3) */
 main section>h3 {
-  flex: 1 100%; /*que el encabezado ocupe una fila */
+  flex: 1 100%;
+  /*que el encabezado ocupe una fila */
 }
 
 /*-------------cartas------------- */
@@ -40,7 +43,8 @@ article {
 
 
 /*especificidad (0,0,2) */
-article h3, article img {
+article h3,
+article img {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -68,11 +72,33 @@ article img {
 
 
 
+/*dispositivos móviles*/
 @media all and (max-width: 520px) {
 
-  /* Especificidad: 004 */
+  /*especificidad (0,0,4) */
   main>section article>h3 {
-      font-size: 0.75em;
+    font-size: 0.75em;
+  }
+
+  /*especificidad (0,0,2) */
+  main>section {
+    max-width: 100%;
+  }
+
+  main>section>article{
+    height: 7em;
+  }
+
+
+}
+
+/*dispositivos tablets*/
+@media all and (max-width: 799px) {
+
+  /*especificidad (0,0,2) */
+  main>section {
+    max-width: 100%;
+    /*En los tablet el ancho vuelve a ocuparlo todo*/
   }
 
 
