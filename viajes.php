@@ -130,11 +130,10 @@ class Moneda
         <h2>Viajes</h2>
 
         <?php
-        //<!-- cambio de divisa -->
         $moneda = new Moneda('USD', 'EUR');
-        //CUANDO DESCOMENTE LA echo $moneda->getCambio();
+        $moneda->getCambio();
         ?>
-        <section>DESCOMENTAR LA LLAMDADA AL MONEDERO</section>
+        <!--<section>DESCOMENTAR LA LLAMDADA AL MONEDERO</section>-->
 
         <section>
             <h3>Ubicación Actual</h3>
