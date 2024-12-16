@@ -78,7 +78,7 @@ class Moneda
             $cambio = "<h3>Error en el archivo JSON de camnio de moneda recibido</h3>";
         } else {
             echo "<section>";
-            echo "<h2>Cambio de moneda</h2>";
+            echo "<h3>Cambio de moneda</h3>";
             $cambio = $json->rates->EUR->rate;
             echo "<p>El equivalente a 1$ son " . $cambio . "€</p>";
             echo "</section>";
@@ -129,6 +129,12 @@ class Moneda
     <main>
         <h2>Viajes</h2>
 
+        <?php
+        //<!-- cambio de divisa -->
+        $moneda = new Moneda('USD', 'EUR');
+        //CUANDO DESCOMENTE LA echo $moneda->getCambio();
+        ?>
+        <section>DESCOMENTAR LA LLAMDADA AL MONEDERO</section>
 
         <section>
             <h3>Ubicación Actual</h3>
@@ -139,12 +145,6 @@ class Moneda
         <div id="map"></div>
 
         <?php
-
-        //<!-- cambio de divisa -->
-        $moneda = new Moneda('USD', 'EUR');
-        //echo $moneda->getCambio()
-
-        
         $carrusel = new Carrusel('Roma', 'Italia');
         echo $carrusel->obtenerImagenes();
         ?>

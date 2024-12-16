@@ -73,8 +73,9 @@ class Viajes {
             mapaEstatico.setAttribute("src", api_url);
             mapaEstatico.setAttribute("alt", "Mapa geográfico de tu ubicación actual");
 
-            var seccionEstatico = $("main > section:nth-of-type(1)");
+            var seccionEstatico = $("main > section:nth-of-type(2)");
             seccionEstatico.append(mapaEstatico);
+            
 
 
 
@@ -92,7 +93,7 @@ class Viajes {
         }
 
         //elimina el botón que obtiene el mapa
-        document.querySelector("main > section:nth-of-type(1) input[type='button']").remove();
+        document.querySelector("main > section:nth-of-type(2) input[type='button']").remove();
 
     }
 
