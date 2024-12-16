@@ -25,7 +25,7 @@ class Viajes {
 
         this.tienePermiso = true;
 
-        //this.getMapaDinamicoMapBox();
+        this.getMapaDinamicoMapBox();
     }
 
     verErrores(error) {

@@ -36,7 +36,7 @@ class Carrusel
         $carrusel = "<article><h3>Carrusel de Italia</h3>";
         foreach ($data["photos"]["photo"] as $foto) {
             $titulo = $foto["title"];
-            $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_q.jpg";
+            $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_m.jpg";
             $img = "<img alt='" . $titulo . "' src='" . $URLfoto . "' />";
             $carrusel .= $img;
         }
@@ -59,7 +59,8 @@ class Moneda
     }
 
 
-    function getCambio(){
+    function getCambio()
+    {
         $api_key = 'de39ddc359418324e41d36ed2351325c69564171';
 
         // Tengo 100 usos diarios
@@ -73,21 +74,16 @@ class Moneda
         $json = json_decode($respuesta);
 
         $cambio = "";
-        if($json==null) {
+        if ($json == null) {
             $cambio = "<h3>Error en el archivo JSON de camnio de moneda recibido</h3>";
         } else {
             echo "<section>";
             echo "<h2>Cambio de moneda</h2>";
             $cambio = $json->rates->EUR->rate;
-            echo "<p>El equivalente a 1$ son " . $cambio . "€</p>";             
+            echo "<p>El equivalente a 1$ son " . $cambio . "€</p>";
             echo "</section>";
         }
-
-
-
-    }   
-
-
+    }
 }
 ?>
 <!DOCTYPE HTML>
@@ -104,14 +100,10 @@ class Moneda
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-
-
     <link href="multimedia/imagenes/favicon.ico" rel="icon" />
     <script src="js/viajes.js"></script>
-
     <!--mapa dnámico-->
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
 
 
 
@@ -148,21 +140,26 @@ class Moneda
 
         <?php
 
-        $carrusel = new Carrusel('Roma', 'Italia');
-        echo $carrusel->obtenerImagenes();
         //<!-- cambio de divisa -->
         $moneda = new Moneda('USD', 'EUR');
         //echo $moneda->getCambio()
+
+        
+        $carrusel = new Carrusel('Roma', 'Italia');
+        echo $carrusel->obtenerImagenes();
         ?>
 
 
 
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script>
-            var viajes = new Viajes();
-        </script>
+
     </main>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        var viajes = new Viajes();
+    </script>
 </body>
 
 </html>

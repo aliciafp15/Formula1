@@ -117,8 +117,8 @@ section>img {
 
 /*mapa dinamico*/
 main>div {
-    width: 60%;
-    height: 50vh;
+    width: 50%;
+    height: 40vh;
 }
 
 /* Asegúrate de que el canvas DE LA API sea flexible 
