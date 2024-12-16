@@ -139,10 +139,12 @@ class Moneda
         <section>
             <h3>Ubicación Actual</h3>
             <input type="button" value="Obtener mapa estático" onclick="viajes.cargarMapaEstatico();" />
+            <input type="button" value="Obtener mapa dinámico" onclick="viajes.getMapaDinamicoMapBox();" />
+
         </section>
 
         <!-- mapa dinamico -->
-        <div id="map"></div>
+        <div id="map" hidden></div>
 
         <?php
         $carrusel = new Carrusel('Roma', 'Italia');

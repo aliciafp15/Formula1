@@ -24,8 +24,6 @@ class Viajes {
         this.velocidad = posicion.coords.speed;
 
         this.tienePermiso = true;
-
-        this.getMapaDinamicoMapBox();
     }
 
     verErrores(error) {
@@ -73,14 +71,15 @@ class Viajes {
             mapaEstatico.setAttribute("src", api_url);
             mapaEstatico.setAttribute("alt", "Mapa geográfico de tu ubicación actual");
 
-            var seccionEstatico = $("main > section:nth-of-type(2)");
-            seccionEstatico.append(mapaEstatico);
-            
 
+            // Seleccionar la sección que contiene el botón
+            var seccionEstatico = document.querySelector("main > section:nth-of-type(2)");
 
+            // Añadir el mapa como el último elemento de la sección
+            seccionEstatico.appendChild(mapaEstatico);
 
-
-
+            //var seccionEstatico = $("main > section:nth-of-type(2)");
+            //seccionEstatico.append(mapaEstatico);
         } else {
             var parrafoPermisoNoConcedido = document.createElement("p");
             var textoPermisoNoConcedido = document.createTextNode("Permiso de ubicación denegado, no se ha podido cargar el mapa estático");
@@ -92,8 +91,9 @@ class Viajes {
             parrafo.append(mensaje);
         }
 
-        //elimina el botón que obtiene el mapa
-        document.querySelector("main > section:nth-of-type(2) input[type='button']").remove();
+        //deshabilitar boton
+        const button = document.querySelector("main > section:nth-of-type(2) input[type='button']")
+        button.disabled = true
 
     }
 
@@ -116,9 +116,19 @@ class Viajes {
         const marker = new mapboxgl.Marker()
             .setLngLat([lng, lat])
             .addTo(map);
+
+
+        // Hacer visible el div (eliminamos el atributo hidden)
+        const mapaDiv = document.getElementById('map');
+        mapaDiv.removeAttribute('hidden'); // Muestra el div
+
+        //deshabilitar el boton
+        // Selecciona el segundo botón en la sección
+        const button = document.querySelector("section > input[type='button']:nth-of-type(2)");
+        button.disabled = true
     }
 
-  
+
 
     fotoSiguiente() {
 
