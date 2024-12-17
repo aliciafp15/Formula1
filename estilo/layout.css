@@ -65,13 +65,12 @@ form {
     }
 
     /*
-    para qué tengo esa regla?
-    /*especificidad (0,0,2) 
+    oculta las migas en el movil
+    /*especificidad (0,0,2)  */
     body>p {
         display: none;
     }
 
-    */
 
 
 }
