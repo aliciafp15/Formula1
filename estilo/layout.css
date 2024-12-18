@@ -47,10 +47,9 @@ form {
 
     /*especificidad (0,0,2) */
     header>nav {
-        /* Redefinición de flex-direction: para pantallas pequeñas */
-        flex-direction: column;
-         /* Redefinición de gap: para pantallas pequeñas */
-        gap: 0.72em;
+       
+        flex-direction: column; /* Redefinición de flex-direction: para pantallas pequeñas */
+        gap: 0.72em; /* Redefinición de gap: para pantallas pequeñas */
     }
 
     /*

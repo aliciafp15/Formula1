@@ -81,6 +81,7 @@ main a {
 
 /*especificidad (0,0,1) */
 a {
+    /* background-color heredado de header*/
     color: #990000;
 }
 
@@ -171,7 +172,7 @@ main > div + article{
     border-radius: 50%;
     z-index: 10;
     cursor: pointer;
-    /* color heredado de boy */
+    /* color heredado de user agent stylesheet */
     background-color: #fff;
   }
 
@@ -205,12 +206,12 @@ main > div + article{
     video {
         width: 100%;
         height: auto;
-        max-width: 100%;
+        max-width: 100%; /*Redefinición de max-width*/
     }
     /*especificidad (0,0,2) */
     section>img {
-        width: 100%;
-        height: auto;
+        width: 100%; /*Redefinición de width*/
+        height: auto; /*Redefinición de height*/
     }
     /*especificidad (0,0,1) */
     img{
@@ -220,19 +221,19 @@ main > div + article{
 
     /*especificidad (0,0,1) */
     canvas {
-        width: 100%;
+        width: 100%; /*Redefinición de width*/
     }
 
     /*especificidad (0,0,1) */
     svg {
-        width: 100vw;
+        width: 100vw;/*Redefinición de width*/
     }
 
     /*mapa dinamico*/
     /*especificidad (0,0,2) */
     main > div {
-        width: 100%;
-        height: 50vh;
+        width: 100%;/*Redefinición de width*/
+        height: 50vh;/*Redefinición de height*/
     }
 
 
