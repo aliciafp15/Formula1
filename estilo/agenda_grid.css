@@ -38,7 +38,7 @@ section>h3 {
 
 
 
-@media all and (max-width: 520px) {
+@media all and (max-width: 465px) {
 
     /*especificidad (0,0,3) */
     main>section article {
