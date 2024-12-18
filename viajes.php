@@ -35,6 +35,7 @@ class Carrusel
 
         $carrusel = "<article><h3>Carrusel de Italia</h3>";
         foreach ($data["photos"]["photo"] as $foto) {
+            //htmlspecialchars: funcion php que convierte los caracteres especiales a entidades html para evitar las comillas simples estorpeen el codigo
             $titulo = htmlspecialchars($foto["title"], ENT_QUOTES, 'UTF-8');
             $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_m.jpg";
             $img = "<img alt='" . $titulo . "' src='" . $URLfoto . "' />";
