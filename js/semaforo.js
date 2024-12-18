@@ -40,14 +40,14 @@ class Semaforo {
 
         // Crear botón para arrancar el semáforo
         const startButton = document.createElement("button");
-        startButton.textContent = "Arrancar Semáforo";
+        startButton.textContent = "Arranque";
         startButton.setAttribute("type", "button");
         startButton.onclick = this.initSequence.bind(this);
         seccion.appendChild(startButton);
 
         // Crear botón para registrar tiempo de reacción
         const reactionButton = document.createElement("button");
-        reactionButton.textContent = "Pulsa para medir reacción";
+        reactionButton.textContent = "Reacción";
         reactionButton.setAttribute("type", "button");
         reactionButton.onclick = this.stopReaction.bind(this);
         reactionButton.setAttribute("disabled", "");

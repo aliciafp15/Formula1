@@ -38,12 +38,13 @@
     <nav>
       <a href="memoria.html" title="Ir al juego de memoria">Memoria</a>
       <a href="semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
-      <a href="api.html" title="Ir al juego de la API">API</a>
+      <a href="api.html" title="Ir al juego de los coches">Coches</a>
+      <a href="php/formula.php" title="Ir a las clasificaciones">Clasificaciones</a>
     </nav>
   </section>
 
   <main class="">
-  <section><h3>Juego del Semáforo</h3><div></div><div></div><div></div><div></div><button type="button">Arrancar Semáforo</button><button type="button" disabled="">Pulsa para medir reacción</button><p>Tiempo de reacción: 0.448 milisegundos</p></section><section><h4>Registra tu puntuación</h4><form action="#" method="post" name="record">
+  <section><h3>Juego del Semáforo</h3><div></div><div></div><div></div><div></div><button type="button">Arranque</button><button type="button" disabled="">Reacción</button><p>Tiempo de reacción: 0.405 milisegundos</p></section><section><h4>Registra tu puntuación</h4><form action="#" method="post" name="record">
             <label for="nombre">Nombre:
                 <input type="text" id="nombre" name="nombre" required="" placeholder="Ingrese su nombre">
             </label>
@@ -51,18 +52,18 @@
                 <input type="text" id="apellidos" name="apellidos" required="" placeholder="Ingrese sus apellidos">
             </label>
             <label for="tiempo">Tiempo:
-                <input type="text" id="tiempo" name="tiempo" value="0.448" readonly="">
+                <input type="text" id="tiempo" name="tiempo" value="0.405" readonly="">
             </label>
             <label for="nivel">Dificultad:
-                <input type="text" id="nivel" name="nivel" value="0.5" readonly="">
+                <input type="text" id="nivel" name="nivel" value="Difícil" readonly="">
             </label>
             <input type="submit" value="Guardar registro">
         </form></section></main>
 
   <!-- codigo php para mostrar la clasificación -->
-    <section><h4>Ranking</h4><ol><li>Alicia Fernández Pushkina ~ 0.2 ~ 0.451segundos </li><li>dsdgsdfesdfsfsdfsdf sdfsdfsdfsdfsf ~ 0.2 ~ 0.458segundos </li><li>Alicia Fernández Pushkina ~ 0.2 ~ 0.462segundos </li><li>Quiero Llorar ~ 0.2 ~ 0.481segundos </li><li>Alicia Fernández Pushkina ~ 0.2 ~ 0.491segundos </li><li>Lara Méndez ~ 0.2 ~ 0.494segundos </li><li>Lara Méndez ~ 0.2 ~ 0.564segundos </li><li>dsf ssdfsdf ~ 0.2 ~ 0.668segundos </li><li>rwerwer werwerwer ~ 0.2 ~ 0.712segundos </li><li>DFDFDFS SFSF ~ 0.2 ~ 1.068segundos </li></ol></section>
+    <section><h4>Ranking</h4><ol><li>Marta Vazquez ~ Fácil ~ 0.602 segundos </li><li>Alicia Fernández ~ Fácil ~ 0.690 segundos </li></ol></section>
   <script>
-    //var juego = new Semaforo();
+    var juego = new Semaforo();
   </script>
 
 
