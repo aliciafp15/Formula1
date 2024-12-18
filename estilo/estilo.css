@@ -14,8 +14,9 @@ body {
 
 }
 
-/*especificidad (0,0,2) */
-body>p {
+/*selector especifico que selecciona exclusivamente el párrafo de las migas para darle estilo*/
+/*especificidad (0,1,2) */
+body>p:first-of-type{
     font-size: 0.9em;
 }
 
@@ -32,13 +33,7 @@ header a {
     text-decoration: none;
 }
 
-/*especificidad (0,0,3) */
-header>nav a {
-    /* background-color heredado de header*/
-    color: #FDF8DE;
-    /* #B4FEE7;*/
 
-}
 
 /*especificidad (0, 1, 3) */
 header>nav>a.active {

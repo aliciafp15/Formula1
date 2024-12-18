@@ -261,7 +261,7 @@ if (isset($_POST['exportarCSV'])) {
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
     <header>
-        <h1><a href="index.html" title="Volver al inicio">F1 Desktop</a></h1>
+        <h1><a href="../index.html" title="Volver al inicio">F1 Desktop</a></h1>
         <nav>
             <a href="../index.html" title="Volver a la página de inicio">Index</a>
             <a href="../piloto.html" title="Ver información sobre el piloto">Piloto</a>
@@ -274,7 +274,7 @@ if (isset($_POST['exportarCSV'])) {
         </nav>
     </header>
 
-    <p>Estás en: <a href="index.html" title="Volver al inicio">Inicio</a> >> <a href="juegos.html"
+    <p>Estás en: <a href="../index.html" title="Volver al inicio">Inicio</a> >> <a href="../juegos.html"
             title="Volver a ver los juegos">Juegos</a> >> Clasificaciones</p>
     <!--menu de juegos-->
     <section>
@@ -284,7 +284,7 @@ if (isset($_POST['exportarCSV'])) {
         <a href="../memoria.html" title="Ir al juego de memoria">Memoria</a>
         <a href="../semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
         <a href="../api.html" title="Ir al juego de los coches">Coches</a>
-        <a href="../formula.html" title="Ir a las clasificaciones">Clasificaciones</a>
+        <a href="formula.php" title="Ir a las clasificaciones">Clasificaciones</a>
     </nav>
     </section>
     <main>
