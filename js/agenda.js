@@ -12,7 +12,7 @@ class Agenda {
 
 
         $.ajax({
-            dataType: "jso",
+            dataType: "json",
             url: this.apiURL,
             method: 'GET',
             success: function (data) {
