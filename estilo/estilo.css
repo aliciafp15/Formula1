@@ -65,6 +65,7 @@ tr {
     padding: 0.5em;
 }
 
+/*destaco el término a definir para el P3*/
 /*especificidad (0,0,1) */
 dt {
     /* background-color heredado de body*/
@@ -89,6 +90,7 @@ ul {
     list-style: square;
 }
 
+/*estilo a la lista anidada*/
 /*especificidad (0,0,2) */
 ol ul {
     list-style: circle;

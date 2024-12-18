@@ -56,7 +56,7 @@ form {
     /*
     oculta las migas en el movil
     /*especificidad (0,0,2)  */
-    body>p {
+    body>p:first-of-type {
         display: none;
     }
 
