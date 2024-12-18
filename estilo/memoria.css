@@ -80,7 +80,7 @@ article img {
 
   /*especificidad (0,0,2) */
   main>section {
-    max-width: 100%;
+    max-width: 100%;/*Redefinición de max-width*/
   }
 
    /*especificidad (0,0,3) */
@@ -96,7 +96,7 @@ article img {
 
   /*especificidad (0,0,2) */
   main>section {
-    max-width: 100%;
+    max-width: 100%;/*Redefinición de max-width*/
     /*En los tablet el ancho vuelve a ocuparlo todo*/
   }
 

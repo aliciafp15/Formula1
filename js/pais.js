@@ -59,8 +59,8 @@ class Pais {
     }
 
 
-    // previsión del tiempo en la línea de meta del circuito para los próximos 5 días.
-    //devuelva la información del tiempo en formato JSON y con unidades de medida del sistema métrico
+    /*previsión del tiempo en la línea de meta del circuito para los próximos 5 días.
+    devuelva la información del tiempo en formato JSON y con unidades de medida del sistema métrico*/
     mirarTiempo() {
         const apiKey = '533fd228654cbc50777660297ddc9c40';
         const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.latitud}&lon=${this.longitud}&units=metric&appid=${apiKey}`;

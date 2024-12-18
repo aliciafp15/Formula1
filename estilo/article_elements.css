@@ -12,8 +12,7 @@ main >section > article {
     margin: 1em;
     flex-direction: column;
     align-items: center;
-    /* color heredado de body*/
-    background-color: #f9f9f9;
+    background-color: #f9f9f9;/* color heredado de body*/
     border-radius: 1.5em; 
     padding: 0.625em;
 
