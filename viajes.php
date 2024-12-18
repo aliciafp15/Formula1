@@ -35,11 +35,12 @@ class Carrusel
 
         $carrusel = "<article><h3>Carrusel de Italia</h3>";
         foreach ($data["photos"]["photo"] as $foto) {
-            $titulo = $foto["title"];
+            $titulo = htmlspecialchars($foto["title"], ENT_QUOTES, 'UTF-8');
             $URLfoto = "https://live.staticflickr.com/" . $foto["server"] . "/" . $foto["id"] . "_" . $foto["secret"] . "_m.jpg";
             $img = "<img alt='" . $titulo . "' src='" . $URLfoto . "' />";
             $carrusel .= $img;
         }
+        
         $carrusel .= "<button onclick='viajes.fotoSiguiente()' data-action='next'> > </button>
       <button data-action='prev' onclick='viajes.fotoAnterior()'> < </button></article>";
 
@@ -129,11 +130,13 @@ class Moneda
     <main>
         <h2>Viajes</h2>
 
-        <?php
+       <!--
+         <?php
         $moneda = new Moneda('USD', 'EUR');
-        $moneda->getCambio();
-        ?>
-        <!--<section>DESCOMENTAR LA LLAMDADA AL MONEDERO</section>-->
+       // $moneda->getCambio();
+        ?>  -->
+      
+       <section>DESCOMENTAR LA LLAMDADA AL MONEDERO</section>
 
         <section>
             <h3>Ubicación Actual</h3>
@@ -142,7 +145,7 @@ class Moneda
 
         </section>
 
-        <!-- mapa dinamico -->
+        <!-- mapa dinamico, genera 4 errores POST en la consola -->
         <div id="map" hidden></div>
 
         <?php
