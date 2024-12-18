@@ -12,7 +12,7 @@ class Agenda {
 
 
         $.ajax({
-            dataType: "json",
+            dataType: "jso",
             url: this.apiURL,
             method: 'GET',
             success: function (data) {
@@ -60,7 +60,8 @@ class Agenda {
             },
 
             error: function () {
-                alert("No se ha podido cargar el calendario de la F1");
+                var main = $("main");
+                main.append("<p>No se ha podido cargar el calendario de la F1</p>");
             }
         });
     }

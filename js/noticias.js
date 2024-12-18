@@ -27,7 +27,8 @@ class Noticias {
             lector.readAsText(archivo);
         }
         else {
-            alert("Solo valen .txt")
+            var seccionNoticias = $("main > section:first");
+            seccionNoticias.append("<p>Error : Solo se permiten archivos txt</p>");
         }
     }
 
@@ -83,12 +84,14 @@ class Noticias {
     incluirNuevaNoticiaHTML() {
         // Obtener valores de los inputs
         var titular = $("main > section:last form input:first").val();
-        var entradilla = $("main > section:last form input:eq(2)").val();
+        var entradilla = $("main > section:last form input:eq(1)").val();
         var autor = $("main > section:last form  input:last").val();
 
         // Validar campos
         if (!titular || !entradilla || !autor) {
-            alert("Todos los campos son obligatorios. Por favor, complete la información.");
+
+            var seccionNuevaNoticia = $("main > section:last");
+            seccionNuevaNoticia.append("<p>Todos los campos son obligatorios. Por favor, complete la información.</p>");
             return;
         }
 
