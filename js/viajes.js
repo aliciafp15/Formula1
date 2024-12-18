@@ -119,7 +119,7 @@ class Viajes {
 
 
         // Hacer visible el div (eliminamos el atributo hidden)
-        const mapaDiv = document.getElementById('map');
+        const mapaDiv = document.querySelector('div');
         mapaDiv.removeAttribute('hidden'); // Muestra el div
 
         //deshabilitar el boton
