@@ -27,7 +27,6 @@ class Circuito {
     parsearXmlAHtml(contenidoXml) {
         const xmlDoc = $.parseXML(contenidoXml);
         const $xml = $(xmlDoc);
-        console.log($xml)
 
         let html = "";
 

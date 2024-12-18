@@ -109,7 +109,6 @@ class Pais {
                 });
 
                 $('main').append(section);
-                console.log(filteredList);
             },
             error: function (error) {
                 console.error(error);

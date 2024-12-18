@@ -15,7 +15,6 @@ class Noticias {
         //Solamente toma un archivo
         //var archivo = document.getElementById("archivoTexto").files[0];
         var archivo = files[0];
-        console.log(archivo)
         //Solamente admite archivos de tipo texto
         var tipoTexto = /text.*/;
 
