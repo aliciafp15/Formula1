@@ -67,7 +67,7 @@ class Record
         $this->clasificacion .= "<ol>";
         while ($fila = $resultado->fetch_assoc()) {
 
-        
+
 
           $this->clasificacion .= "<li>" . $fila['nombre'] . " " . $fila['apellidos'] . " ~ " . $fila['nivel'] . " ~ " . $fila["tiempo"] . " segundos </li>";
         }
@@ -108,8 +108,8 @@ if (count($_POST) > 0) {
   <meta charset="UTF-8" />
   <title>F1 Desktop - Semáforo</title> <!--Asegurarme de que el título les guste-->
   <meta name="author" content="Alicia Fernández Pushkina" />
-  <meta name="description" content="documento para utilizar en otros módulos de la asignatura" />
-  <meta name="keywords" content="html, css, index" />
+  <meta name="description" content="Juego de reacción simulando un semáforo" />
+  <meta name="keywords" content="html, css, index, semáforo, ecmascript" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
   <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
   <link rel="stylesheet" type="text/css" href="estilo/layout.css" />

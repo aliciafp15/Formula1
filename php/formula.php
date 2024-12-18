@@ -202,7 +202,7 @@ class Formula1
 
         $result = $db->query($query);
         if ($result->num_rows > 0) {
-            $tabla = "<section><h3>Ranking de Pilotos</h3><table><tr><th>Posición</th><th>Nombre</th><th>Puntos Totales</th></tr>";
+            $tabla = "<section><h3>GP Barein 2024</h3><table><tr><th>Posición</th><th>Nombre</th><th>Puntos Totales</th></tr>";
             $posicion = 1;
             while ($row = $result->fetch_assoc()) {
                 $tabla .= "<tr><td>" . $posicion++ . "</td><td>" . $row['nombre'] . " " . $row['apellido'] . "</td><td>" . $row['puntos_totales'] . "</td></tr>";
@@ -244,8 +244,8 @@ if (isset($_POST['exportarCSV'])) {
     <meta charset="UTF-8">
     <title>F1 Desktop - Clasificaciones</title> <!--Asegurarme de que el título les guste-->
     <meta name="author" content="Alicia Fernández Pushkina">
-    <meta name="description" content="Documento inicial del F1 Desktop">
-    <meta name="keywords" content="html, css, index">
+    <meta name="description" content="Gestiona con php una base de datos sobre clasificaciones de F1">
+    <meta name="keywords" content="html, css, base de datos, php, clasificaciones, mySql">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="../estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="../estilo/layout.css">
@@ -308,7 +308,7 @@ if (isset($_POST['exportarCSV'])) {
         </form>
 
         <form action="#" method="post">
-            <label for="rankingPilotos">Ver los mejores pilotos</label>
+            <label for="rankingPilotos">Ver resultados de pilotos</label>
             <input id="rankingPilotos" type="submit" name="rankingPilotos" value="Buscar">
         </form>
 

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+    <head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>F1 Desktop - Clasificaciones</title> <!--Asegurarme de que el título les guste-->
+    <meta name="author" content="Alicia Fernández Pushkina">
+    <meta name="description" content="Gestiona con php una base de datos sobre clasificaciones de F1">
+    <meta name="keywords" content="html, css, base de datos, php, clasificaciones, mySql">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--definir la ventana gráfica-->
+    <link rel="stylesheet" type="text/css" href="../estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="../estilo/formula.css">
+
+
+    <link href="../multimedia/imagenes/favicon.ico" rel="icon">
+
+
+
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+        <h1><a href="../index.html" title="Volver al inicio">F1 Desktop</a></h1>
+        <nav>
+            <a href="../index.html" title="Volver a la página de inicio">Index</a>
+            <a href="../piloto.html" title="Ver información sobre el piloto">Piloto</a>
+            <a href="../noticias.html" title="Leer las últimas noticias">Noticias</a>
+            <a href="../calendario.html" title="Consultar el calendario">Calendario</a>
+            <a href="../meteorologia.html" title="Revisar la meteorologia">Meteorologia</a>
+            <a href="../circuito.html" title="Información sobre el circuito">Circuito</a>
+            <a href="../viajes.php" title="Planificar tus viajes">Viajes</a>
+            <a href="../juegos.html" class="active" title="Explorar juegos">Juegos</a>
+        </nav>
+    </header>
+
+    <p>Estás en: <a href="../index.html" title="Volver al inicio">Inicio</a> &gt;&gt; <a href="../juegos.html" title="Volver a ver los juegos">Juegos</a> &gt;&gt; Clasificaciones</p>
+    <!--menu de juegos-->
+    <section>
+        <h2>Juegos</h2>
+        <nav>
+        <nav>
+        <a href="../memoria.html" title="Ir al juego de memoria">Memoria</a>
+        <a href="../semaforo.php" title="Ir al juego del semáforo">Semáforo</a>
+        <a href="../api.html" title="Ir al juego de los coches">Coches</a>
+        <a href="formula.php" title="Ir a las clasificaciones">Clasificaciones</a>
+    </nav>
+    </nav></section>
+    <main>
+
+        <h3>Clasificaciones</h3>
+
+        <form action="#" method="post">
+            <label for="init">Crear BD o resetear</label>
+            <input id="init" type="submit" name="init" value="Aceptar">
+        </form>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label for="importarCSV">Importar datos</label>
+            <input id="importarCSV" name="importarCSV" type="file" accept=".csv">
+            <input type="submit" name="importarCSV" value="Importar">
+        </form>
+
+        <form action="#" method="post">
+            <label for="exportarCSV">Exportar datos</label>
+            <input id="exportarCSV" type="submit" name="exportarCSV" value="Exportar">
+        </form>
+
+        <form action="#" method="post">
+            <label for="rankingPilotos">Ver resultados de pilotos</label>
+            <input id="rankingPilotos" type="submit" name="rankingPilotos" value="Buscar">
+        </form>
+
+        <section><h3>GP Barein 2024</h3><table><tbody><tr><th>Posición</th><th>Nombre</th><th>Puntos Totales</th></tr><tr><td>1</td><td>Max Verstappen</td><td>26</td></tr><tr><td>2</td><td>Sergio Pérez</td><td>18</td></tr><tr><td>3</td><td>Carlos Sainz</td><td>15</td></tr><tr><td>4</td><td>Charles Leclerc</td><td>12</td></tr><tr><td>5</td><td>George Russell</td><td>10</td></tr><tr><td>6</td><td>Lando Norris</td><td>8</td></tr><tr><td>7</td><td>Lewis Hamilton</td><td>6</td></tr><tr><td>8</td><td>Oscar Piastri</td><td>4</td></tr><tr><td>9</td><td>Fernando Alonso</td><td>2</td></tr><tr><td>10</td><td>Lance Stroll</td><td>1</td></tr><tr><td>11</td><td>Yuki Tsunoda</td><td>0</td></tr><tr><td>12</td><td>Pierre Gasly</td><td>0</td></tr><tr><td>13</td><td>Guanyu Zhou</td><td>0</td></tr><tr><td>14</td><td>Alex Albon</td><td>0</td></tr><tr><td>15</td><td>Valtteri Bottas</td><td>0</td></tr><tr><td>16</td><td>Kevin Magnussen</td><td>0</td></tr><tr><td>17</td><td>Nico Hulkenberg</td><td>0</td></tr><tr><td>18</td><td>Daniel Ricciardo</td><td>0</td></tr><tr><td>19</td><td>Esteban Ocon</td><td>0</td></tr></tbody></table></section>    </main>
+
+
+
+
+
+</body></html>

@@ -97,8 +97,8 @@ class Moneda
     <meta charset="UTF-8" />
     <title>F1 Desktop - Viajes</title> <!--Asegurarme de que el título les guste-->
     <meta name="author" content="Alicia Fernández Pushkina" />
-    <meta name="description" content="documento para utilizar en otros módulos de la asignatura" />
-    <meta name="keywords" content="html, css, index" />
+    <meta name="description" content="Obtén tu ubicación y mira el carrusel con fotos de Italia" />
+    <meta name="keywords" content="html, css, index, Viajes,Geolocalizacion,MapaEstatico,MapaDinamico,carrusel" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--definir la ventana gráfica-->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
