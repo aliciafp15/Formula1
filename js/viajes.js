@@ -103,6 +103,8 @@ class Viajes {
         var lat = parseFloat(this.latitud)
         //st = sk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidzY3dDAwNHdhMndzYzFnaDdhNG92In0.8BMSzERGai1QdUdH90rlow
         mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidnpucmIwM3ZoMmpzOHdiYmg4ZjNjIn0.l-Ye9cgCVtEZRsouG2-zcA';
+
+        
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
@@ -110,6 +112,8 @@ class Viajes {
             zoom: 9,
 
         });
+
+        
         // no necesito añadir el mapa al DOM si ya tengo el contenedor
 
         // añadir marcador de posicion

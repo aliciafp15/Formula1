@@ -115,16 +115,27 @@ section>img {
 }
 
 /*mapa dinamico*/
-/*especificidad (0,0,2) */
-main>div {
+/*especificidad (0,0,2) 
+main> div {
     width: 50%;
     height: 40vh;
 }
+    */
+/*especificidad (0,0,2) */
+main>div {
+    width: 38%;
+    height: 33vh;
+}
+
+/*especificidad (0,0,3) */
+main>section>div{
+    height: 50em;
+    width: 50em;
+}
 
 /* Asegúrate de que el canvas DE LA API sea flexible 
-*/
 /*especificidad (0,0,1) */
-canvas {
+section > canvas {
     width: 50%;
     height: auto;
 }

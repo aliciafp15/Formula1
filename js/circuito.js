@@ -123,13 +123,14 @@ class Circuito {
                 const contenidoKML = e.target.result;
                 const coordenadas = this.parsearKML(contenidoKML);
 
+                var seccionPlanimetria = $("main > section:nth-of-type(3)");
+
                 if (coordenadas.length > 0) {
                     this.agregarRutaAlMapa(coordenadas, i); // Agregar la ruta al mapa dinámico
                     // Ajustar el contenedor del mapa de planimetría
-                    var seccionPlanimetria = $("main > section:nth-of-type(3)");
                     var primerHijoSection = seccionPlanimetria.children("section:first");
                 } else {
-                    console.error('El archivo KML no contiene coordenadas válidas.');
+                    seccionPlanimetria.append("<p>El archivo KML no contiene coordenadas válidas.</p>")
                 }
             };
 
@@ -162,11 +163,12 @@ class Circuito {
         var lat = 45.618978;
         mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpY2lhZnAxNSIsImEiOiJjbTRidnpucmIwM3ZoMmpzOHdiYmg4ZjNjIn0.l-Ye9cgCVtEZRsouG2-zcA';
 
+        
         // Crear el mapa si aún no está creado
         if (!this.mapPlanimetria) {
             this.mapPlanimetria = new mapboxgl.Map({
                 container: 'mapaDinamicoKML',
-                style: 'mapbox://styles/mapbox/streets-v12',
+                style: 'mapbox://styles/mapbox/streets-v11',
                 center: [lng, lat],
                 zoom: 12,
             });
