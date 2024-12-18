@@ -48,7 +48,7 @@ header>nav>a.active {
     font-size: 1.2em;
 }
 
-/*especificidad (0,1,1) */
+/*especificidad (0,1,3) */
 header nav a:hover {
     /* background-color heredado de header*/
     color: #FFEE00;
@@ -84,6 +84,7 @@ main a {
     font-weight: bold;
 }
 
+/*especificidad (0,0,1) */
 a {
     color: #990000;
 }
@@ -110,12 +111,14 @@ video {
 }
 
 /*imagenes del xml del circuito, para que no afecten a otras imagenes*/
+/*especificidad (0,0,2) */
 section>img {
     width: 30vw;
     height: auto;
 }
 
 /*mapa dinamico*/
+/*especificidad (0,0,2) */
 main>div {
     width: 50%;
     height: 40vh;
@@ -123,6 +126,7 @@ main>div {
 
 /* Asegúrate de que el canvas DE LA API sea flexible 
 */
+/*especificidad (0,0,1) */
 canvas {
     width: 50%;
     height: auto;
@@ -135,7 +139,7 @@ section a {
 }
 
 /*estilos para el carrusel*/
-
+/*especificidad (0,0,3) */
 main > div + article{
     width: 60%;
     max-width: 60vh;
@@ -145,11 +149,12 @@ main > div + article{
     border-radius: 2em;
   }
 
+/*especificidad (0,0,4) */
   main > div + article h3 {
       width: 100%;
       text-align: center;
   }
-
+/*especificidad (0,0,4) */
   main > div + article img {
     width: 100%;
     max-width: 100vh;
@@ -160,6 +165,7 @@ main > div + article{
     border-radius: 2em;
   }
 
+  /*especificidad (0,0,4) */
   main > div + article button {
     position: absolute;
     width: 2em;
@@ -173,19 +179,21 @@ main > div + article{
     background-color: #fff;
   }
 
-
+/*especificidad (0,1,4) */
   main > div + article button:active {
     transform: scale(1.1);
   }
 
 
   /*primer boton, el de la anterior foto*/
+  /*especificidad (0,1,4) */
   main > div + article button:nth-of-type(2)  {
     top: 50%;
     left: 2%;
   }
 
     /*primer boton, el de la siguiente foto*/
+    /*especificidad (0,1,4) */
   main > div + article button:nth-of-type(1){
     top: 50%;
     right: 2%;
@@ -203,22 +211,29 @@ main > div + article{
         height: auto;
         max-width: 100%;
     }
-
-    img,
+    /*especificidad (0,0,2) */
     section>img {
         width: 100%;
         height: auto;
     }
+    /*especificidad (0,0,1) */
+    img{
+        width: 100%;
+        height: auto;
+    }
 
+    /*especificidad (0,0,1) */
     canvas {
         width: 100%;
     }
 
+    /*especificidad (0,0,1) */
     svg {
         width: 100vw;
     }
 
     /*mapa dinamico*/
+    /*especificidad (0,0,2) */
     main > div {
         width: 100%;
         height: 50vh;
