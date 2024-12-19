@@ -16,7 +16,7 @@ body {
 
 /*selector especifico que selecciona exclusivamente el párrafo de las migas para darle estilo*/
 /*especificidad (0,1,2) */
-body>p:first-of-type{
+body>p:first-of-type {
     font-size: 0.9em;
 }
 
@@ -122,14 +122,14 @@ main>div {
 }
 
 /*especificidad (0,0,3) */
-main>section>div{
-    height: 50em;
-    width: 50em;
+main>section>div {
+    height: 30vh;
+    width: 30vh;
 }
 
 /* Asegúrate de que el canvas DE LA API sea flexible 
 /*especificidad (0,0,2) */
-section > canvas {
+section>canvas {
     width: 50%;
     height: auto;
 }
@@ -142,22 +142,23 @@ section a {
 
 /*estilos para el carrusel*/
 /*especificidad (0,0,3) */
-main > div + article{
+main>div+article {
     width: 60%;
     max-width: 60vh;
     height: 40vh;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     border-radius: 2em;
-  }
+}
 
 /*especificidad (0,0,4) */
-  main > div + article h3 {
-      width: 100%;
-      text-align: center;
-  }
+main>div+article h3 {
+    width: 100%;
+    text-align: center;
+}
+
 /*especificidad (0,0,4) */
-  main > div + article img {
+main>div+article img {
     width: 100%;
     max-width: 100vh;
     /*height: 50vh;*/
@@ -165,10 +166,10 @@ main > div + article{
     /* transition: all 0.5s; */
     object-fit: cover;
     border-radius: 2em;
-  }
+}
 
-  /*especificidad (0,0,4) */
-  main > div + article button {
+/*especificidad (0,0,4) */
+main>div+article button {
     position: absolute;
     width: 2em;
     height: 2em;
@@ -179,27 +180,27 @@ main > div + article{
     cursor: pointer;
     /* color heredado de user agent stylesheet */
     background-color: #fff;
-  }
+}
 
 /*especificidad (0,1,4) */
-  main > div + article button:active {
+main>div+article button:active {
     transform: scale(1.1);
-  }
+}
 
 
-  /*primer boton, el de la anterior foto*/
-  /*especificidad (0,1,4) */
-  main > div + article button:nth-of-type(2)  {
+/*primer boton, el de la anterior foto*/
+/*especificidad (0,1,4) */
+main>div+article button:nth-of-type(2) {
     top: 50%;
     left: 2%;
-  }
+}
 
-    /*primer boton, el de la siguiente foto*/
-    /*especificidad (0,1,4) */
-  main > div + article button:nth-of-type(1){
+/*primer boton, el de la siguiente foto*/
+/*especificidad (0,1,4) */
+main>div+article button:nth-of-type(1) {
     top: 50%;
     right: 2%;
-  }
+}
 
 
 
@@ -211,34 +212,43 @@ main > div + article{
     video {
         width: 100%;
         height: auto;
-        max-width: 100%; /*Redefinición de max-width*/
+        max-width: 100%;
+        /*Redefinición de max-width*/
     }
+
     /*especificidad (0,0,2) */
     section>img {
-        width: 100%; /*Redefinición de width*/
-        height: auto; /*Redefinición de height*/
+        width: 100%;
+        /*Redefinición de width*/
+        height: auto;
+        /*Redefinición de height*/
     }
+
     /*especificidad (0,0,1) */
-    img{
+    img {
         width: 100%;
         height: auto;
     }
 
     /*especificidad (0,0,1) */
-    section > canvas {
-        width: 100%; /*Redefinición de width*/
+    section>canvas {
+        width: 100%;
+        /*Redefinición de width*/
     }
 
     /*especificidad (0,0,1) */
     svg {
-        width: 100vw;/*Redefinición de width*/
+        width: 100vw;
+        /*Redefinición de width*/
     }
 
     /*mapa dinamico*/
     /*especificidad (0,0,2) */
-    main > div {
-        width: 100%;/*Redefinición de width*/
-        height: 50vh;/*Redefinición de height*/
+    main>div {
+        width: 100%;
+        /*Redefinición de width*/
+        height: 50vh;
+        /*Redefinición de height*/
     }
 
 
